@@ -1,0 +1,14 @@
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/obj/x86/Debug/.NETFramework,Version=v4.0,Profile=Client.AssemblyAttribute.cs
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/obj/x86/Debug/WHA_avac.Form1.resources
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/obj/x86/Debug/WHA_avac.Properties.Resources.resources
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/bin/Debug/WHA_avac.exe.mdb
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/bin/Debug/WHA_avac.exe
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/obj/x86/Debug/WHA_avac.exe
+/Users/thomas/sourcecode/yueavac/WHA_avac/sfvScout/obj/x86/Debug/WHA_avac.exe.mdb
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/obj/x86/Debug/.NETFramework,Version=v4.0,Profile=Client.AssemblyAttribute.cs
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/obj/x86/Debug/WHA_avac.Form1.resources
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/obj/x86/Debug/WHA_avac.Properties.Resources.resources
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/obj/x86/Debug/WHA_avac.exe
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/obj/x86/Debug/WHA_avac.exe.mdb
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/bin/Debug/WHA_avac.exe.mdb
+/Users/thomas/sourcecode/linzongFacebook/sfvScout/bin/Debug/WHA_avac.exe

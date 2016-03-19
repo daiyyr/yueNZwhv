@@ -1,0 +1,7 @@
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\bin\Release\WHA_avac.exe
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\bin\Release\WHA_avac.pdb
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\WHA_avac.Form1.resources
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\WHA_avac.Properties.Resources.resources
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\WHA_avac.csproj.GenerateResource.Cache
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\WHA_avac.exe
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\WHA_avac.pdb

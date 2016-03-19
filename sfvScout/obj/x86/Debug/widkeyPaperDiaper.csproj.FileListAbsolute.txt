@@ -1,0 +1,16 @@
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\bin\Debug\widkeyPaperDiaper.exe
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Form1.resources
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Properties.Resources.resources
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.csproj.GenerateResource.Cache
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\bin\Debug\widkeyPaperDiaper.pdb
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.csprojResolveAssemblyReference.cache
+D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
+D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
+D:\source\witkeyPaperDiaper\sfvScout\bin\Debug\widkeyPaperDiaper.exe
+D:\source\witkeyPaperDiaper\sfvScout\bin\Debug\widkeyPaperDiaper.pdb
+D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.csprojResolveAssemblyReference.cache
+D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Form1.resources
+D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Properties.Resources.resources
+D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Debug\widkeyPaperDiaper.csproj.GenerateResource.Cache

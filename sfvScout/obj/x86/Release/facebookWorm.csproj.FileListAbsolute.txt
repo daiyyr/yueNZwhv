@@ -1,0 +1,10 @@
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\bin\Release\facebookWorm.exe
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\bin\Release\facebookWorm.pdb
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\facebookWorm.Properties.Resources.resources
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\facebookWorm.csproj.GenerateResource.Cache
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\facebookWorm.exe
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\facebookWorm.pdb
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\facebookWorm.csprojResolveAssemblyReference.cache
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Release\facebookWorm.Form1.resources
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Release\facebookWorm.exe
+\\Mac\Home\sourcecode\witkeyPaperDiaper\sfvScout\obj\x86\Release\facebookWorm.pdb

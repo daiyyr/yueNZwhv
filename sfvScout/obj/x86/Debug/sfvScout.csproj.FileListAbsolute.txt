@@ -1,0 +1,10 @@
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\bin\Debug\sfvScout.exe
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\bin\Debug\sfvScout.pdb
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\obj\x86\Debug\sfvScout.Form1.resources
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\obj\x86\Debug\sfvScout.Properties.Resources.resources
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\obj\x86\Debug\sfvScout.csproj.GenerateResource.Cache
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\obj\x86\Debug\sfvScout.exe
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\obj\x86\Debug\sfvScout.pdb
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\sfvScout\sfvScout\obj\x86\Debug\sfvScout.csprojResolveAssemblyReference.cache
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\sfvScout.exe
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\sfvScout.pdb

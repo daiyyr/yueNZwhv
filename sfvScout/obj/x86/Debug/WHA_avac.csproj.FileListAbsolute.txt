@@ -1,0 +1,16 @@
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\WHA_avac.Properties.Resources.resources
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\WHA_avac.csproj.GenerateResource.Cache
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\WHA_avac.Form1.resources
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\bin\Debug\WHA_avac.exe
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\bin\Debug\WHA_avac.pdb
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\WHA_avac.exe
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\WHA_avac.pdb
+E:\sourcecode\C#_Vb\visual studio c#\auWHV\WHA_avac\sfvScout\obj\x86\Debug\WHA_avac.csprojResolveAssemblyReference.cache
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Debug\WHA_avac.exe
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Debug\WHA_avac.pdb
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\bin\Debug\WHA_avac.exe
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\bin\Debug\WHA_avac.pdb
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Debug\WHA_avac.Form1.resources
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Debug\WHA_avac.Properties.Resources.resources
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Debug\WHA_avac.csproj.GenerateResource.Cache
+\\Mac\Home\sourcecode\linzongFacebook\sfvScout\obj\x86\Debug\WHA_avac.csprojResolveAssemblyReference.cache
