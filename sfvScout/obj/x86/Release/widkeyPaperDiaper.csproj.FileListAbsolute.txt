@@ -14,3 +14,5 @@ D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Release\widkeyPaperDiaper.Form1.res
 D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Release\widkeyPaperDiaper.Properties.Resources.resources
 D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Release\widkeyPaperDiaper.csproj.GenerateResource.Cache
 D:\source\witkeyPaperDiaper\sfvScout\obj\x86\Release\widkeyPaperDiaper.csprojResolveAssemblyReference.cache
+D:\source\yueNZwhv\sfvScout\obj\x86\Release\widkeyPaperDiaper.exe
+D:\source\yueNZwhv\sfvScout\obj\x86\Release\widkeyPaperDiaper.pdb

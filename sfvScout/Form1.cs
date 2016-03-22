@@ -23,7 +23,7 @@ namespace widkeyPaperDiaper
     public partial class Form1 : Form
     {
         
-        public static bool debug = false;
+        public static bool debug = true;
 
         public static int retry = 5;
 
@@ -32,7 +32,7 @@ namespace widkeyPaperDiaper
         static DateTime expireDate = new DateTime(2025, 12, 13);
         static string rgx;
         static Match myMatch;
-        static string gHost = "aksale.advs.jp";
+        static string gHost = "www.immigration.govt.nz";
         public County selecteCounty = null;
         public int selectedShop = -1;
         public string selectedType = null;
@@ -325,7 +325,8 @@ namespace widkeyPaperDiaper
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.hko.gov.hk/cgi-bin/gts/time5a.pr?a=1");
             request.Method = "GET";
             request.Accept = "text/html, application/xhtml+xml, */*";
-            request.UserAgent = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0)";
+                                    
             request.ContentType = "application/x-www-form-urlencoded";
             request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore); //No caching
             HttpWebResponse response = null;
@@ -424,7 +425,6 @@ namespace widkeyPaperDiaper
             //req.UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; .NET4.0E";
             //req.Headers["Accept-Encoding"] = "gzip, deflate";
             //req.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-
             req.Host = gHost;
 
             req.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0";
@@ -947,11 +947,9 @@ namespace widkeyPaperDiaper
 
         private void loginB_Click(object sender, EventArgs e)
         {
-            /*
             Login login = new Login(this);
             Thread t = new Thread(login.loginT);
             t.Start();
-            */
         }
 
         private void autoB_Click(object sender, EventArgs e)

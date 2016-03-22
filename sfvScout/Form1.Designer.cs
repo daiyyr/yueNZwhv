@@ -85,20 +85,19 @@
             // 
             // loginB
             // 
-            this.loginB.Location = new System.Drawing.Point(1043, 33);
-            this.loginB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loginB.Location = new System.Drawing.Point(331, 130);
+            this.loginB.Margin = new System.Windows.Forms.Padding(4);
             this.loginB.Name = "loginB";
             this.loginB.Size = new System.Drawing.Size(117, 48);
             this.loginB.TabIndex = 1;
             this.loginB.Text = "Login";
             this.loginB.UseVisualStyleBackColor = true;
-            this.loginB.Visible = false;
             this.loginB.Click += new System.EventHandler(this.loginB_Click);
             // 
             // autoB
             // 
             this.autoB.Location = new System.Drawing.Point(551, 20);
-            this.autoB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.autoB.Margin = new System.Windows.Forms.Padding(4);
             this.autoB.Name = "autoB";
             this.autoB.Size = new System.Drawing.Size(155, 61);
             this.autoB.TabIndex = 4;
@@ -119,7 +118,7 @@
             // rate
             // 
             this.rate.Location = new System.Drawing.Point(61, 20);
-            this.rate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rate.Margin = new System.Windows.Forms.Padding(4);
             this.rate.Name = "rate";
             this.rate.Size = new System.Drawing.Size(105, 22);
             this.rate.TabIndex = 11;
@@ -149,12 +148,12 @@
             // 
             // logT
             // 
-            this.logT.Location = new System.Drawing.Point(1043, 15);
-            this.logT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logT.Location = new System.Drawing.Point(1062, 187);
+            this.logT.Margin = new System.Windows.Forms.Padding(4);
             this.logT.Name = "logT";
             this.logT.ReadOnly = true;
             this.logT.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.logT.Size = new System.Drawing.Size(472, 792);
+            this.logT.Size = new System.Drawing.Size(453, 620);
             this.logT.TabIndex = 9;
             this.logT.Text = "";
             this.logT.TextChanged += new System.EventHandler(this.logT_TextChanged);
@@ -162,7 +161,7 @@
             // addB
             // 
             this.addB.Location = new System.Drawing.Point(623, 145);
-            this.addB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addB.Margin = new System.Windows.Forms.Padding(4);
             this.addB.Name = "addB";
             this.addB.Size = new System.Drawing.Size(101, 33);
             this.addB.TabIndex = 5;
@@ -173,7 +172,7 @@
             // deleteMail
             // 
             this.deleteMail.Location = new System.Drawing.Point(732, 145);
-            this.deleteMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteMail.Margin = new System.Windows.Forms.Padding(4);
             this.deleteMail.Name = "deleteMail";
             this.deleteMail.Size = new System.Drawing.Size(101, 33);
             this.deleteMail.TabIndex = 6;
@@ -184,7 +183,7 @@
             // inputT
             // 
             this.inputT.Location = new System.Drawing.Point(1209, 81);
-            this.inputT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputT.Margin = new System.Windows.Forms.Padding(4);
             this.inputT.Name = "inputT";
             this.inputT.Size = new System.Drawing.Size(239, 22);
             this.inputT.TabIndex = 2;
@@ -205,7 +204,7 @@
             // testLog
             // 
             this.testLog.Location = new System.Drawing.Point(104, 879);
-            this.testLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.testLog.Margin = new System.Windows.Forms.Padding(4);
             this.testLog.Name = "testLog";
             this.testLog.ReadOnly = true;
             this.testLog.Size = new System.Drawing.Size(1205, 345);
@@ -216,7 +215,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(1209, 120);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(239, 22);
             this.textBox1.TabIndex = 3;
@@ -238,7 +237,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(551, 94);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(350, 43);
             this.button1.TabIndex = 18;
@@ -259,7 +258,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(732, 20);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(169, 61);
             this.button2.TabIndex = 20;
@@ -270,7 +269,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(100, 145);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 33);
             this.button3.TabIndex = 5;
@@ -281,7 +280,7 @@
             // deleteApp
             // 
             this.deleteApp.Location = new System.Drawing.Point(207, 145);
-            this.deleteApp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deleteApp.Margin = new System.Windows.Forms.Padding(4);
             this.deleteApp.Name = "deleteApp";
             this.deleteApp.Size = new System.Drawing.Size(101, 33);
             this.deleteApp.TabIndex = 6;
@@ -321,7 +320,7 @@
             this.phoneDataGridViewTextBoxColumn});
             this.appointmentGrid.DataSource = this.appointmentBindingSource2;
             this.appointmentGrid.Location = new System.Drawing.Point(27, 187);
-            this.appointmentGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.appointmentGrid.Margin = new System.Windows.Forms.Padding(4);
             this.appointmentGrid.Name = "appointmentGrid";
             this.appointmentGrid.RowTemplate.Height = 23;
             this.appointmentGrid.Size = new System.Drawing.Size(516, 431);
@@ -330,7 +329,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(25, 625);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(517, 183);
             this.pictureBox1.TabIndex = 25;
@@ -352,7 +351,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(551, 716);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(132, 22);
             this.textBox2.TabIndex = 27;
@@ -366,7 +365,7 @@
             this.passwordDataGridViewTextBoxColumn});
             this.mailGrid.DataSource = this.emailForshowBindingSource;
             this.mailGrid.Location = new System.Drawing.Point(551, 187);
-            this.mailGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mailGrid.Margin = new System.Windows.Forms.Padding(4);
             this.mailGrid.Name = "mailGrid";
             this.mailGrid.RowTemplate.Height = 23;
             this.mailGrid.Size = new System.Drawing.Size(484, 431);
@@ -406,7 +405,7 @@
             "福岡県",
             "佐賀県"});
             this.comboBox1.Location = new System.Drawing.Point(300, 20);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(199, 24);
             this.comboBox1.TabIndex = 28;
@@ -416,7 +415,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(300, 61);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(199, 24);
             this.comboBox2.TabIndex = 29;
@@ -459,7 +458,7 @@
             "M",
             "L"});
             this.comboBox3.Location = new System.Drawing.Point(61, 61);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(148, 24);
             this.comboBox3.TabIndex = 33;
@@ -588,9 +587,9 @@
             this.Controls.Add(this.logT);
             this.Controls.Add(this.autoB);
             this.Controls.Add(this.loginB);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "PaperDiaperBooker - beta for Orissa ";
+            this.Text = "NZwhv ";
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).EndInit();
