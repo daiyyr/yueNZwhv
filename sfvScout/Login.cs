@@ -12,34 +12,45 @@ using System.Net.Cache;
 using System.Text.RegularExpressions;
 using System;
 
+
+
 namespace widkeyPaperDiaper
 {
 
         
     public class Login
     {
+
+        //Rayflo Di710463     (yls7104@gmail.com)
+        //dudeea Dd123456
+        //tadarcy Zxc123456  -- 有线下付款表
+        //Asdmo 废
+        //hansha Dd123456 di710463
+        //eru1989 Dd123456
+        //daiyyr D 0
+
+        //有表格后不能再创建表格, 但是同一张表可能会被不同的程序多次支付,所以支付的每个环节都需要去查看表格状态
+
+        public Client Client;
+
+        public Login(Form1 f, Client client)
+        {
+            form1 = f;
+            Client = client;
+        }
+
+
         static string rgx;
         static Match myMatch;
 
-        
-        string username = "";
-        string password = "";
         Form1 form1;
         string lgnrnd = "";
         string token = "";
 
-        string viewState = "";
-        string __CMS_CurrentUrl = "";
 
-        CookieCollection cookieContainer = new CookieCollection();
-        public Login(Form1 f)
+        public int obtainLoginPage()
         {
-            form1 = f;
-        }
-
-        public int loginF()
-        {
-            form1.setLogT("login..");
+            form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": obtainLoginPage..");
             string respHtml = "";
 
             /*
@@ -53,16 +64,16 @@ namespace widkeyPaperDiaper
              ref cookieContainer,
               true);
 
-              */
+              
 
             //     cookieContainer.Add(new Cookie("TS0120d49b", "0152807fb20d92231761cb749be9bf0c068e6b51b7b7c8b3ca3163b50d0ded4393ddab932f0e53bfd0276edcf78ed51aeba4f9a69be4cf15ca8c961e1184690d83fa9fded1") { Domain = "www.immigration.govt.nz" });
        //   cookieContainer.Add(new Cookie("ASP.NET_SessionId", "vr5pmzbicspjp455xatxmcmk") { Domain = "www.immigration.govt.nz" });
     
           //     cookieContainer.Add(new Cookie("BIGipServerwww.immigration.govt.nz", "342776330.20480.0000") { Domain = "www.immigration.govt.nz" });
+            */
 
-            
 
-          respHtml = Form1.weLoveYue(
+            respHtml = Form1.weLoveYue(
               form1,
               "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               "POST",
@@ -77,7 +88,7 @@ namespace widkeyPaperDiaper
               "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
               //this code comes from yuejie@20160320
 
-             ref cookieContainer,
+             ref Client.cookieContainer,
               true);
         
 
@@ -92,7 +103,7 @@ namespace widkeyPaperDiaper
             myMatch = (new Regex(rgx)).Match(respHtml);
             if (myMatch.Success)
             {
-                viewState = myMatch.Groups[0].Value;
+                Client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
             }
             else
             {
@@ -104,7 +115,19 @@ namespace widkeyPaperDiaper
             myMatch = (new Regex(rgx)).Match(respHtml);
             if (myMatch.Success)
             {
-                __CMS_CurrentUrl = myMatch.Groups[0].Value;
+                Client.__CMS_CurrentUrl = myMatch.Groups[0].Value;
+            }
+            else
+            {
+                form1.setLogT("getting login page failed!");
+                return -1;
+            }
+
+            rgx = @"(?<=name=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                Client.__VIEWSTATEGENERATOR = myMatch.Groups[0].Value;
             }
             else
             {
@@ -112,22 +135,6 @@ namespace widkeyPaperDiaper
                 return -1;
             } 
 
-
-
-
-            rgx = @"(?<=input type=""hidden"" name=""lgnrnd"" value="").*?(?="" />)";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                lgnrnd = myMatch.Groups[0].Value;
-            }
-
-            rgx = @"(?<=type=""hidden"" name=""lsd"" value="").*?(?="" autocomplete=""off"" />)";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                token = myMatch.Groups[0].Value;
-            }
 
     //            cookieContainer.Add(new Cookie("_js_datr", datr) { Domain = "www.facebook.com" });
 
@@ -137,22 +144,32 @@ namespace widkeyPaperDiaper
             //    "",
             //    false,
             //   "");
+            Client.nextStep = "login";
+            login();
+            return 1;
+        }
 
+        public int login()
+        {
+            form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": login..");
 
-            respHtml = Form1.weLoveYue(
+            string respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz" + __CMS_CurrentUrl,
+                "https://www.immigration.govt.nz" + Client.__CMS_CurrentUrl,
                 "POST",
                 "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
                 false,
-                "lsd=" + token +
-                "&email=" + username +
-                "&pass=" + password +
-                "&default_persistent=0&timezone=-720" +
-                "&lgndim=eyJ3IjoxNDQwLCJoIjo5MDAsImF3IjoxNDQwLCJhaCI6ODA1LCJjIjoyNH0%3D" +
-                "&lgnrnd=" + lgnrnd +
-                "&lgnjs=1442408093&locale=en_US&qsstamp=W1tbMjAsMjMsMzAsMzEsOTYsMTE3LDEyNiwxMjgsMTM4LDE1MywxODUsMTg2LDE4NywyMTIsMjIyLDI0MywyNDcsMjY5LDI3NywyODQsMjg3LDMxMiwzMTMsMzUzLDM4MCwzOTQsNDE2LDQzOSw0NjAsNDY4LDQ5MCw0OTEsNDk4LDUxMyw1MjEsNTQzLDU0OCw1NjMsNTg1LDYwNSw2MjcsODg5XV0sIkFabW9wclU0QTBjdXFFWWdNYlFPQ19hRklCdHNfWWZXMjA4MFRTSVIyNF9lcUVsa3k3aE04YUx1WmpsZFAxUTNPZWl6LU5tZEpUcXNuRHZaN0lXU2hwc05Ba0VYZXNnN0NRRXdNdGZ4Yl9NQy0wNVg3aThybDhSTUNubTRPaWVBbWZrUmRqeUlXZzNMRGhPd0oxazBwWlNkZnhBSENwdllUd3RGTGlDUUNRMDBGUlVNSTNndTVfOEJyZ1cwTE51dWJCV2pRVFpkdFlxWTJjekVOSHFjUi0zRlJCQTk3UmczRjdKQWRWUXJYREhPZ2pZVjNWdHkyNzRUWm5tMTM3QWN5R0EiXQ%3D%3D",
-               ref cookieContainer,
+                "__EVENTTARGET="+
+                    "&__EVENTARGUMENT="+
+                    "&__VIEWSTATEGENERATOR=" + Client.__VIEWSTATEGENERATOR +
+                    "&HeaderCommunityHomepage%3ASearchControl%3AtxtSearchString="+
+                    "&VisaDropDown=%2Fsecure%2FLogin%2BWorking%2BHoliday.htm"+
+                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3AuserNameTextBox="+ Client.UserName +
+                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3ApasswordTextBox="+ Client.Password +
+                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3AloginImageButton.x=42"+
+                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3AloginImageButton.y=10"+
+                    "&__VIEWSTATE=" + Client.__VIEWSTATE,
+               ref Client.cookieContainer,
                 true);
 
 
@@ -160,6 +177,7 @@ namespace widkeyPaperDiaper
             {
                 form1.setLogT("login succeed");
                 Form1.gLoginOkFlag = true;
+                Client.nextStep = "createNewFormPage";
                 return 1;
 
             }
@@ -187,12 +205,13 @@ namespace widkeyPaperDiaper
 
 
 
+
         public void loginT()
         {
             if (!Form1.debug)
             {
-                username = form1.inputT.Text.Replace("@", "%40");
-                password = form1.textBox1.Text;
+                Client.UserName = form1.inputT.Text.Replace("@", "%40");
+                Client.Password = form1.textBox1.Text;
                 if (form1.inputT.Text.Equals("") || form1.textBox1.Text.Equals(""))
                 {
                     form1.setLogT("please enter username and password");
@@ -215,7 +234,7 @@ namespace widkeyPaperDiaper
                     Thread.Sleep(500);
                 }
 
-                int r = loginF();
+                int r = obtainLoginPage();
                 if (r == -3)
                 {
                     continue;

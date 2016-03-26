@@ -51,10 +51,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.appointmentGrid = new System.Windows.Forms.DataGridView();
+            this.cardNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chineseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.japaneseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.mailGrid = new System.Windows.Forms.DataGridView();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailForshowBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,22 +72,13 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailForshowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cardNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cardPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chineseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.japaneseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -325,6 +325,46 @@
             this.appointmentGrid.RowTemplate.Height = 23;
             this.appointmentGrid.Size = new System.Drawing.Size(516, 431);
             this.appointmentGrid.TabIndex = 24;
+            this.appointmentGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.appointmentGrid_CellContentClick);
+            // 
+            // cardNoDataGridViewTextBoxColumn
+            // 
+            this.cardNoDataGridViewTextBoxColumn.DataPropertyName = "CardNo";
+            this.cardNoDataGridViewTextBoxColumn.HeaderText = "CardNo";
+            this.cardNoDataGridViewTextBoxColumn.Name = "cardNoDataGridViewTextBoxColumn";
+            this.cardNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cardPasswordDataGridViewTextBoxColumn
+            // 
+            this.cardPasswordDataGridViewTextBoxColumn.DataPropertyName = "CardPassword";
+            this.cardPasswordDataGridViewTextBoxColumn.HeaderText = "CardPassword";
+            this.cardPasswordDataGridViewTextBoxColumn.Name = "cardPasswordDataGridViewTextBoxColumn";
+            this.cardPasswordDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // chineseNameDataGridViewTextBoxColumn
+            // 
+            this.chineseNameDataGridViewTextBoxColumn.DataPropertyName = "ChineseName";
+            this.chineseNameDataGridViewTextBoxColumn.HeaderText = "ChineseName";
+            this.chineseNameDataGridViewTextBoxColumn.Name = "chineseNameDataGridViewTextBoxColumn";
+            this.chineseNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // japaneseNameDataGridViewTextBoxColumn
+            // 
+            this.japaneseNameDataGridViewTextBoxColumn.DataPropertyName = "JapaneseName";
+            this.japaneseNameDataGridViewTextBoxColumn.HeaderText = "JapaneseName";
+            this.japaneseNameDataGridViewTextBoxColumn.Name = "japaneseNameDataGridViewTextBoxColumn";
+            this.japaneseNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // appointmentBindingSource2
+            // 
+            this.appointmentBindingSource2.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
             // pictureBox1
             // 
@@ -370,6 +410,25 @@
             this.mailGrid.RowTemplate.Height = 23;
             this.mailGrid.Size = new System.Drawing.Size(484, 431);
             this.mailGrid.TabIndex = 24;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Width = 220;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailForshowBindingSource
+            // 
+            this.emailForshowBindingSource.DataSource = typeof(widkeyPaperDiaper.Form1.EmailForshow);
             // 
             // comboBox1
             // 
@@ -482,71 +541,13 @@
             this.label14.Size = new System.Drawing.Size(0, 17);
             this.label14.TabIndex = 35;
             // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Width = 220;
-            // 
-            // passwordDataGridViewTextBoxColumn
-            // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailForshowBindingSource
-            // 
-            this.emailForshowBindingSource.DataSource = typeof(widkeyPaperDiaper.Form1.EmailForshow);
-            // 
-            // cardNoDataGridViewTextBoxColumn
-            // 
-            this.cardNoDataGridViewTextBoxColumn.DataPropertyName = "CardNo";
-            this.cardNoDataGridViewTextBoxColumn.HeaderText = "CardNo";
-            this.cardNoDataGridViewTextBoxColumn.Name = "cardNoDataGridViewTextBoxColumn";
-            this.cardNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cardPasswordDataGridViewTextBoxColumn
-            // 
-            this.cardPasswordDataGridViewTextBoxColumn.DataPropertyName = "CardPassword";
-            this.cardPasswordDataGridViewTextBoxColumn.HeaderText = "CardPassword";
-            this.cardPasswordDataGridViewTextBoxColumn.Name = "cardPasswordDataGridViewTextBoxColumn";
-            this.cardPasswordDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // chineseNameDataGridViewTextBoxColumn
-            // 
-            this.chineseNameDataGridViewTextBoxColumn.DataPropertyName = "ChineseName";
-            this.chineseNameDataGridViewTextBoxColumn.HeaderText = "ChineseName";
-            this.chineseNameDataGridViewTextBoxColumn.Name = "chineseNameDataGridViewTextBoxColumn";
-            this.chineseNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // japaneseNameDataGridViewTextBoxColumn
-            // 
-            this.japaneseNameDataGridViewTextBoxColumn.DataPropertyName = "JapaneseName";
-            this.japaneseNameDataGridViewTextBoxColumn.HeaderText = "JapaneseName";
-            this.japaneseNameDataGridViewTextBoxColumn.Name = "japaneseNameDataGridViewTextBoxColumn";
-            this.japaneseNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // appointmentBindingSource2
-            // 
-            this.appointmentBindingSource2.DataSource = typeof(widkeyPaperDiaper.Appointment);
-            // 
             // appointmentBindingSource
             // 
-            this.appointmentBindingSource.DataSource = typeof(widkeyPaperDiaper.Appointment);
+            this.appointmentBindingSource.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
             // appointmentBindingSource1
             // 
-            this.appointmentBindingSource1.DataSource = typeof(widkeyPaperDiaper.Appointment);
+            this.appointmentBindingSource1.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
             // Form1
             // 
@@ -591,10 +592,10 @@
             this.Name = "Form1";
             this.Text = "NZwhv ";
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).EndInit();
             this.ResumeLayout(false);

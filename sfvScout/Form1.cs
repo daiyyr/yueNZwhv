@@ -22,7 +22,7 @@ namespace widkeyPaperDiaper
 
     public partial class Form1 : Form
     {
-        
+        Client tempClient;
         public static bool debug = true;
 
         public static int retry = 5;
@@ -39,8 +39,8 @@ namespace widkeyPaperDiaper
 
         CookieCollection cookieContainerForTest;
 
-        List<Appointment> Applist;
-        List<Mail163<PaperDiaper>> Maillist;
+        List<Client> ClientList;
+        List<Mail163<Apply>> Maillist;
         List<County> Countylist = new List<County>();
         
         
@@ -947,15 +947,17 @@ namespace widkeyPaperDiaper
 
         private void loginB_Click(object sender, EventArgs e)
         {
-            Login login = new Login(this);
+            tempClient = new Client("eru1989", "Dd123456","E1616545", "d", "y", "male"); // temp
+            Login login = new Login(this, tempClient); // temp
             Thread t = new Thread(login.loginT);
             t.Start();
         }
 
         private void autoB_Click(object sender, EventArgs e)
         {
-            setLogtRed("user operation: start probing");
+            //setLogtRed("user operation: start probing");
 
+            /*
             if (selecteCounty == null || selectedShop == -1 || selectedType == null)
             {
                 this.setLogT("please choose type, county and shop");
@@ -966,21 +968,21 @@ namespace widkeyPaperDiaper
                 this.setLogT("invalid selected shop");
                 return;
             }
+            */
 
             if (debug)
             {
-                PaperDiaper paper = new PaperDiaper(
+                Apply apply = new Apply(
                     this,
-                    new Appointment ("2800048300159", "abc123456", "崔飛飛", "サイヒヒ", "090-8619-3569"),
-                    new Mail163<PaperDiaper>("15985830370@163.com","dyyr7921129",this));
-                Thread t = new Thread(paper.startProbe);
+                    tempClient);
+                Thread t = new Thread(apply.startProbe);
                 t.Start();
             }
             else
             {
-                
 
-                if (Applist == null || Applist.Count < 1)
+
+                if (ClientList == null || ClientList.Count < 1)
                 {
                     this.setLogT("please import valid appointment details!");
                     return;
@@ -990,9 +992,9 @@ namespace widkeyPaperDiaper
                     this.setLogT("please import valid email details!");
                     return;
                 }
-                for (int i = 0; i < Applist.Count && i < Maillist.Count; i++)
+                for (int i = 0; i < ClientList.Count && i < Maillist.Count; i++)
                 {
-                    PaperDiaper paper = new PaperDiaper(this, Applist[i], Maillist[i]);
+                    Apply paper = new Apply(this, ClientList[i]);
                     Thread t = new Thread(paper.startProbe);
                     t.Start();
                 }
@@ -1023,7 +1025,7 @@ namespace widkeyPaperDiaper
 
         public void addEmails()
         {
-            Maillist = new List<Mail163<PaperDiaper>>();
+            Maillist = new List<Mail163<Apply>>();
 
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "(*.txt)|*.txt|(*.html)|*.html";
@@ -1063,7 +1065,7 @@ namespace widkeyPaperDiaper
                                     }
                                     else
                                     {
-                                        Maillist.Add(new Mail163<PaperDiaper>(s[0], s[1], this));
+                                        Maillist.Add(new Mail163<Apply>(s[0], s[1], this));
                                         mailForshow.Add(new EmailForshow(s[0], s[1]));
                                     }
                                 }
@@ -1107,7 +1109,7 @@ namespace widkeyPaperDiaper
                                 }
                                 else
                                 {
-                                    Maillist.Add(new Mail163<PaperDiaper>(s[0], s[1], this));
+                                    Maillist.Add(new Mail163<Apply>(s[0], s[1], this));
                                 }
                             }
                         }
@@ -1185,7 +1187,7 @@ namespace widkeyPaperDiaper
 
         public void addDetails()
         {
-            Applist = new List<Appointment>();
+            ClientList = new List<Client>();
 
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "(*.txt)|*.txt|(*.html)|*.html";
@@ -1223,14 +1225,14 @@ namespace widkeyPaperDiaper
                                     }
                                     else
                                     {
-                                        Applist.Add(new Appointment(s[0], s[1], s[2], s[3], s[4]));
+                                        ClientList.Add(new Client(s[0], s[1], s[2], s[3], s[4], s[5]));
                                     }
                                 }
                             }
-                            if (Applist.Count > 0)
+                            if (ClientList.Count > 0)
                             {
                                 var source = new BindingSource();
-                                source.DataSource = Applist;
+                                source.DataSource = ClientList;
                                 appointmentGrid.DataSource = source;
                             }
                         }
@@ -1266,14 +1268,14 @@ namespace widkeyPaperDiaper
                                 }
                                 else
                                 {
-                                    Applist.Add(new Appointment(s[0], s[1], s[2], s[3], s[5]));
+                                    ClientList.Add(new Client(s[0], s[1], s[2], s[3], s[4], s[5]));
                                 }
                             }
                         }
-                        if (Applist.Count > 0)
+                        if (ClientList.Count > 0)
                         {
                             var source = new BindingSource();
-                            source.DataSource = Applist;
+                            source.DataSource = ClientList;
                             appointmentGrid.DataSource = source;
                 //            dataGridView1.
                         }
@@ -1375,7 +1377,7 @@ namespace widkeyPaperDiaper
                 
 
                   //test Mail Reading
-                  Mail163<PaperDiaper> testMailReading = new Mail163<PaperDiaper>("15985830370@163.com", "dyyr7921129", this);
+                  Mail163<Apply> testMailReading = new Mail163<Apply>("15985830370@163.com", "dyyr7921129", this);
                   //      setLogT(testMailReading.queery("20151117test1", @"(\s|\S)*"));
                   setLogT(testMailReading.queeryReaded(@".*", @"(\s|\S)*"));
 
@@ -1550,9 +1552,9 @@ namespace widkeyPaperDiaper
            
 
         }
-        void testCall(ref Appointment t)
+        void testCall(ref Client t)
         {
-            t = new Appointment("152", "", "", "", "");
+            t = new Client("152", "", "", "", "","");
         }
 
         private void textBox1_keyPress(object sender, KeyPressEventArgs e)
@@ -1626,9 +1628,14 @@ namespace widkeyPaperDiaper
                 return;
             }
             label14.Text = "enquiring the nearest booking...";
-            PaperDiaper paper = new PaperDiaper(this, null, null);
+            Apply paper = new Apply(this, null);
             Thread t = new Thread(paper.showNextAppTime);
             t.Start();
+        }
+
+        private void appointmentGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 

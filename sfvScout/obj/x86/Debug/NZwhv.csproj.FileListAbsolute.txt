@@ -1,8 +1,8 @@
-D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
-D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\bin\Debug\widkeyPaperDiaper.exe
 D:\source\yueNZwhv\sfvScout\bin\Debug\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Form1.resources
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Properties.Resources.resources
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csproj.GenerateResource.Cache
+D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
+D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csprojResolveAssemblyReference.cache
