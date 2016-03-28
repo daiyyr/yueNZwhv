@@ -231,7 +231,7 @@ namespace widkeyPaperDiaper
             }
             else
             {
-                form1.setLogT("getting login page failed!");
+                form1.setLogT("getting __VIEWSTATE failed!");
                 return -1;
             }
 
@@ -243,7 +243,7 @@ namespace widkeyPaperDiaper
             }
             else
             {
-                form1.setLogT("getting login page failed!");
+                form1.setLogT("getting __EVENTVALIDATION failed!");
                 return -1;
             }
 
@@ -255,7 +255,7 @@ namespace widkeyPaperDiaper
             }
             else
             {
-                form1.setLogT("getting login page failed!");
+                form1.setLogT("getting __VIEWSTATEGENERATOR failed!");
                 return -1;
             }
             client.nextStep = "clickCreateNow";
@@ -268,7 +268,8 @@ namespace widkeyPaperDiaper
         public int clickCreateNow(){
 
 
-            string respHtml = Form1.weLoveYue(
+            string respHtml;
+            HttpWebResponse resp= Form1.weLoveYueer(
                 form1,
                 "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
                 "POST",
@@ -279,60 +280,365 @@ namespace widkeyPaperDiaper
                 "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR +
                 "&ctl00%24ContentPlaceHolder1%24applyNowButton.x=35" + 
                 "&ctl00%24ContentPlaceHolder1%24applyNowButton.y=7",
-            ref client.cookieContainer,
-                false
+            ref client.cookieContainer
                 );
 
-            if (!respHtml.Contains("Multiple applications are not supported"))
+            if (resp == null)
             {
-                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": The form exists! Edit now");
-                return -2;
+                return -1;
+            }
+
+            respHtml = Form1.resp2html(resp);
+
+            //点击create now时显示已有表格
+            if (respHtml.Contains("Multiple applications are not supported"))
+            {
+                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": The form exists!");
+                client.nextStep = "obtainStatus";
+                obtainStatus();
+                return 2;
+            }
+
+            //新建表格: 从found响应的跳转地址里找到ApplicationId号
+            rgx = @"(?<=ApplicationId=)\d+?(?=$)";
+            myMatch = (new Regex(rgx)).Match(resp.Headers["location"]);
+            if (myMatch.Success)
+            {
+                client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
             }
             
+            respHtml = Form1.weLoveYue(
+                          form1,
+                          "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                          "POST",
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=82",
+                          false,
+                          "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                         ref client.cookieContainer,
+                         true);
 
 
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            else
+            {
+                form1.setLogT("出现js加密页!");
+                return -1;
+            }
+
+            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            else
+            {
+                form1.setLogT("出现js加密页!");
+                return -1;
+            }
+
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            else
+            {
+                form1.setLogT("出现js加密页!");
+                return -1;
+            }
+
+            rgx = @"(?<=ApplicationId=)\d+?(?=&)";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            else
+            {
+                form1.setLogT("出现js加密页!");
+                return -1;
+            }
+
+            rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            else
+            {
+                form1.setLogT("clickCreateNow failed!");
+                return -1;
+            }
+
+
+            //如果有已完成的页面, 则可以跳页, 图标: ../Images/Tabcontrol/icon_tick.gif    待完善 daiyyr
             client.nextStep = "personalDetails";
             personalDetails();
             return 1;
         }
 
-        public int personalDetails()
+        public int obtainStatus()
         {
-
             string respHtml = Form1.weLoveYue(
-                form1,
-                "https://aksale.advs.jp/cp/akachan_sale_pc/mail_confirm.cgi"
-                ,
-                "POST", 
-                "https://aksale.advs.jp/cp/akachan_sale_pc/mail_form.cgi",
-                false,
-                "sbmt=%91%97%90M&mail1=" + mail.address.Replace("@", "%2540").Replace(".", "%252e") + "&mail2=" + mail.address.Replace("@", "%2540").Replace(".", "%252e") + "&event_id=" + eventId + "&event_type=" + sizeType ,
-          //    sbmt=%91%97%90M&mail1=15985830370%2540163%252ecom&mail2=15985830370%2540163%252ecom&event_id=7938283049&event_type=6
-                ref client.cookieContainer,
-                false
-          );
+              form1,
+              "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+              "GET",
+              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              false,
+              "",
+             ref client.cookieContainer,
+              true);
 
-            
-            if (respHtml.Contains("下記メールアドレスにメールを送信しました"))
-            {               
-                form1.setLogT("CardNo" + ", step1 succeed, checking email: " + mail.address);
-            }
-            else
+            //status页显示有未完成的表格
+            if (respHtml.Contains("ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_editHyperLink"))
             {
-                form1.setLogtRed("CardNo" + ", appointments closed: " + mail.address);
-                return -1;
-            }
+                rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_editHyperLink"" href=""Application\/Edit\.aspx\?ApplicationId=)\d+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("Status page changed!");
+                    return -3;
+                }
 
+               respHtml = Form1.weLoveYue(
+                          form1,
+                          "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                          "POST",
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+                          false,
+                          "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                         ref client.cookieContainer,
+                         true);
 
-            keyURL = mail.queery("ご注文予約案内", @"https://aksale(\s|\S)+?(?=\r)");
-            if (keyURL == null | keyURL == "")
-            {
-                form1.setLogT("NULL url from email");
+                rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                client.nextStep = "personalDetails";
+                personalDetails();
+                return 2;
             }
-            setAppointment(mail.address, keyURL);
 
             return 1;
         }
+
+        public int personalDetails()
+        {
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": personal 1...");
+
+            string maxDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("yyyy", DateTimeFormatInfo.InvariantInfo);
+            string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                (DateTime.Now.Year - 31).ToString();
+
+            string respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                true,
+                "ctl00%24ContentPlaceHolder1%24personDetails%24familyNameTextBox="+ client.FamilyName.ToUpper() +
+                "&ctl00%24ContentPlaceHolder1%24personDetails%24givenName1Textbox="+ client.GivenName.ToUpper() +
+                "&ctl00%24ContentPlaceHolder1%24personDetails%24genderDropDownList=" + client.Gender.ToUpper() +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_Day=" + client.BithDateDay +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_Month=" + client.BithDateMonth +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_Year=" + client.BithDateYear +
+                "&ctl00%24ContentPlaceHolder1%24personDetails%24dateOfBithDatePicker=" +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MaxDate=" + maxDate +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MinDate=" + minDate +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState=" + client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState +
+                "&ctl00%24ContentPlaceHolder1%24personDetails%24CountryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
+                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24address1TextBox=" + client.Street +
+                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24cityTextBox=" + client.City +
+                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24countryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
+                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24contactDetails%24emailAddressTextBox=" + client.Email.Replace("@","%40") +
+                "&ctl00%24ContentPlaceHolder1%24hasAgent%24representedByAgentDropdownlist=No"+
+                "&ctl00%24ContentPlaceHolder1%24communicationMethod%24communicationMethodDropDownList=1"+
+                "&ctl00%24ContentPlaceHolder1%24hasCreditCard%24hasCreditCardDropDownlist=Yes"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=56"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=6"+
+                "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                "&__VIEWSTATE=" + client.__VIEWSTATE +
+                "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR,
+
+                ref client.cookieContainer,
+                true
+          );
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+            client.nextStep = "identificationDetails";
+            identificationDetails();
+
+            return 1;
+        }
+
+
+        public int identificationDetails()
+        {
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": personal 2...");
+
+            //必须先拿到person2这一页的viewstate及其generator, 否则提交的数据不会被保存
+            string respHtml;
+            respHtml = Form1.weLoveYue(
+                          form1,
+                          "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                          "POST",
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+                          false,
+                          "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                         ref client.cookieContainer,
+                         true);
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+
+            string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                (DateTime.Now.Year - 31).ToString();
+            string now = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("yyyy", DateTimeFormatInfo.InvariantInfo);
+            string maxDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                (DateTime.Now.Year + 25).ToString();
+
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                true,
+                "&ctl00%24ContentPlaceHolder1%24identification%24confirmPassportNumberTextBox=" + client.PassportNo +
+                "&ctl00%24ContentPlaceHolder1%24identification%24passportNumberTextBox=" + client.PassportNo +
+                "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_Day=" + client.PassportExpiryDateDay +
+                "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_Month=" + client.PassportExpiryDateMonth +
+                "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_Year=" + client.PassportExpiryDateYear +
+                "&ctl00%24ContentPlaceHolder1%24identification%24passportExpiryDateDatePicker=" +
+                "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_MaxDate=" + maxDate +
+                "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_MinDate=" + now +
+                "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGAHjRulpd74gFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgA47vAuVtOI" +
+                "&ctl00%24ContentPlaceHolder1%24identification%24otherIdentificationDropdownlist=3" +
+                "&ctl00_ContentPlaceHolder1_identification_otherIssueDateDatePicker_Day=" + client.NationalIdIssueDateDay +
+                "&ctl00_ContentPlaceHolder1_identification_otherIssueDateDatePicker_Month=" + client.NationalIdIssueDateMonth + 
+                "&ctl00_ContentPlaceHolder1_identification_otherIssueDateDatePicker_Year=" + client.NationalIdIssueDateYear +
+                "&ctl00%24ContentPlaceHolder1%24identification%24otherIssueDateDatePicker=" +
+                "&ctl00_ContentPlaceHolder1_identification_otherIssueDateDatePicker_MaxDate=" + now +
+                "&ctl00_ContentPlaceHolder1_identification_otherIssueDateDatePicker_MinDate=" + minDate +
+                "&ctl00_ContentPlaceHolder1_identification_otherIssueDateDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGADju8C5W04gFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgD4jv2HlLCI" +
+                "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_Day=" + client.NationalIdExpiryDateDay +
+                "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_Month=" + client.NationalIdExpiryDateMonth +
+                "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_Year=" + client.NationalIdExpiryDateYear +
+                "&ctl00%24ContentPlaceHolder1%24identification%24otherExpiryDateDatePicker=" +
+                "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_MaxDate=" + maxDate +
+                "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_MinDate" + now +
+                "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGAHjRulpd74gFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgA47vAuVtOI" +
+                "&ctl00%24ContentPlaceHolder1%24identification%24passportCountryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=19" +
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=3" +
+                "&__VIEWSTATE=" + client.__VIEWSTATE +
+                "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR +
+                "&__EVENTARGUMENT=" +
+                "&__EVENTTARGET=",
+
+                ref client.cookieContainer,
+                true
+          );
+
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+            client.nextStep = "";
+            identificationDetails();
+
+            return 1;
+
+        }
+
 
         public void searchMailDirectely()
         {
@@ -489,11 +795,15 @@ namespace widkeyPaperDiaper
                 {
   
                 }
-                if (r1 == -5) //no available appointment
+                if (r1 == -5) //unavailable for china
                 {
                     goto delay;
                 }
-                    
+
+                if (r1 > 0)
+                {
+                    break;
+                }
 
         delay://不写在while的开头，避免第一次就延时
                 if (form1.rate.Text.Equals(""))

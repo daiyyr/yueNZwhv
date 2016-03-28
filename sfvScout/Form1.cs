@@ -461,7 +461,7 @@ namespace widkeyPaperDiaper
         public static string resp2html(HttpWebResponse resp )
         {
             
-            if (resp.StatusCode == HttpStatusCode.OK)
+            if (resp.StatusCode == HttpStatusCode.OK || resp.StatusCode == HttpStatusCode.Found)
             {
                 StreamReader stream = new StreamReader(resp.GetResponseStream());
                 return stream.ReadToEnd();
@@ -476,8 +476,8 @@ namespace widkeyPaperDiaper
 
         public static string resp2html(HttpWebResponse resp, string charSet, Form1 form1)
         {
-            var buffer = GetBytes(form1, resp); 
-            if (resp.StatusCode == HttpStatusCode.OK)
+            var buffer = GetBytes(form1, resp);
+            if (resp.StatusCode == HttpStatusCode.OK || resp.StatusCode == HttpStatusCode.Found)
             {
                 if (String.IsNullOrEmpty(charSet) || string.Compare(charSet, "ISO-8859-1") == 0)
                 {
@@ -889,8 +889,9 @@ namespace widkeyPaperDiaper
         /*
          * do not handle the response
          */
-        public static HttpWebResponse weLoveYueer(Form1 form1, HttpWebResponse resp, string url, string method, string referer, bool allowAutoRedirect, string postData, ref CookieCollection cookies)
+        public static HttpWebResponse weLoveYueer(Form1 form1, string url, string method, string referer, bool allowAutoRedirect, string postData, ref CookieCollection cookies)
         {
+            HttpWebResponse resp = null;
             for (int i = 0; i < retry; i++)
             {
                 if (gForceToStop)
@@ -947,7 +948,11 @@ namespace widkeyPaperDiaper
 
         private void loginB_Click(object sender, EventArgs e)
         {
-            tempClient = new Client("eru1989", "Dd123456","E1616545", "d", "y", "male"); // temp
+            tempClient = new Client("eru1989", "Dd123456","E1616545", "Teemo", "budong", 
+                "m","136-8597_7921@qq.com","chengdu","daqianmen","1990","9","9",
+                "2020","5","16",
+                "2001","7","9",
+                "2022", "7", "9"); // temp
             Login login = new Login(this, tempClient); // temp
             Thread t = new Thread(login.loginT);
             t.Start();
@@ -1225,7 +1230,12 @@ namespace widkeyPaperDiaper
                                     }
                                     else
                                     {
-                                        ClientList.Add(new Client(s[0], s[1], s[2], s[3], s[4], s[5]));
+                                        ClientList.Add(new Client(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],
+                                            s[9], s[10], s[11],
+                                            s[12], s[13], s[14],
+                                            s[15], s[16], s[17],
+                                            s[18], s[19], s[20]
+                                            ));
                                     }
                                 }
                             }
@@ -1268,7 +1278,13 @@ namespace widkeyPaperDiaper
                                 }
                                 else
                                 {
-                                    ClientList.Add(new Client(s[0], s[1], s[2], s[3], s[4], s[5]));
+                                    
+                                        ClientList.Add(new Client(s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8],
+                                            s[9], s[10], s[11],
+                                            s[12], s[13], s[14],
+                                            s[15], s[16], s[17],
+                                            s[18], s[19], s[20]
+                                        ));
                                 }
                             }
                         }
@@ -1351,6 +1367,12 @@ namespace widkeyPaperDiaper
         // test button
         private void button1_Click(object sender, EventArgs e)
         {
+            string maxDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("yyyy", DateTimeFormatInfo.InvariantInfo);
+            string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                                (DateTime.Now.Year - 31).ToString();
             // for texting indexer begin
             Form1 stringCollection = new Form1();
             // Use [] notation on the type.
@@ -1554,7 +1576,7 @@ namespace widkeyPaperDiaper
         }
         void testCall(ref Client t)
         {
-            t = new Client("152", "", "", "", "","");
+           // t = new Client("152", "", "", "", "","");
         }
 
         private void textBox1_keyPress(object sender, KeyPressEventArgs e)

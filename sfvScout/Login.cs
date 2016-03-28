@@ -73,7 +73,7 @@ namespace widkeyPaperDiaper
             */
 
 
-            respHtml = Form1.weLoveYue(
+            HttpWebResponse resp = Form1.weLoveYueer(
               form1,
               "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               "POST",
@@ -88,16 +88,16 @@ namespace widkeyPaperDiaper
               "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
               //this code comes from yuejie@20160320
 
-             ref Client.cookieContainer,
-              true);
-        
+             ref Client.cookieContainer
+              );
 
-
-            if (respHtml.Equals("Found"))
+            if (resp.StatusCode == HttpStatusCode.Found)
             {
                 form1.setLogT("getting login page failed!");
                 return -1;
             }
+
+            respHtml = Form1.resp2html(resp);
 
             rgx = @"(?<=name=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
             myMatch = (new Regex(rgx)).Match(respHtml);
@@ -153,7 +153,7 @@ namespace widkeyPaperDiaper
         {
             form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": login..");
 
-            string respHtml = Form1.weLoveYue(
+            HttpWebResponse resp = Form1.weLoveYueer(
                 form1,
                 "https://www.immigration.govt.nz" + Client.__CMS_CurrentUrl,
                 "POST",
@@ -169,11 +169,10 @@ namespace widkeyPaperDiaper
                     "&OnlineServicesLoginStealth%3AVisaLoginControl%3AloginImageButton.x=42"+
                     "&OnlineServicesLoginStealth%3AVisaLoginControl%3AloginImageButton.y=10"+
                     "&__VIEWSTATE=" + Client.__VIEWSTATE,
-               ref Client.cookieContainer,
-                true);
+               ref Client.cookieContainer
+                );
 
-
-            if (respHtml.Equals("Found"))
+            if (resp.StatusCode == HttpStatusCode.Found)
             {
                 form1.setLogT("login succeed");
                 Form1.gLoginOkFlag = true;
@@ -181,6 +180,8 @@ namespace widkeyPaperDiaper
                 return 1;
 
             }
+            string respHtml = Form1.resp2html(resp);
+
             if (respHtml.Contains("Incorrect email or phone number")
                 || respHtml.Contains("It looks like you entered a slight misspelling of your email or username")
                 || respHtml.Contains("The email you entered does not belong to any account")
