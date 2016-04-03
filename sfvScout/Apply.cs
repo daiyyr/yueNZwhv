@@ -37,6 +37,20 @@ namespace widkeyPaperDiaper
         bool requireVeriCode = false;
         string countyForMulti, shopForMulti;
 
+
+        string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            (DateTime.Now.Year - 31).ToString();
+        string now = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            DateTime.Now.ToString("yyyy", DateTimeFormatInfo.InvariantInfo);
+        string maxDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            (DateTime.Now.Year + 25).ToString();
+        string oneYearLater = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
+                            (DateTime.Now.Year + 1).ToString();
+
         public Apply(Form1 f, Client cli)
         {
             form1 = f;
@@ -299,86 +313,90 @@ namespace widkeyPaperDiaper
                 return 2;
             }
 
-            //新建表格: 从found响应的跳转地址里找到ApplicationId号
-            rgx = @"(?<=ApplicationId=)\d+?(?=$)";
-            myMatch = (new Regex(rgx)).Match(resp.Headers["location"]);
-            if (myMatch.Success)
+            //新建表格成功, 从found响应的跳转地址里找到ApplicationId号
+            if (resp.StatusCode == HttpStatusCode.Found)
             {
-                client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            
-            respHtml = Form1.weLoveYue(
-                          form1,
-                          "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
-                          "POST",
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=82",
-                          false,
-                          "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
-                         ref client.cookieContainer,
-                         true);
+
+                rgx = @"(?<=ApplicationId=)\d+?(?=$)";
+                myMatch = (new Regex(rgx)).Match(resp.Headers["location"]);
+                if (myMatch.Success)
+                {
+                    client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                respHtml = Form1.weLoveYue(
+                              form1,
+                              "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                              "POST",
+                              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=82",
+                              false,
+                              "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                             ref client.cookieContainer,
+                             true);
 
 
 
-            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            else
-            {
-                form1.setLogT("出现js加密页!");
-                return -1;
-            }
+                rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("出现js加密页!");
+                    return -1;
+                }
 
-            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            else
-            {
-                form1.setLogT("出现js加密页!");
-                return -1;
-            }
+                rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("出现js加密页!");
+                    return -1;
+                }
 
-            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            else
-            {
-                form1.setLogT("出现js加密页!");
-                return -1;
-            }
+                rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("出现js加密页!");
+                    return -1;
+                }
 
-            rgx = @"(?<=ApplicationId=)\d+?(?=&)";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            else
-            {
-                form1.setLogT("出现js加密页!");
-                return -1;
-            }
+                rgx = @"(?<=ApplicationId=)\d+?(?=&)";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("出现js加密页!");
+                    return -1;
+                }
 
-            rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            else
-            {
-                form1.setLogT("clickCreateNow failed!");
-                return -1;
-            }
+                rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("clickCreateNow failed!");
+                    return -1;
+                }
 
+            }
 
             //如果有已完成的页面, 则可以跳页, 图标: ../Images/Tabcontrol/icon_tick.gif    待完善 daiyyr
             client.nextStep = "personalDetails";
@@ -463,19 +481,12 @@ namespace widkeyPaperDiaper
         {
             form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": personal 1...");
 
-            string maxDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("yyyy", DateTimeFormatInfo.InvariantInfo);
-            string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                (DateTime.Now.Year - 31).ToString();
-
             string respHtml = Form1.weLoveYue(
                 form1,
                 "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
                 "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
-                true,
+                false,
                 "ctl00%24ContentPlaceHolder1%24personDetails%24familyNameTextBox="+ client.FamilyName.ToUpper() +
                 "&ctl00%24ContentPlaceHolder1%24personDetails%24givenName1Textbox="+ client.GivenName.ToUpper() +
                 "&ctl00%24ContentPlaceHolder1%24personDetails%24genderDropDownList=" + client.Gender.ToUpper() +
@@ -483,7 +494,7 @@ namespace widkeyPaperDiaper
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_Month=" + client.BithDateMonth +
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_Year=" + client.BithDateYear +
                 "&ctl00%24ContentPlaceHolder1%24personDetails%24dateOfBithDatePicker=" +
-                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MaxDate=" + maxDate +
+                "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MaxDate=" + now +
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MinDate=" + minDate +
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState=" + client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState +
                 "&ctl00%24ContentPlaceHolder1%24personDetails%24CountryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
@@ -504,25 +515,6 @@ namespace widkeyPaperDiaper
                 true
           );
 
-            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
-            myMatch = (new Regex(rgx)).Match(respHtml);
-            if (myMatch.Success)
-            {
-                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
-            }
-
             client.nextStep = "identificationDetails";
             identificationDetails();
 
@@ -537,14 +529,14 @@ namespace widkeyPaperDiaper
             //必须先拿到person2这一页的viewstate及其generator, 否则提交的数据不会被保存
             string respHtml;
             respHtml = Form1.weLoveYue(
-                          form1,
-                          "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
-                          "POST",
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
-                          false,
-                          "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
-                         ref client.cookieContainer,
-                         true);
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                ref client.cookieContainer,
+                true);
 
             rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
             myMatch = (new Regex(rgx)).Match(respHtml);
@@ -558,24 +550,15 @@ namespace widkeyPaperDiaper
             {
                 client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
             }
+            //本页无 __EVENTVALIDATION
 
-
-            string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                (DateTime.Now.Year - 31).ToString();
-            string now = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("yyyy", DateTimeFormatInfo.InvariantInfo);
-            string maxDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
-                                (DateTime.Now.Year + 25).ToString();
 
             respHtml = Form1.weLoveYue(
                 form1,
                 "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
                 "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
-                true,
+                false,
                 "&ctl00%24ContentPlaceHolder1%24identification%24confirmPassportNumberTextBox=" + client.PassportNo +
                 "&ctl00%24ContentPlaceHolder1%24identification%24passportNumberTextBox=" + client.PassportNo +
                 "&ctl00_ContentPlaceHolder1_identification_passportExpiryDateDatePicker_Day=" + client.PassportExpiryDateDay +
@@ -612,6 +595,28 @@ namespace widkeyPaperDiaper
                 true
           );
 
+            client.nextStep = "medical";
+            medical();
+
+            return 1;
+
+        }
+
+
+        public int medical()
+        {
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": medical...");
+
+            string respHtml;
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                ref client.cookieContainer,
+                true);
 
             rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
             myMatch = (new Regex(rgx)).Match(respHtml);
@@ -632,12 +637,439 @@ namespace widkeyPaperDiaper
                 client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
             }
 
-            client.nextStep = "";
-            identificationDetails();
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "ctl00%24ContentPlaceHolder1%24medicalConditions%24renalDialysisDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24tuberculosisDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24cancerDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24heartDiseaseDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24disabilityDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24hospitalisationDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24residentailCareDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24tbRiskDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=53"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=2" +
+                "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                "&__VIEWSTATE=" + client.__VIEWSTATE +
+                "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR,
+
+                ref client.cookieContainer,
+                true
+          );
+
+
+            client.nextStep = "character";
+            character();
 
             return 1;
 
         }
+
+        public int character()
+        {
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": character...");
+
+            string respHtml;
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                ref client.cookieContainer,
+                true);
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "ctl00%24ContentPlaceHolder1%24character%24imprisonment5YearsDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24imprisonment12MonthsDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24removalOrderDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24deportedDropDownList=No"+
+                "&ctl00_ContentPlaceHolder1_character_deportedDateDatePicker_Day=0"+
+                "&ctl00_ContentPlaceHolder1_character_deportedDateDatePicker_Month=0"+
+                "&ctl00_ContentPlaceHolder1_character_deportedDateDatePicker_Year=0"+
+                "&ctl00%24ContentPlaceHolder1%24character%24deportedDateDatePicker="+
+                "&ctl00_ContentPlaceHolder1_character_deportedDateDatePicker_MaxDate="+ now +
+                "&ctl00_ContentPlaceHolder1_character_deportedDateDatePicker_MinDate="+ minDate +
+                "&ctl00_ContentPlaceHolder1_character_deportedDateDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGALho7%2BVa04gFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgB4Cfw%2BmbCI"+
+                "&ctl00%24ContentPlaceHolder1%24character%24countryDropDownList="+
+                "&ctl00%24ContentPlaceHolder1%24character%24chargedDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24convictedDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24underInvestigationDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24excludedDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24removedDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24character%24excludeRemovedDetailsTextbox="+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=24"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=8"+
+                "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                "&__VIEWSTATE=" + client.__VIEWSTATE +
+                "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR,
+
+                ref client.cookieContainer,
+                true
+          );
+
+
+            client.nextStep = "workingHolidaySpecific";
+            workingHolidaySpecific();
+
+            return 1;
+
+        }
+        
+
+        public int workingHolidaySpecific()
+        {
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": workingHolidaySpecific...");
+
+            string respHtml;
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                ref client.cookieContainer,
+                true);
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "ctl00%24ContentPlaceHolder1%24offshoreDetails%24commonWHSQuestions%24previousWhsPermitVisaDropDownList=No"+
+                "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24commonWHSQuestions%24sufficientFundsHolidayDropDownList=Yes"+
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_intendedTravelDateDatePicker_Day=" + client.IntendedTravelDateDay +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_intendedTravelDateDatePicker_Month=" + client.IntendedTravelDateMonth +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_intendedTravelDateDatePicker_Year="+ client.IntendedTravelDateYear +
+                "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24intendedTravelDateDatePicker="+
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_intendedTravelDateDatePicker_MaxDate="+ oneYearLater +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_intendedTravelDateDatePicker_MinDate="+ now +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_intendedTravelDateDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGAODzyb951IgFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgC4aO%2FlWtOI"+
+                "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24beenToNzDropDownList=" + (client.BeenToNz == "Yes" ? "Yes" : "No") +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_whenInNZDatePicker_Day=0"+ (client.BeenToNz == "Yes" ? client.BeenToNzDateDay : "0") +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_whenInNZDatePicker_Month=0" + (client.BeenToNz == "Yes" ? client.BeenToNzDateMonth : "0") +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_whenInNZDatePicker_Year=0" + (client.BeenToNz == "Yes" ? client.BeenToNzDateYear : "0") +
+                "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24whenInNZDatePicker="+
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_whenInNZDatePicker_MaxDate="+ now +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_whenInNZDatePicker_MinDate="+ minDate +
+                "&ctl00_ContentPlaceHolder1_offshoreDetails_whenInNZDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGALho7%2BVa04gFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgB4Cfw%2BmbCI"+
+                "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24requirementsQuestions%24sufficientFundsOnwardTicketDropDownList=Yes"+
+                "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24requirementsQuestions%24readRequirementsDropDownList=Yes"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=14"+
+                "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=5"+
+                "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                "&__VIEWSTATE=" + client.__VIEWSTATE +
+                "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR,
+
+                ref client.cookieContainer,
+                true
+          );
+
+
+            client.nextStep = "submit";
+            submit();
+
+            return 1;
+
+        }
+
+
+        public int submit()
+        {
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": submit...");
+
+            string respHtml;
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                ref client.cookieContainer,
+                true);
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+            respHtml = Form1.weLoveYue(
+                form1,
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "POST",
+                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                false,
+                "ctl00%24ContentPlaceHolder1%24falseStatementCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24notesCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24circumstancesCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24warrantsCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24informationCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24healthCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24adviceCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24registrationCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24entitlementCheckbox=on"+
+                "&ctl00%24ContentPlaceHolder1%24permitExpiryCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24medicalInsuranceCheckBox=on"+
+                "&ctl00%24ContentPlaceHolder1%24submitImageButton.x=45"+
+                "&ctl00%24ContentPlaceHolder1%24submitImageButton.y=7" +
+                "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                "&__VIEWSTATE=" + client.__VIEWSTATE +
+                "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR,
+
+                ref client.cookieContainer,
+                true
+          );
+
+            rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+            rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+            myMatch = (new Regex(rgx)).Match(respHtml);
+            if (myMatch.Success)
+            {
+                client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+            client.nextStep = "pay";
+            pay();
+
+            return 1;
+
+        }
+
+        public int pay()
+        {
+
+            lock (form1.rate) //防止本地其它线程支付
+            {
+                form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": pay...");
+
+                //get https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=1451998
+                //有收到cookie, 也许需要
+
+                string respHtml;
+                respHtml = Form1.weLoveYue(
+                    form1,
+                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https://www.immigration.govt.nz/WorkingHoliday/Application/SubmitConfirmation.aspx?ApplicationId=" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    "POST",
+                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https://www.immigration.govt.nz/WorkingHoliday/Application/SubmitConfirmation.aspx?ApplicationId=" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    false,
+                    "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_ct=0&TS8e49d4_pd=0" +
+                    "&TS8e49d4_rf=" + Form1.ToUrlEncode("https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=" + client.ApplicationId),
+                    ref client.cookieContainer,
+                    true);
+
+                rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                
+                //如果不使用信用卡余额控制支付, 则最好每次提交都去确认一下beingPaid参数. 那么就必须要有clientId(8位随机字符)来识别不同线程创建的client. 
+                //于是, 支付函数中的每一次提交之前,都去判断一下client列表,如果(护照号和这个client相同, clientId不同, beingPaid为true) 那么直接return, 同一台机器上不同的进程也可以适用该规则
+                //至于这个client列表, 对应的是一个本地文件, 主键是clientId, 有一个进程不停地同步服务器上的client和本地client.
+                respHtml = Form1.weLoveYue(
+                    form1,
+                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    "POST",
+                    "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                    false,
+                    "__EVENTTARGET="+
+                    "&__EVENTARGUMENT=" +
+                    "&__VIEWSTATE=" + client.__VIEWSTATE +
+                    "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR +
+                    "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                    "&ctl00%24ContentPlaceHolder1%24payorNameTextBox=" + client.PayerName +
+                    "&ctl00%24ContentPlaceHolder1%24okImageButton.x=39"+
+                    "&ctl00%24ContentPlaceHolder1%24okImageButton.y=12" 
+                    ,
+
+                    ref client.cookieContainer,
+                    true
+              );
+
+
+                HttpWebResponse resp = Form1.weLoveYueer(
+                    form1,
+                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId="+ client.ApplicationId +"&ProductId=2",
+                    "POST",
+                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    false,
+                    "TS8e49d4_id=3&TS8e49d4_md=2&TS8e49d4_ct=application%2Fx-www-form-urlencoded" +
+                    "&TS8e49d4_rf=" + Form1.ToUrlEncode("https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=" + client.ApplicationId )+
+                    
+                    //值内部的符号经历两次URL转换, 比如, % 转为 %25
+                    "&TS8e49d4_pd=" +
+                    Form1.ToUrlEncode(
+                        "__EVENTTARGET=" +
+                        "&__EVENTARGUMENT=" +
+                        "&__VIEWSTATE=" + client.__VIEWSTATE +
+                        "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR +
+                        "&__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                        "&ctl00%24ContentPlaceHolder1%24payorNameTextBox=" + client.PayerName +
+                        "&ctl00%24ContentPlaceHolder1%24okImageButton.x=39" +
+                        "&ctl00%24ContentPlaceHolder1%24okImageButton.y=12"
+                        )
+                    ,
+                    ref client.cookieContainer
+                    );
+
+                if (resp.StatusCode == HttpStatusCode.Found)
+                {
+                    if (resp.Headers["location"].Contains("paymark"))
+                    {
+                        form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": 支付请求成功推送到paymark...");
+
+                    }
+                }
+
+                //注意host改变
+                respHtml = Form1.weLoveYue(
+                    form1,
+                    resp.Headers["location"],
+                    "GET",
+                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    false,
+                    "",
+                    ref client.cookieContainer,
+                    "webcomm.paymark.co.nz",
+                    true
+              );
+
+                //不进行URL code转换
+                string rm = "";
+                rgx = @"(?<=name=""payment_type_selection"" method=""POST"" action=""\?rm=)\d+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    rm =myMatch.Groups[0].Value;
+                }
+                string hk = "";
+                rgx = @"(?<=id=""hk"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    hk = myMatch.Groups[0].Value;
+                }
+
+
+                respHtml = Form1.weLoveYue(
+                    form1,
+                    "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
+                    "POST",
+                    resp.Headers["location"],
+                    false,
+                    "hk=" + hk +
+                    "&hosted_responsive_format=N" +
+                    "&card_type_VISA.x=45" +          //类型选择需要做测试
+                    "&card_type_VISA.y=37" +
+                    "&processingStage=card_entry" +
+                    "&future_pay=" +
+                    "&future_pay_save_only=",
+                    ref client.cookieContainer,
+                    "webcomm.paymark.co.nz",
+                    true
+              );
+            
+
+                client.nextStep = "pay";
+                pay();
+            }
+            
+
+            return 1;
+        }
+
+
+
+
+
+
+
+
+
+
 
 
         public void searchMailDirectely()

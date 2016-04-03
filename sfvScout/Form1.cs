@@ -948,11 +948,14 @@ namespace widkeyPaperDiaper
 
         private void loginB_Click(object sender, EventArgs e)
         {
-            tempClient = new Client("eru1989", "Dd123456","E1616545", "Teemo", "budong", 
+            tempClient = new Client("hansha", "Dd123456", "E1612545", "Gigi", "budong", 
                 "m","136-8597_7921@qq.com","chengdu","daqianmen","1990","9","9",
                 "2020","5","16",
                 "2001","7","9",
-                "2022", "7", "9"); // temp
+                "2022", "7", "9",
+                "2017", "4", "3",
+                "No",
+                "2015", "6", "5"); // temp
             Login login = new Login(this, tempClient); // temp
             Thread t = new Thread(login.loginT);
             t.Start();
@@ -1234,7 +1237,10 @@ namespace widkeyPaperDiaper
                                             s[9], s[10], s[11],
                                             s[12], s[13], s[14],
                                             s[15], s[16], s[17],
-                                            s[18], s[19], s[20]
+                                            s[18], s[19], s[20],
+                                            s[21], s[22], s[23],
+                                            s[24], 
+                                            s[25], s[26], s[27]
                                             ));
                                     }
                                 }
@@ -1283,7 +1289,10 @@ namespace widkeyPaperDiaper
                                             s[9], s[10], s[11],
                                             s[12], s[13], s[14],
                                             s[15], s[16], s[17],
-                                            s[18], s[19], s[20]
+                                            s[18], s[19], s[20],
+                                            s[21], s[22], s[23],
+                                            s[24],
+                                            s[25], s[26], s[27]
                                         ));
                                 }
                             }

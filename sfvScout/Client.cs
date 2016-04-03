@@ -30,7 +30,15 @@ namespace widkeyPaperDiaper
         public string NationalIdExpiryDateYear { get; set; }
         public string NationalIdExpiryDateMonth { get; set; }
         public string NationalIdExpiryDateDay { get; set; }
-
+        public string IntendedTravelDateYear { get; set; }
+        public string IntendedTravelDateMonth { get; set; }
+        public string IntendedTravelDateDay { get; set; }
+        public string BeenToNz { get; set; }
+        public string BeenToNzDateYear { get; set; }
+        public string BeenToNzDateMonth { get; set; }
+        public string BeenToNzDateDay { get; set; }
+        public string PayerName { get; set; }
+        
         public string __VIEWSTATE { get; set; }
         public string __VIEWSTATEGENERATOR { get; set; }
         public string __CMS_CurrentUrl { get; set; }
@@ -43,7 +51,13 @@ namespace widkeyPaperDiaper
             string email, string city, string street, string year, string month, string day, 
             string passportExpiryDateYear, string passportExpiryDateMonth, string passportExpiryDateDay,
             string nationalIdIssueDateYear, string nationalIdIssueDateMonth, string nationalIdIssueDateDay,
-            string nationalIdExpiryDateYear, string nationalIdExpiryDateMonth, string nationalIdExpiryDateDay)
+            string nationalIdExpiryDateYear, string nationalIdExpiryDateMonth, string nationalIdExpiryDateDay,
+            string intendedTravelDateYear, string intendedTravelDateMonth, string intendedTravelDateDay,
+            string beenToNz,
+            string beenToNzDateYear, string beenToNzDateMonth, string beenToNzDateDay,
+            string payerName
+        )
+
         {
             UserName = userName;
             Password = password;
@@ -62,11 +76,18 @@ namespace widkeyPaperDiaper
             PassportExpiryDateDay = passportExpiryDateDay; //护照失效日, 不要使用占位0
             NationalIdIssueDateYear = nationalIdIssueDateYear; //身份证发放年, 4位
             NationalIdIssueDateMonth = nationalIdIssueDateMonth; //身份证发放月, 不要使用占位0
-            NationalIdIssueDateDay = nationalIdIssueDateDay; //身份证发放日, 不要使用占位0
+            NationalIdIssueDateDay = nationalIdIssueDateDay; 
             NationalIdExpiryDateYear = nationalIdExpiryDateYear; //身份证失效年, 4位
             NationalIdExpiryDateMonth = nationalIdExpiryDateMonth; //身份证失效月, 不要使用占位0
             NationalIdExpiryDateDay = nationalIdExpiryDateDay; //身份证失效日, 不要使用占位0
-            
+            IntendedTravelDateYear = intendedTravelDateYear;//计划入境日期年, 不要使用占位0
+            IntendedTravelDateMonth = intendedTravelDateMonth;//计划入境日期月, 不要使用占位0
+            IntendedTravelDateDay = intendedTravelDateDay;//计划入境日期日, 不要使用占位0
+            BeenToNz = beenToNz;//是否到过纽西兰, 填 Yes 或者 No 注意大小写
+            BeenToNzDateYear = beenToNzDateYear;//如果到过纽西兰,上一次入境时间年, 不要使用占位0
+            BeenToNzDateMonth = beenToNzDateMonth;//如果到过纽西兰,上一次入境时间月, 不要使用占位0
+            BeenToNzDateDay = beenToNzDateDay;//如果到过纽西兰,上一次入境时间日, 不要使用占位0
+            PayerName = payerName;//付款人姓名, 随便填写
         }
     }
 }
