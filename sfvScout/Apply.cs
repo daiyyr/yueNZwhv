@@ -196,7 +196,7 @@ namespace widkeyPaperDiaper
 
         public int createNewFormPage()
         {
-            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": createNewFormPage..");
+            form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": createNewForm..");
             foreach (Cookie ck in client.cookieContainer)
             {
                 if (ck.Name == "TS0120d49b")
@@ -472,6 +472,21 @@ namespace widkeyPaperDiaper
                 client.nextStep = "personalDetails";
                 personalDetails();
                 return 2;
+            }
+
+            // pay
+            if (respHtml.Contains("ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_payHyperLink"))
+            {
+                rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_payHyperLink"" href=""Application\/Pay\.aspx\?ApplicationId=)\d+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                client.nextStep = "pay";
+                pay();
+                return 3;
             }
 
             return 1;
@@ -860,9 +875,9 @@ namespace widkeyPaperDiaper
 
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
                 false,
                 "ctl00%24ContentPlaceHolder1%24falseStatementCheckBox=on"+
                 "&ctl00%24ContentPlaceHolder1%24notesCheckBox=on"+
@@ -949,7 +964,7 @@ namespace widkeyPaperDiaper
                 //如果不使用信用卡余额控制支付, 则最好每次提交都去确认一下beingPaid参数. 那么就必须要有clientId(8位随机字符)来识别不同线程创建的client. 
                 //于是, 支付函数中的每一次提交之前,都去判断一下client列表,如果(护照号和这个client相同, clientId不同, beingPaid为true) 那么直接return, 同一台机器上不同的进程也可以适用该规则
                 //至于这个client列表, 对应的是一个本地文件, 主键是clientId, 有一个进程不停地同步服务器上的client和本地client.
-                respHtml = Form1.weLoveYue(
+                HttpWebResponse resp = Form1.weLoveYueer(
                     form1,
                     "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                     "POST",
@@ -965,12 +980,11 @@ namespace widkeyPaperDiaper
                     "&ctl00%24ContentPlaceHolder1%24okImageButton.y=12" 
                     ,
 
-                    ref client.cookieContainer,
-                    true
+                    ref client.cookieContainer
               );
-
-
-                HttpWebResponse resp = Form1.weLoveYueer(
+                //也许不需要这一步 daiyyr
+                /*
+                resp = Form1.weLoveYueer(
                     form1,
                     "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId="+ client.ApplicationId +"&ProductId=2",
                     "POST",
@@ -995,62 +1009,65 @@ namespace widkeyPaperDiaper
                     ref client.cookieContainer
                     );
 
+                 */
+ 
+
                 if (resp.StatusCode == HttpStatusCode.Found)
                 {
                     if (resp.Headers["location"].Contains("paymark"))
                     {
                         form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": 支付请求成功推送到paymark...");
 
+                        //注意host改变
+                        respHtml = Form1.weLoveYue(
+                            form1,
+                            resp.Headers["location"],
+                            "GET",
+                            "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                            false,
+                            "",
+                            ref client.cookieContainer,
+                            "webcomm.paymark.co.nz",
+                            true
+                      );
+
+                        //不进行URL code转换
+                        string rm = "";
+                        rgx = @"(?<=name=""payment_type_selection"" method=""POST"" action=""\?rm=)\d+?(?="")";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success)
+                        {
+                            rm = myMatch.Groups[0].Value;
+                        }
+                        string hk = "";
+                        rgx = @"(?<=id=""hk"" value="")(\s|\S)+?(?="")";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success)
+                        {
+                            hk = myMatch.Groups[0].Value;
+                        }
+
+
+                        respHtml = Form1.weLoveYue(
+                            form1,
+                            "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
+                            "POST",
+                            resp.Headers["location"],
+                            false,
+                            "hk=" + hk +
+                            "&hosted_responsive_format=N" +
+                            "&card_type_VISA.x=45" +          //visa: x=45 y=37类型选择需要做测试
+                            "&card_type_VISA.y=37" +
+                            "&processingStage=card_entry" +
+                            "&future_pay=" +
+                            "&future_pay_save_only=",
+                            ref client.cookieContainer,
+                            "webcomm.paymark.co.nz",
+                            true
+                      );
                     }
                 }
 
-                //注意host改变
-                respHtml = Form1.weLoveYue(
-                    form1,
-                    resp.Headers["location"],
-                    "GET",
-                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
-                    false,
-                    "",
-                    ref client.cookieContainer,
-                    "webcomm.paymark.co.nz",
-                    true
-              );
-
-                //不进行URL code转换
-                string rm = "";
-                rgx = @"(?<=name=""payment_type_selection"" method=""POST"" action=""\?rm=)\d+?(?="")";
-                myMatch = (new Regex(rgx)).Match(respHtml);
-                if (myMatch.Success)
-                {
-                    rm =myMatch.Groups[0].Value;
-                }
-                string hk = "";
-                rgx = @"(?<=id=""hk"" value="")(\s|\S)+?(?="")";
-                myMatch = (new Regex(rgx)).Match(respHtml);
-                if (myMatch.Success)
-                {
-                    hk = myMatch.Groups[0].Value;
-                }
-
-
-                respHtml = Form1.weLoveYue(
-                    form1,
-                    "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
-                    "POST",
-                    resp.Headers["location"],
-                    false,
-                    "hk=" + hk +
-                    "&hosted_responsive_format=N" +
-                    "&card_type_VISA.x=45" +          //类型选择需要做测试
-                    "&card_type_VISA.y=37" +
-                    "&processingStage=card_entry" +
-                    "&future_pay=" +
-                    "&future_pay_save_only=",
-                    ref client.cookieContainer,
-                    "webcomm.paymark.co.nz",
-                    true
-              );
             
 
                 client.nextStep = "pay";
