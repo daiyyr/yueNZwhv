@@ -956,7 +956,8 @@ namespace widkeyPaperDiaper
                 "2017", "4", "3",
                 "No",
                 "2015", "6", "5",
-                "galevey"); // temp
+                "galevey",
+                "visa","35949498498","433","04","2018","zhanghuimei"); // temp
             Login login = new Login(this, tempClient); // temp
             Thread t = new Thread(login.loginT);
             t.Start();
@@ -1242,7 +1243,9 @@ namespace widkeyPaperDiaper
                                             s[21], s[22], s[23],
                                             s[24], 
                                             s[25], s[26], s[27],
-                                            s[28]
+                                            s[28],
+                                            s[29],s[30],s[31],s[32],s[33],s[34]
+
                                             ));
                                     }
                                 }
@@ -1295,7 +1298,8 @@ namespace widkeyPaperDiaper
                                             s[21], s[22], s[23],
                                             s[24],
                                             s[25], s[26], s[27],
-                                            s[28]
+                                            s[28],
+                                            s[29],s[30],s[31],s[32],s[33],s[34]
                                         ));
                                 }
                             }

@@ -1056,8 +1056,7 @@ namespace widkeyPaperDiaper
                             false,
                             "hk=" + hk +
                             "&hosted_responsive_format=N" +
-                            "&card_type_VISA.x=45" +          //visa: x=45 y=37类型选择需要做测试
-                            "&card_type_VISA.y=37" +
+                            client.CardType.ToUpper() == "VISA" ? "&card_type_VISA.x=45&card_type_VISA.y=37" : "&card_type_MASTERCARD.x=34&card_type_MASTERCARD.y=27" +
                             "&processingStage=card_entry" +
                             "&future_pay=" +
                             "&future_pay_save_only=",
@@ -1065,6 +1064,54 @@ namespace widkeyPaperDiaper
                             "webcomm.paymark.co.nz",
                             true
                       );
+
+                        string rm2 = "";
+                        rgx = @"(?<=\&rm=)\d+?(?="")";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success)
+                        {
+                            rm2 = myMatch.Groups[0].Value;
+
+                            string hkc = "";
+                            rgx = @"(?<=\?hkc=)(\s|\S)+?(?=\&rm)";
+                            myMatch = (new Regex(rgx)).Match(respHtml);
+                            if (myMatch.Success)
+                            {
+                                hkc = myMatch.Groups[0].Value;
+                            }
+
+
+                            //待验证
+                            respHtml = Form1.weLoveYue(
+                                form1,
+                                "https://webcomm.paymark.co.nz/hosted/?hkc=" + hkc + "&rm=" + rm2,
+                                "POST",
+                                "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
+                                false,
+                                "cardnumber=" + client.CardNumber +
+                                "&use_card_security_code=Y" +
+                                "&enforce_card_security_code=N" +
+                                "&enforce_card_security_code_3party=Y" +
+                                "&enforce_card_security_code_futurepay=Y" +
+                                "&cardverificationcode=" + client.CardVerificationCode +
+                                "&expirymonth=" + client.CardExpiryMonth +
+                                "&expiryyear=" + client.CardExpiryYear +
+                                "&hk=" + hk +
+                                "&hosted_responsive_format=N" +
+                                "&cardtype=" + client.CardType.ToUpper() == "VISA" ? "VISA" : "MASTERCARD" +
+                                "&future_pay=N" +
+                                "&future_pay_save_only=" +
+                                "&cardholder=" + client.CardHolder +
+                                "&pay_now=Pay+Now)",
+
+                                ref client.cookieContainer,
+                                "webcomm.paymark.co.nz",
+                                true);
+                        }
+
+
+                            //提示信息直接显示网页的报错内容
+                            //因为不验证成功的情况, 关键支付页检查cookies
                     }
                 }
 

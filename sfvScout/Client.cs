@@ -38,6 +38,13 @@ namespace widkeyPaperDiaper
         public string BeenToNzDateMonth { get; set; }
         public string BeenToNzDateDay { get; set; }
         public string PayerName { get; set; }
+        public string CardType { get; set; }
+        public string CardNumber { get; set; }
+        public string CardVerificationCode { get; set; }
+        public string CardExpiryMonth { get; set; }
+        public string CardExpiryYear { get; set; }
+        public string CardHolder { get; set; }
+        
         
         public string __VIEWSTATE { get; set; }
         public string __VIEWSTATEGENERATOR { get; set; }
@@ -55,17 +62,19 @@ namespace widkeyPaperDiaper
             string intendedTravelDateYear, string intendedTravelDateMonth, string intendedTravelDateDay,
             string beenToNz,
             string beenToNzDateYear, string beenToNzDateMonth, string beenToNzDateDay,
-            string payerName
+            string payerName,
+            string cardType, string cardNumber, string cardVerificationCode, string cardExpiryMonth, string cardExpiryYear, string cardHolder
+
         )
 
         {
-            UserName = userName;
-            Password = password;
-            PassportNo = passportNo;
-            FamilyName = familyName;
-            GivenName = givenName;
-            Gender = gender; // F OR M
-            Email = email;
+            UserName = userName; //移民局官网登录账号
+            Password = password;//移民局官网登录密码
+            PassportNo = passportNo;//护照号
+            FamilyName = familyName;//护照 姓
+            GivenName = givenName;//护照 名
+            Gender = gender; // 性别, F OR M
+            Email = email;//接收确认信的邮箱
             City = city;//居住城市英文名
             Street = street;//居住街道英文名
             BithDateYear = year;//出生年,4位
@@ -76,7 +85,7 @@ namespace widkeyPaperDiaper
             PassportExpiryDateDay = passportExpiryDateDay; //护照失效日, 不要使用占位0
             NationalIdIssueDateYear = nationalIdIssueDateYear; //身份证发放年, 4位
             NationalIdIssueDateMonth = nationalIdIssueDateMonth; //身份证发放月, 不要使用占位0
-            NationalIdIssueDateDay = nationalIdIssueDateDay; 
+            NationalIdIssueDateDay = nationalIdIssueDateDay;  //身份证发放日, 不要使用占位0
             NationalIdExpiryDateYear = nationalIdExpiryDateYear; //身份证失效年, 4位
             NationalIdExpiryDateMonth = nationalIdExpiryDateMonth; //身份证失效月, 不要使用占位0
             NationalIdExpiryDateDay = nationalIdExpiryDateDay; //身份证失效日, 不要使用占位0
@@ -87,7 +96,13 @@ namespace widkeyPaperDiaper
             BeenToNzDateYear = beenToNzDateYear;//如果到过纽西兰,上一次入境时间年, 不要使用占位0
             BeenToNzDateMonth = beenToNzDateMonth;//如果到过纽西兰,上一次入境时间月, 不要使用占位0
             BeenToNzDateDay = beenToNzDateDay;//如果到过纽西兰,上一次入境时间日, 不要使用占位0
-            PayerName = payerName;//付款人姓名, 随便填写
+            PayerName = payerName;//付款人姓名, 随便填写, 必须是英文, 不可以包含空格
+            CardType = cardType;// 信用卡类型, visa 或 master
+            CardNumber = cardNumber;// 信用卡卡号
+            CardVerificationCode = cardVerificationCode;// 信用卡背面三位数字校验码
+            CardExpiryMonth = cardExpiryMonth;// 信用卡失效月, 需要使用占位零, 例如 02
+            CardExpiryYear = cardExpiryYear;// 信用卡失效年, 四位
+            CardHolder = cardHolder;// 卡片上的持卡人姓名, 必须为英文
         }
     }
 }
