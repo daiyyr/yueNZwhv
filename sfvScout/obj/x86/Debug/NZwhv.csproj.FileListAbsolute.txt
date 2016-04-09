@@ -5,3 +5,4 @@ D:\source\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csproj.GenerateResource.Cache
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\bin\Debug\widkeyPaperDiaper.pdb
+D:\source\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csprojResolveAssemblyReference.cache

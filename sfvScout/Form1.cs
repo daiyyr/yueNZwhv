@@ -22,10 +22,23 @@ namespace widkeyPaperDiaper
 
     public partial class Form1 : Form
     {
-        Client tempClient;
+        Client tempClient = null;
         public static bool debug = true;
+        public static bool singleUser = true;
+        string[] singleUserDetails = {
+                "hansha", "Dd123456", "E1612545", "D", "budong",
+                "m", "136-8597_7921@qq.com", "chengdu", "daqianmen", "1990", "9", "9",
+                "2020", "5", "16",
+                "2001", "7", "9",
+                "2022", "7", "9",
+                "2017", "4", "3",
+                "No",
+                "2015", "6", "5",
+                "galevey",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"};
 
-        public static int retry = 5;
+
+        public static int retry = 30;
 
         public static bool gForceToStop = false;
         public static bool gLoginOkFlag = false;
@@ -213,9 +226,10 @@ namespace widkeyPaperDiaper
             label6.Text = "expire date: " + expireDate.ToString("yyyy-MM-dd");
             if (debug)
             {
-                button1.Visible = true;
-                testLog.Visible = true;
-                this.ClientSize = new System.Drawing.Size(1150, 960);
+                //button1.Visible = true;
+                //testLog.Visible = true;
+                //this.ClientSize = new System.Drawing.Size(1150, 960);
+                deleteForms.Visible = true;
             }
             else
             {
@@ -233,6 +247,31 @@ namespace widkeyPaperDiaper
                         autoB.Visible = false;
                     }
                 }
+            }
+            if (singleUser)
+            {
+                tempClient = new Client(singleUserDetails[0], singleUserDetails[1], singleUserDetails[2], singleUserDetails[3], singleUserDetails[4], singleUserDetails[5], singleUserDetails[6], singleUserDetails[7], singleUserDetails[8],
+                                            singleUserDetails[9], singleUserDetails[10], singleUserDetails[11],
+                                            singleUserDetails[12], singleUserDetails[13], singleUserDetails[14],
+                                            singleUserDetails[15], singleUserDetails[16], singleUserDetails[17],
+                                            singleUserDetails[18], singleUserDetails[19], singleUserDetails[20],
+                                            singleUserDetails[21], singleUserDetails[22], singleUserDetails[23],
+                                            singleUserDetails[24],
+                                            singleUserDetails[25], singleUserDetails[26], singleUserDetails[27],
+                                            singleUserDetails[28],
+                                            singleUserDetails[29], singleUserDetails[30], singleUserDetails[31], singleUserDetails[32], singleUserDetails[33], singleUserDetails[34]
+                                    );
+                ClientList = new List<Client>();
+                ClientList.Add(tempClient);
+                var source = new BindingSource();
+                source.DataSource = ClientList;
+                appointmentGrid.DataSource = source;
+            }
+            else
+            {
+                button3.Visible = true;
+                deleteApp.Visible = true;
+                //显示结果框
             }
         }
         
@@ -316,6 +355,13 @@ namespace widkeyPaperDiaper
             player.PlayLooping();
         }
         */
+        public int downloadHtml(string prex, string html)
+        {
+            string fileName = prex + "." + System.DateTime.Now.ToString("yyyyMMddHHmmss", DateTimeFormatInfo.InvariantInfo) + ".txt";
+            writeFile(System.Environment.CurrentDirectory + "\\" + fileName, html);
+            return 1;
+        }
+
 
         public static DateTime GetNistTime(Form1 form1)
         {
@@ -943,28 +989,75 @@ namespace widkeyPaperDiaper
             return resp;
         }
 
-
+        /*
+         * do not handle the response
+         * with host
+         */
+        public static HttpWebResponse weLoveYueer(Form1 form1, string url, string method, string referer, bool allowAutoRedirect, string postData, ref CookieCollection cookies, string host)
+        {
+            HttpWebResponse resp = null;
+            for (int i = 0; i < retry; i++)
+            {
+                if (gForceToStop)
+                {
+                    break;
+                }
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                setRequest(req, cookies);
+                req.Method = method;
+                req.Referer = referer;
+                if (allowAutoRedirect)
+                {
+                    req.AllowAutoRedirect = true;
+                }
+                req.Host = host;
+                if (method.Equals("POST"))
+                {
+                    if (writePostData(form1, req, postData) < 0)
+                    {
+                        continue;
+                    }
+                }
+                try
+                {
+                    resp = (HttpWebResponse)req.GetResponse();
+                }
+                catch (WebException webEx)
+                {
+                    form1.setLogT("GetResponse, " + webEx.Status.ToString());
+                    if (webEx.Status == WebExceptionStatus.ConnectionClosed)
+                    {
+                        form1.setLogT("wrong address"); //地址错误
+                    }
+                    if (webEx.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        form1.setLogT("本次请求被服务器拒绝，可尝试调高间隔时间"); //500
+                    }
+                    continue;
+                }
+                if (resp != null)
+                {
+                    cookies = req.CookieContainer.GetCookies(req.RequestUri);
+                    return resp;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return resp;
+        }
 
 
         private void loginB_Click(object sender, EventArgs e)
         {
-            tempClient = new Client("hansha", "Dd123456", "E1612545", "Gigi", "budong", 
-                "m","136-8597_7921@qq.com","chengdu","daqianmen","1990","9","9",
-                "2020","5","16",
-                "2001","7","9",
-                "2022", "7", "9",
-                "2017", "4", "3",
-                "No",
-                "2015", "6", "5",
-                "galevey",
-                "visa","35949498498","433","04","2018","zhanghuimei"); // temp
             Login login = new Login(this, tempClient); // temp
-            Thread t = new Thread(login.loginT);
-            t.Start();
+            login.loginT();
         }
 
-        private void autoB_Click(object sender, EventArgs e)
+        public void auto()
         {
+
             //setLogtRed("user operation: start probing");
 
             /*
@@ -980,13 +1073,13 @@ namespace widkeyPaperDiaper
             }
             */
 
-            if (debug)
-            {
-                Apply apply = new Apply(
-                    this,
-                    tempClient);
-                Thread t = new Thread(apply.startProbe);
-                t.Start();
+            if(singleUser){
+
+                Login login = new Login(this, tempClient); //temp
+                login.loginT();
+
+                Apply apply = new Apply(this, tempClient);
+                apply.startProbe();
             }
             else
             {
@@ -1009,7 +1102,12 @@ namespace widkeyPaperDiaper
                     t.Start();
                 }
             }
-            
+        }
+
+        private void autoB_Click(object sender, EventArgs e)
+        {
+            Thread t = new Thread(auto);
+            t.Start();
         }
 
 
@@ -1674,6 +1772,22 @@ namespace widkeyPaperDiaper
         private void appointmentGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        public void deleteFormsF()
+        {
+            Login login = new Login(this, tempClient); //temp
+            login.loginT();
+
+            Apply apply = new Apply(this, tempClient);
+            apply.deleteForms();
+        }
+
+        private void deleteForms_Click(object sender, EventArgs e)
+        {
+            Thread t = new Thread(deleteFormsF);
+            t.Start();
+            
         }
 
 

@@ -44,8 +44,6 @@ namespace widkeyPaperDiaper
         static Match myMatch;
 
         Form1 form1;
-        string lgnrnd = "";
-        string token = "";
 
 
         public int obtainLoginPage()
@@ -73,7 +71,10 @@ namespace widkeyPaperDiaper
             */
 
 
-            HttpWebResponse resp = Form1.weLoveYueer(
+            HttpWebResponse resp = null;
+
+            obtainLoginPage:
+            resp = Form1.weLoveYueer(
               form1,
               "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               "POST",
@@ -90,6 +91,11 @@ namespace widkeyPaperDiaper
 
              ref Client.cookieContainer
               );
+
+            if (resp == null)
+            {
+                goto obtainLoginPage;
+            }
 
             if (resp.StatusCode == HttpStatusCode.Found)
             {
@@ -153,7 +159,10 @@ namespace widkeyPaperDiaper
         {
             form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": login..");
 
-            HttpWebResponse resp = Form1.weLoveYueer(
+            HttpWebResponse resp = null;
+
+            login:
+            resp = Form1.weLoveYueer(
                 form1,
                 "https://www.immigration.govt.nz" + Client.__CMS_CurrentUrl,
                 "POST",
@@ -171,6 +180,11 @@ namespace widkeyPaperDiaper
                     "&__VIEWSTATE=" + Client.__VIEWSTATE,
                ref Client.cookieContainer
                 );
+
+            if (resp == null)
+            {
+                goto login;
+            }
 
             if (resp.StatusCode == HttpStatusCode.Found)
             {
@@ -209,6 +223,7 @@ namespace widkeyPaperDiaper
 
         public void loginT()
         {
+            /*
             if (!Form1.debug)
             {
                 Client.UserName = form1.inputT.Text.Replace("@", "%40");
@@ -219,7 +234,7 @@ namespace widkeyPaperDiaper
                     return;
                 }
             }
-
+            */
             while (true)
             {
                 if (form1.rate.Text.Equals(""))

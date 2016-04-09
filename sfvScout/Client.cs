@@ -97,7 +97,7 @@ namespace widkeyPaperDiaper
             BeenToNzDateMonth = beenToNzDateMonth;//如果到过纽西兰,上一次入境时间月, 不要使用占位0
             BeenToNzDateDay = beenToNzDateDay;//如果到过纽西兰,上一次入境时间日, 不要使用占位0
             PayerName = payerName;//付款人姓名, 随便填写, 必须是英文, 不可以包含空格
-            CardType = cardType;// 信用卡类型, visa 或 master
+            CardType = cardType;// 信用卡类型, visa 或 masterCard
             CardNumber = cardNumber;// 信用卡卡号
             CardVerificationCode = cardVerificationCode;// 信用卡背面三位数字校验码
             CardExpiryMonth = cardExpiryMonth;// 信用卡失效月, 需要使用占位零, 例如 02

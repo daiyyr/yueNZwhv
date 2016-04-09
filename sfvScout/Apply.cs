@@ -205,35 +205,48 @@ namespace widkeyPaperDiaper
                     break;
                 }
             }
+            string respHtml;
+
             if (TS0120d49b_cr == "")
             {
-                form1.setLogtRed("failed to get login cookie!");
-                return -5;
-            }
-
-            string respHtml = Form1.weLoveYue(
+                respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82": "46"), //82 for Germany, 46 for China
+              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
+              "GET",
+              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              false,
+              "",
+
+             ref client.cookieContainer,
+              true);
+            }
+            else
+            {
+                respHtml = Form1.weLoveYue(
+              form1,
+              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
               "POST",
               "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
 
               "&TS0120d49b_cr=" + TS0120d49b_cr +
-                "&TS0120d49b_id=3"+
-                "&TS0120d49b_76=0"+
-                "&TS0120d49b_86=0"+
-                "&TS0120d49b_md=1"+
-                "&TS0120d49b_rf=0"+
-                "&TS0120d49b_ct=0"+
+                "&TS0120d49b_id=3" +
+                "&TS0120d49b_76=0" +
+                "&TS0120d49b_86=0" +
+                "&TS0120d49b_md=1" +
+                "&TS0120d49b_rf=0" +
+                "&TS0120d49b_ct=0" +
                 "&TS0120d49b_pd=0",
 
              ref client.cookieContainer,
               true);
+            }
+            
 
 
             if (!respHtml.Contains("ctl00_ContentPlaceHolder1_applyNowButton"))
             {
-                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": 'applynow' button not found, repost the page...");
+                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": quotas for china do not open yet, retry...");
                 return -1;
             }
 
@@ -283,7 +296,10 @@ namespace widkeyPaperDiaper
 
 
             string respHtml;
-            HttpWebResponse resp= Form1.weLoveYueer(
+            HttpWebResponse resp = null;
+
+            clickCreateNow:
+            resp= Form1.weLoveYueer(
                 form1,
                 "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
                 "POST",
@@ -299,7 +315,7 @@ namespace widkeyPaperDiaper
 
             if (resp == null)
             {
-                return -1;
+                goto clickCreateNow;
             }
 
             respHtml = Form1.resp2html(resp);
@@ -403,7 +419,87 @@ namespace widkeyPaperDiaper
             personalDetails();
             return 1;
         }
+        public int deleteForms()
+        {
+            form1.setLogT("delete form begins, detect application ID..");
+            string respHtml = Form1.weLoveYue(
+              form1,
+              "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+              "GET",
+              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              false,
+              "",
+             ref client.cookieContainer,
+              true);
 
+            if (respHtml.Contains("ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_deleteHyperlink"))
+            {
+                rgx = @"(?<=id=""ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_deleteHyperlink"" href=""Application\/Delete\.aspx\?ApplicationId=)\d+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.ApplicationId = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+                else
+                {
+                    form1.setLogT("Status page changed!");
+                    return -3;
+                }
+                respHtml = Form1.weLoveYue(
+                          form1,
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
+                          "POST",
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+                          false,
+                          "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                         ref client.cookieContainer,
+                         true);
+
+                rgx = @"(?<=id=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATE = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                rgx = @"(?<=id=""__EVENTVALIDATION"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__EVENTVALIDATION = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                rgx = @"(?<=id=""__VIEWSTATEGENERATOR"" value="")(\s|\S)+?(?="")";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success)
+                {
+                    client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+                }
+
+                respHtml = Form1.weLoveYue(
+                          form1,
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
+                          "POST",
+                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
+                          false,
+                          "__EVENTVALIDATION=" + client.__EVENTVALIDATION +
+                            "&__VIEWSTATE=" + client.__VIEWSTATE +
+                            "&__VIEWSTATEGENERATOR=" + client.__VIEWSTATEGENERATOR +
+                            "&ctl00%24ContentPlaceHolder1%24okDeleteButton.x=59&ctl00%24ContentPlaceHolder1%24okDeleteButton.y=1",
+                         ref client.cookieContainer,
+                         true);
+                if (respHtml.Contains("The application has been successfully deleted."))
+                {
+                    form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": The application has been successfully deleted.");
+                }
+                
+            }
+            else
+            {
+                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": The application do not exist.");
+            }
+                return 1;
+        }
         public int obtainStatus()
         {
             string respHtml = Form1.weLoveYue(
@@ -960,11 +1056,14 @@ namespace widkeyPaperDiaper
                 {
                     client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
                 }
-                
+
+                HttpWebResponse resp = null;
+
+            PaymentGateway:
                 //如果不使用信用卡余额控制支付, 则最好每次提交都去确认一下beingPaid参数. 那么就必须要有clientId(8位随机字符)来识别不同线程创建的client. 
                 //于是, 支付函数中的每一次提交之前,都去判断一下client列表,如果(护照号和这个client相同, clientId不同, beingPaid为true) 那么直接return, 同一台机器上不同的进程也可以适用该规则
                 //至于这个client列表, 对应的是一个本地文件, 主键是clientId, 有一个进程不停地同步服务器上的client和本地client.
-                HttpWebResponse resp = Form1.weLoveYueer(
+                resp = Form1.weLoveYueer(
                     form1,
                     "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                     "POST",
@@ -1010,8 +1109,11 @@ namespace widkeyPaperDiaper
                     );
 
                  */
- 
 
+                if (resp == null)
+                {
+                    goto PaymentGateway;
+                }
                 if (resp.StatusCode == HttpStatusCode.Found)
                 {
                     if (resp.Headers["location"].Contains("paymark"))
@@ -1056,7 +1158,10 @@ namespace widkeyPaperDiaper
                             false,
                             "hk=" + hk +
                             "&hosted_responsive_format=N" +
-                            client.CardType.ToUpper() == "VISA" ? "&card_type_VISA.x=45&card_type_VISA.y=37" : "&card_type_MASTERCARD.x=34&card_type_MASTERCARD.y=27" +
+                            (client.CardType.ToUpper() == "VISA" ? 
+                                "&card_type_VISA.x=45&card_type_VISA.y=37" 
+                                : "&card_type_MASTERCARD.x=34&card_type_MASTERCARD.y=27"
+                            ) +
                             "&processingStage=card_entry" +
                             "&future_pay=" +
                             "&future_pay_save_only=",
@@ -1081,8 +1186,8 @@ namespace widkeyPaperDiaper
                             }
 
 
-                            //待验证
-                            respHtml = Form1.weLoveYue(
+                        finalPay:
+                            resp = Form1.weLoveYueer(
                                 form1,
                                 "https://webcomm.paymark.co.nz/hosted/?hkc=" + hkc + "&rm=" + rm2,
                                 "POST",
@@ -1098,15 +1203,90 @@ namespace widkeyPaperDiaper
                                 "&expiryyear=" + client.CardExpiryYear +
                                 "&hk=" + hk +
                                 "&hosted_responsive_format=N" +
-                                "&cardtype=" + client.CardType.ToUpper() == "VISA" ? "VISA" : "MASTERCARD" +
+                                "&cardtype=" + (client.CardType.ToUpper() == "VISA" ? "VISA" : "MASTERCARD" )+
                                 "&future_pay=N" +
                                 "&future_pay_save_only=" +
                                 "&cardholder=" + client.CardHolder +
                                 "&pay_now=Pay+Now)",
 
                                 ref client.cookieContainer,
-                                "webcomm.paymark.co.nz",
-                                true);
+                                "webcomm.paymark.co.nz"
+                                );
+
+                            if (resp == null)
+                            {
+                                goto finalPay;
+                            }
+
+                            if (resp.StatusCode == HttpStatusCode.Found)
+                            {
+                                string processAdreess = resp.Headers["location"];
+                            waitForProcess:
+                                resp = Form1.weLoveYueer(
+                                    form1,
+                                    processAdreess,
+                                    "GET",
+                                    "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
+                                    false,
+                                    "",
+                                    ref client.cookieContainer,
+                                    "payments.paystation.co.nz"
+                                );
+                                respHtml = Form1.resp2html(resp);
+                                if (respHtml.Contains("Please wait while your payment is processed") || respHtml == "")
+                                {
+                                    goto waitForProcess;
+                                }
+                                if (respHtml.Contains("Your payment was not successful"))
+                                {
+                                    string message = "";
+                                    rgx = @"(?<=\>Your payment was not successful\<\/p\>\s+?\<p class\=""failSub""\>)(\s|\S)+?(?=\<\/p\>)";
+                                    myMatch = (new Regex(rgx)).Match(respHtml);
+                                    if (myMatch.Success)
+                                    {
+                                        message = myMatch.Groups[0].Value;
+                                        form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ", Payment was not successful: " + message);
+                                        return -6;
+                                    }
+                                }
+                                else if(resp.StatusCode == HttpStatusCode.Found)
+                                {
+                                    respHtml = Form1.weLoveYue(
+                                        form1,
+                                        resp.Headers["location"],
+                                        "GET",
+                                        "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
+                                        false,
+                                        "",
+                                        ref client.cookieContainer,
+                                        "payments.paystation.co.nz",
+                                        true
+                                        );
+                                }
+                                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": Congratulation! See you in NZ!");
+                                
+                                //下载成功网页
+                                form1.downloadHtml("successPage.passportNo" + client.PassportNo, respHtml);
+
+                                return 1;
+                            }
+                            else
+                            {
+                                string message = "";
+                                rgx = @"(?<=\<h3 id=""messageStep2""\>2\: Enter Your Card Details\<\/h3\>\s+?\<h3\>)(\s|\S)+?(?=\<\/h3\>)";
+                                myMatch = (new Regex(rgx)).Match(respHtml);
+                                if (myMatch.Success)
+                                {
+                                    message = myMatch.Groups[0].Value;
+                                    form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ", Invalid card information: " + message);
+                                    return -6;
+                                }
+                                else 
+                                {
+                                    form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ", Invalid card information");
+                                }
+                            }
+                            
                         }
 
 
@@ -1114,11 +1294,14 @@ namespace widkeyPaperDiaper
                             //因为不验证成功的情况, 关键支付页检查cookies
                     }
                 }
+                else
+                {
+                    respHtml = Form1.resp2html(resp);
+                    goto PaymentGateway;
+
+                }
 
             
-
-                client.nextStep = "pay";
-                pay();
             }
             
 

@@ -51,12 +51,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.appointmentGrid = new System.Windows.Forms.DataGridView();
-            this.cardNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cardPasswordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chineseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.japaneseNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appointmentBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -72,26 +66,71 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.deleteForms = new System.Windows.Forms.Button();
+            this.nextStepDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.familyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.givenNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bithDateYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bithDateMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bithDateDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportExpiryDateYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportExpiryDateDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intendedTravelDateYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intendedTravelDateDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beenToNzDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beenToNzDateYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beenToNzDateMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.beenToNzDateDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardVerificationCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardExpiryMonthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardExpiryYearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cardHolderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vIEWSTATEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMSCurrentUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.applicationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appointmentBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // loginB
             // 
-            this.loginB.Location = new System.Drawing.Point(331, 130);
+            this.loginB.Location = new System.Drawing.Point(920, 87);
             this.loginB.Margin = new System.Windows.Forms.Padding(4);
             this.loginB.Name = "loginB";
-            this.loginB.Size = new System.Drawing.Size(117, 48);
+            this.loginB.Size = new System.Drawing.Size(115, 41);
             this.loginB.TabIndex = 1;
             this.loginB.Text = "Login";
             this.loginB.UseVisualStyleBackColor = true;
+            this.loginB.Visible = false;
             this.loginB.Click += new System.EventHandler(this.loginB_Click);
             // 
             // autoB
@@ -139,50 +178,52 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.Location = new System.Drawing.Point(620, 827);
+            this.label3.Location = new System.Drawing.Point(112, 644);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(143, 15);
+            this.label3.Size = new System.Drawing.Size(479, 15);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Copyright  Thomas";
+            this.label3.Text = "@Copyright  Teemo     Tel 0064 02102864516      qq 54739633";
             // 
             // logT
             // 
-            this.logT.Location = new System.Drawing.Point(1062, 187);
+            this.logT.Location = new System.Drawing.Point(1062, 138);
             this.logT.Margin = new System.Windows.Forms.Padding(4);
             this.logT.Name = "logT";
             this.logT.ReadOnly = true;
             this.logT.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.logT.Size = new System.Drawing.Size(453, 620);
+            this.logT.Size = new System.Drawing.Size(453, 431);
             this.logT.TabIndex = 9;
             this.logT.Text = "";
             this.logT.TextChanged += new System.EventHandler(this.logT_TextChanged);
             // 
             // addB
             // 
-            this.addB.Location = new System.Drawing.Point(623, 145);
+            this.addB.Location = new System.Drawing.Point(623, 96);
             this.addB.Margin = new System.Windows.Forms.Padding(4);
             this.addB.Name = "addB";
             this.addB.Size = new System.Drawing.Size(101, 33);
             this.addB.TabIndex = 5;
             this.addB.Text = "import";
             this.addB.UseVisualStyleBackColor = true;
+            this.addB.Visible = false;
             this.addB.Click += new System.EventHandler(this.addB_Click);
             // 
             // deleteMail
             // 
-            this.deleteMail.Location = new System.Drawing.Point(732, 145);
+            this.deleteMail.Location = new System.Drawing.Point(732, 96);
             this.deleteMail.Margin = new System.Windows.Forms.Padding(4);
             this.deleteMail.Name = "deleteMail";
             this.deleteMail.Size = new System.Drawing.Size(101, 33);
             this.deleteMail.TabIndex = 6;
             this.deleteMail.Text = "delete";
             this.deleteMail.UseVisualStyleBackColor = true;
+            this.deleteMail.Visible = false;
             this.deleteMail.Click += new System.EventHandler(this.deleteB_Click);
             // 
             // inputT
             // 
-            this.inputT.Location = new System.Drawing.Point(1209, 81);
+            this.inputT.Location = new System.Drawing.Point(1310, 87);
             this.inputT.Margin = new System.Windows.Forms.Padding(4);
             this.inputT.Name = "inputT";
             this.inputT.Size = new System.Drawing.Size(239, 22);
@@ -193,7 +234,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1131, 93);
+            this.label4.Location = new System.Drawing.Point(1232, 99);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 17);
@@ -214,7 +255,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1209, 120);
+            this.textBox1.Location = new System.Drawing.Point(1310, 126);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(239, 22);
@@ -226,7 +267,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1131, 124);
+            this.label5.Location = new System.Drawing.Point(1232, 130);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 17);
@@ -236,19 +277,20 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(551, 94);
+            this.button1.Location = new System.Drawing.Point(1062, 36);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(350, 43);
             this.button1.TabIndex = 18;
             this.button1.Text = "test the mail cracker";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(817, 827);
+            this.label6.Location = new System.Drawing.Point(767, 642);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 17);
@@ -268,103 +310,104 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(100, 145);
+            this.button3.Location = new System.Drawing.Point(137, 96);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 33);
             this.button3.TabIndex = 5;
             this.button3.Text = "import";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.addDetails_Click);
             // 
             // deleteApp
             // 
-            this.deleteApp.Location = new System.Drawing.Point(207, 145);
+            this.deleteApp.Location = new System.Drawing.Point(244, 96);
             this.deleteApp.Margin = new System.Windows.Forms.Padding(4);
             this.deleteApp.Name = "deleteApp";
             this.deleteApp.Size = new System.Drawing.Size(101, 33);
             this.deleteApp.TabIndex = 6;
             this.deleteApp.Text = "delete";
             this.deleteApp.UseVisualStyleBackColor = true;
+            this.deleteApp.Visible = false;
             this.deleteApp.Click += new System.EventHandler(this.deleteDetails_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 163);
+            this.label7.Location = new System.Drawing.Point(25, 114);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 17);
+            this.label7.Size = new System.Drawing.Size(90, 17);
             this.label7.TabIndex = 21;
-            this.label7.Text = "details:";
+            this.label7.Text = "client details:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(559, 163);
+            this.label8.Location = new System.Drawing.Point(559, 114);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 17);
             this.label8.TabIndex = 21;
             this.label8.Text = "emails:";
+            this.label8.Visible = false;
             // 
             // appointmentGrid
             // 
             this.appointmentGrid.AutoGenerateColumns = false;
             this.appointmentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.appointmentGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cardNoDataGridViewTextBoxColumn,
-            this.cardPasswordDataGridViewTextBoxColumn,
-            this.chineseNameDataGridViewTextBoxColumn,
-            this.japaneseNameDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn});
+            this.nextStepDataGridViewTextBoxColumn,
+            this.userNameDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn1,
+            this.familyNameDataGridViewTextBoxColumn,
+            this.givenNameDataGridViewTextBoxColumn,
+            this.genderDataGridViewTextBoxColumn,
+            this.passportNoDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn1,
+            this.cityDataGridViewTextBoxColumn,
+            this.streetDataGridViewTextBoxColumn,
+            this.bithDateYearDataGridViewTextBoxColumn,
+            this.bithDateMonthDataGridViewTextBoxColumn,
+            this.bithDateDayDataGridViewTextBoxColumn,
+            this.passportExpiryDateYearDataGridViewTextBoxColumn,
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn,
+            this.passportExpiryDateDayDataGridViewTextBoxColumn,
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn,
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn,
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn,
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn,
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn,
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn,
+            this.intendedTravelDateYearDataGridViewTextBoxColumn,
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn,
+            this.intendedTravelDateDayDataGridViewTextBoxColumn,
+            this.beenToNzDataGridViewTextBoxColumn,
+            this.beenToNzDateYearDataGridViewTextBoxColumn,
+            this.beenToNzDateMonthDataGridViewTextBoxColumn,
+            this.beenToNzDateDayDataGridViewTextBoxColumn,
+            this.payerNameDataGridViewTextBoxColumn,
+            this.cardTypeDataGridViewTextBoxColumn,
+            this.cardNumberDataGridViewTextBoxColumn,
+            this.cardVerificationCodeDataGridViewTextBoxColumn,
+            this.cardExpiryMonthDataGridViewTextBoxColumn,
+            this.cardExpiryYearDataGridViewTextBoxColumn,
+            this.cardHolderDataGridViewTextBoxColumn,
+            this.vIEWSTATEDataGridViewTextBoxColumn,
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn,
+            this.cMSCurrentUrlDataGridViewTextBoxColumn,
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn,
+            this.applicationIdDataGridViewTextBoxColumn,
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn});
             this.appointmentGrid.DataSource = this.appointmentBindingSource2;
-            this.appointmentGrid.Location = new System.Drawing.Point(27, 187);
+            this.appointmentGrid.Location = new System.Drawing.Point(27, 138);
             this.appointmentGrid.Margin = new System.Windows.Forms.Padding(4);
             this.appointmentGrid.Name = "appointmentGrid";
             this.appointmentGrid.RowTemplate.Height = 23;
-            this.appointmentGrid.Size = new System.Drawing.Size(516, 431);
+            this.appointmentGrid.Size = new System.Drawing.Size(1008, 431);
             this.appointmentGrid.TabIndex = 24;
             this.appointmentGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.appointmentGrid_CellContentClick);
-            // 
-            // cardNoDataGridViewTextBoxColumn
-            // 
-            this.cardNoDataGridViewTextBoxColumn.DataPropertyName = "CardNo";
-            this.cardNoDataGridViewTextBoxColumn.HeaderText = "CardNo";
-            this.cardNoDataGridViewTextBoxColumn.Name = "cardNoDataGridViewTextBoxColumn";
-            this.cardNoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cardPasswordDataGridViewTextBoxColumn
-            // 
-            this.cardPasswordDataGridViewTextBoxColumn.DataPropertyName = "CardPassword";
-            this.cardPasswordDataGridViewTextBoxColumn.HeaderText = "CardPassword";
-            this.cardPasswordDataGridViewTextBoxColumn.Name = "cardPasswordDataGridViewTextBoxColumn";
-            this.cardPasswordDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // chineseNameDataGridViewTextBoxColumn
-            // 
-            this.chineseNameDataGridViewTextBoxColumn.DataPropertyName = "ChineseName";
-            this.chineseNameDataGridViewTextBoxColumn.HeaderText = "ChineseName";
-            this.chineseNameDataGridViewTextBoxColumn.Name = "chineseNameDataGridViewTextBoxColumn";
-            this.chineseNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // japaneseNameDataGridViewTextBoxColumn
-            // 
-            this.japaneseNameDataGridViewTextBoxColumn.DataPropertyName = "JapaneseName";
-            this.japaneseNameDataGridViewTextBoxColumn.HeaderText = "JapaneseName";
-            this.japaneseNameDataGridViewTextBoxColumn.Name = "japaneseNameDataGridViewTextBoxColumn";
-            this.japaneseNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // appointmentBindingSource2
-            // 
-            this.appointmentBindingSource2.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
             // pictureBox1
             // 
@@ -374,6 +417,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(517, 183);
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // label9
             // 
@@ -395,6 +439,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(132, 22);
             this.textBox2.TabIndex = 27;
+            this.textBox2.Visible = false;
             // 
             // mailGrid
             // 
@@ -404,12 +449,13 @@
             this.emailDataGridViewTextBoxColumn,
             this.passwordDataGridViewTextBoxColumn});
             this.mailGrid.DataSource = this.emailForshowBindingSource;
-            this.mailGrid.Location = new System.Drawing.Point(551, 187);
+            this.mailGrid.Location = new System.Drawing.Point(551, 138);
             this.mailGrid.Margin = new System.Windows.Forms.Padding(4);
             this.mailGrid.Name = "mailGrid";
             this.mailGrid.RowTemplate.Height = 23;
             this.mailGrid.Size = new System.Drawing.Size(484, 431);
             this.mailGrid.TabIndex = 24;
+            this.mailGrid.Visible = false;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -468,6 +514,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(199, 24);
             this.comboBox1.TabIndex = 28;
+            this.comboBox1.Visible = false;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
@@ -478,6 +525,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(199, 24);
             this.comboBox2.TabIndex = 29;
+            this.comboBox2.Visible = false;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label10
@@ -489,6 +537,7 @@
             this.label10.Size = new System.Drawing.Size(50, 17);
             this.label10.TabIndex = 30;
             this.label10.Text = "county";
+            this.label10.Visible = false;
             // 
             // label11
             // 
@@ -499,6 +548,7 @@
             this.label11.Size = new System.Drawing.Size(39, 17);
             this.label11.TabIndex = 31;
             this.label11.Text = "shop";
+            this.label11.Visible = false;
             // 
             // label12
             // 
@@ -509,6 +559,7 @@
             this.label12.Size = new System.Drawing.Size(35, 17);
             this.label12.TabIndex = 32;
             this.label12.Text = "type";
+            this.label12.Visible = false;
             // 
             // comboBox3
             // 
@@ -521,6 +572,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(148, 24);
             this.comboBox3.TabIndex = 33;
+            this.comboBox3.Visible = false;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label13
@@ -541,6 +593,274 @@
             this.label14.Size = new System.Drawing.Size(0, 17);
             this.label14.TabIndex = 35;
             // 
+            // deleteForms
+            // 
+            this.deleteForms.Location = new System.Drawing.Point(920, 21);
+            this.deleteForms.Name = "deleteForms";
+            this.deleteForms.Size = new System.Drawing.Size(115, 58);
+            this.deleteForms.TabIndex = 36;
+            this.deleteForms.Text = "deleteForms";
+            this.deleteForms.UseVisualStyleBackColor = true;
+            this.deleteForms.Visible = false;
+            this.deleteForms.Click += new System.EventHandler(this.deleteForms_Click);
+            // 
+            // nextStepDataGridViewTextBoxColumn
+            // 
+            this.nextStepDataGridViewTextBoxColumn.DataPropertyName = "nextStep";
+            this.nextStepDataGridViewTextBoxColumn.HeaderText = "nextStep";
+            this.nextStepDataGridViewTextBoxColumn.Name = "nextStepDataGridViewTextBoxColumn";
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            // 
+            // passwordDataGridViewTextBoxColumn1
+            // 
+            this.passwordDataGridViewTextBoxColumn1.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn1.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn1.Name = "passwordDataGridViewTextBoxColumn1";
+            // 
+            // familyNameDataGridViewTextBoxColumn
+            // 
+            this.familyNameDataGridViewTextBoxColumn.DataPropertyName = "FamilyName";
+            this.familyNameDataGridViewTextBoxColumn.HeaderText = "FamilyName";
+            this.familyNameDataGridViewTextBoxColumn.Name = "familyNameDataGridViewTextBoxColumn";
+            // 
+            // givenNameDataGridViewTextBoxColumn
+            // 
+            this.givenNameDataGridViewTextBoxColumn.DataPropertyName = "GivenName";
+            this.givenNameDataGridViewTextBoxColumn.HeaderText = "GivenName";
+            this.givenNameDataGridViewTextBoxColumn.Name = "givenNameDataGridViewTextBoxColumn";
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            // 
+            // passportNoDataGridViewTextBoxColumn
+            // 
+            this.passportNoDataGridViewTextBoxColumn.DataPropertyName = "PassportNo";
+            this.passportNoDataGridViewTextBoxColumn.HeaderText = "PassportNo";
+            this.passportNoDataGridViewTextBoxColumn.Name = "passportNoDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn1
+            // 
+            this.emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn1.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            // 
+            // streetDataGridViewTextBoxColumn
+            // 
+            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
+            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
+            // 
+            // bithDateYearDataGridViewTextBoxColumn
+            // 
+            this.bithDateYearDataGridViewTextBoxColumn.DataPropertyName = "BithDateYear";
+            this.bithDateYearDataGridViewTextBoxColumn.HeaderText = "BithDateYear";
+            this.bithDateYearDataGridViewTextBoxColumn.Name = "bithDateYearDataGridViewTextBoxColumn";
+            // 
+            // bithDateMonthDataGridViewTextBoxColumn
+            // 
+            this.bithDateMonthDataGridViewTextBoxColumn.DataPropertyName = "BithDateMonth";
+            this.bithDateMonthDataGridViewTextBoxColumn.HeaderText = "BithDateMonth";
+            this.bithDateMonthDataGridViewTextBoxColumn.Name = "bithDateMonthDataGridViewTextBoxColumn";
+            // 
+            // bithDateDayDataGridViewTextBoxColumn
+            // 
+            this.bithDateDayDataGridViewTextBoxColumn.DataPropertyName = "BithDateDay";
+            this.bithDateDayDataGridViewTextBoxColumn.HeaderText = "BithDateDay";
+            this.bithDateDayDataGridViewTextBoxColumn.Name = "bithDateDayDataGridViewTextBoxColumn";
+            // 
+            // passportExpiryDateYearDataGridViewTextBoxColumn
+            // 
+            this.passportExpiryDateYearDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateYear";
+            this.passportExpiryDateYearDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateYear";
+            this.passportExpiryDateYearDataGridViewTextBoxColumn.Name = "passportExpiryDateYearDataGridViewTextBoxColumn";
+            // 
+            // passportExpiryDateMonthDataGridViewTextBoxColumn
+            // 
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateMonth";
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateMonth";
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn.Name = "passportExpiryDateMonthDataGridViewTextBoxColumn";
+            // 
+            // passportExpiryDateDayDataGridViewTextBoxColumn
+            // 
+            this.passportExpiryDateDayDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateDay";
+            this.passportExpiryDateDayDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateDay";
+            this.passportExpiryDateDayDataGridViewTextBoxColumn.Name = "passportExpiryDateDayDataGridViewTextBoxColumn";
+            // 
+            // nationalIdIssueDateYearDataGridViewTextBoxColumn
+            // 
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateYear";
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateYear";
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.Name = "nationalIdIssueDateYearDataGridViewTextBoxColumn";
+            // 
+            // nationalIdIssueDateMonthDataGridViewTextBoxColumn
+            // 
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateMonth";
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateMonth";
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.Name = "nationalIdIssueDateMonthDataGridViewTextBoxColumn";
+            // 
+            // nationalIdIssueDateDayDataGridViewTextBoxColumn
+            // 
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateDay";
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateDay";
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.Name = "nationalIdIssueDateDayDataGridViewTextBoxColumn";
+            // 
+            // nationalIdExpiryDateYearDataGridViewTextBoxColumn
+            // 
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateYear";
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateYear";
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateYearDataGridViewTextBoxColumn";
+            // 
+            // nationalIdExpiryDateMonthDataGridViewTextBoxColumn
+            // 
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateMonth";
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateMonth";
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateMonthDataGridViewTextBoxColumn";
+            // 
+            // nationalIdExpiryDateDayDataGridViewTextBoxColumn
+            // 
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateDay";
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateDay";
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateDayDataGridViewTextBoxColumn";
+            // 
+            // intendedTravelDateYearDataGridViewTextBoxColumn
+            // 
+            this.intendedTravelDateYearDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateYear";
+            this.intendedTravelDateYearDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateYear";
+            this.intendedTravelDateYearDataGridViewTextBoxColumn.Name = "intendedTravelDateYearDataGridViewTextBoxColumn";
+            // 
+            // intendedTravelDateMonthDataGridViewTextBoxColumn
+            // 
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateMonth";
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateMonth";
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn.Name = "intendedTravelDateMonthDataGridViewTextBoxColumn";
+            // 
+            // intendedTravelDateDayDataGridViewTextBoxColumn
+            // 
+            this.intendedTravelDateDayDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateDay";
+            this.intendedTravelDateDayDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateDay";
+            this.intendedTravelDateDayDataGridViewTextBoxColumn.Name = "intendedTravelDateDayDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDataGridViewTextBoxColumn.DataPropertyName = "BeenToNz";
+            this.beenToNzDataGridViewTextBoxColumn.HeaderText = "BeenToNz";
+            this.beenToNzDataGridViewTextBoxColumn.Name = "beenToNzDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDateYearDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDateYearDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateYear";
+            this.beenToNzDateYearDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateYear";
+            this.beenToNzDateYearDataGridViewTextBoxColumn.Name = "beenToNzDateYearDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDateMonthDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDateMonthDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateMonth";
+            this.beenToNzDateMonthDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateMonth";
+            this.beenToNzDateMonthDataGridViewTextBoxColumn.Name = "beenToNzDateMonthDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDateDayDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDateDayDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateDay";
+            this.beenToNzDateDayDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateDay";
+            this.beenToNzDateDayDataGridViewTextBoxColumn.Name = "beenToNzDateDayDataGridViewTextBoxColumn";
+            // 
+            // payerNameDataGridViewTextBoxColumn
+            // 
+            this.payerNameDataGridViewTextBoxColumn.DataPropertyName = "PayerName";
+            this.payerNameDataGridViewTextBoxColumn.HeaderText = "PayerName";
+            this.payerNameDataGridViewTextBoxColumn.Name = "payerNameDataGridViewTextBoxColumn";
+            // 
+            // cardTypeDataGridViewTextBoxColumn
+            // 
+            this.cardTypeDataGridViewTextBoxColumn.DataPropertyName = "CardType";
+            this.cardTypeDataGridViewTextBoxColumn.HeaderText = "CardType";
+            this.cardTypeDataGridViewTextBoxColumn.Name = "cardTypeDataGridViewTextBoxColumn";
+            // 
+            // cardNumberDataGridViewTextBoxColumn
+            // 
+            this.cardNumberDataGridViewTextBoxColumn.DataPropertyName = "CardNumber";
+            this.cardNumberDataGridViewTextBoxColumn.HeaderText = "CardNumber";
+            this.cardNumberDataGridViewTextBoxColumn.Name = "cardNumberDataGridViewTextBoxColumn";
+            // 
+            // cardVerificationCodeDataGridViewTextBoxColumn
+            // 
+            this.cardVerificationCodeDataGridViewTextBoxColumn.DataPropertyName = "CardVerificationCode";
+            this.cardVerificationCodeDataGridViewTextBoxColumn.HeaderText = "CardVerificationCode";
+            this.cardVerificationCodeDataGridViewTextBoxColumn.Name = "cardVerificationCodeDataGridViewTextBoxColumn";
+            // 
+            // cardExpiryMonthDataGridViewTextBoxColumn
+            // 
+            this.cardExpiryMonthDataGridViewTextBoxColumn.DataPropertyName = "CardExpiryMonth";
+            this.cardExpiryMonthDataGridViewTextBoxColumn.HeaderText = "CardExpiryMonth";
+            this.cardExpiryMonthDataGridViewTextBoxColumn.Name = "cardExpiryMonthDataGridViewTextBoxColumn";
+            // 
+            // cardExpiryYearDataGridViewTextBoxColumn
+            // 
+            this.cardExpiryYearDataGridViewTextBoxColumn.DataPropertyName = "CardExpiryYear";
+            this.cardExpiryYearDataGridViewTextBoxColumn.HeaderText = "CardExpiryYear";
+            this.cardExpiryYearDataGridViewTextBoxColumn.Name = "cardExpiryYearDataGridViewTextBoxColumn";
+            // 
+            // cardHolderDataGridViewTextBoxColumn
+            // 
+            this.cardHolderDataGridViewTextBoxColumn.DataPropertyName = "CardHolder";
+            this.cardHolderDataGridViewTextBoxColumn.HeaderText = "CardHolder";
+            this.cardHolderDataGridViewTextBoxColumn.Name = "cardHolderDataGridViewTextBoxColumn";
+            // 
+            // vIEWSTATEDataGridViewTextBoxColumn
+            // 
+            this.vIEWSTATEDataGridViewTextBoxColumn.DataPropertyName = "__VIEWSTATE";
+            this.vIEWSTATEDataGridViewTextBoxColumn.HeaderText = "__VIEWSTATE";
+            this.vIEWSTATEDataGridViewTextBoxColumn.Name = "vIEWSTATEDataGridViewTextBoxColumn";
+            // 
+            // vIEWSTATEGENERATORDataGridViewTextBoxColumn
+            // 
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.DataPropertyName = "__VIEWSTATEGENERATOR";
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.HeaderText = "__VIEWSTATEGENERATOR";
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.Name = "vIEWSTATEGENERATORDataGridViewTextBoxColumn";
+            // 
+            // cMSCurrentUrlDataGridViewTextBoxColumn
+            // 
+            this.cMSCurrentUrlDataGridViewTextBoxColumn.DataPropertyName = "__CMS_CurrentUrl";
+            this.cMSCurrentUrlDataGridViewTextBoxColumn.HeaderText = "__CMS_CurrentUrl";
+            this.cMSCurrentUrlDataGridViewTextBoxColumn.Name = "cMSCurrentUrlDataGridViewTextBoxColumn";
+            // 
+            // eVENTVALIDATIONDataGridViewTextBoxColumn
+            // 
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn.DataPropertyName = "__EVENTVALIDATION";
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn.HeaderText = "__EVENTVALIDATION";
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn.Name = "eVENTVALIDATIONDataGridViewTextBoxColumn";
+            // 
+            // applicationIdDataGridViewTextBoxColumn
+            // 
+            this.applicationIdDataGridViewTextBoxColumn.DataPropertyName = "ApplicationId";
+            this.applicationIdDataGridViewTextBoxColumn.HeaderText = "ApplicationId";
+            this.applicationIdDataGridViewTextBoxColumn.Name = "applicationIdDataGridViewTextBoxColumn";
+            // 
+            // ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn
+            // 
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.DataPropertyName = "ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState";
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.HeaderText = "ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState";
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.Name = "ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridView" +
+    "TextBoxColumn";
+            // 
+            // appointmentBindingSource2
+            // 
+            this.appointmentBindingSource2.DataSource = typeof(widkeyPaperDiaper.Client);
+            // 
             // appointmentBindingSource
             // 
             this.appointmentBindingSource.DataSource = typeof(widkeyPaperDiaper.Client);
@@ -553,7 +873,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1532, 867);
+            this.ClientSize = new System.Drawing.Size(1532, 665);
+            this.Controls.Add(this.deleteForms);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.comboBox3);
@@ -592,10 +913,10 @@
             this.Name = "Form1";
             this.Text = "NZwhv ";
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -650,6 +971,49 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nextStepDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn familyNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn givenNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn streetDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bithDateYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bithDateMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bithDateDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportExpiryDateYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportExpiryDateMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportExpiryDateDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalIdIssueDateYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalIdIssueDateMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalIdIssueDateDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalIdExpiryDateYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalIdExpiryDateMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalIdExpiryDateDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intendedTravelDateYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intendedTravelDateMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intendedTravelDateDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beenToNzDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beenToNzDateYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beenToNzDateMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn beenToNzDateDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cardTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cardNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cardVerificationCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cardExpiryMonthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cardExpiryYearDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cardHolderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vIEWSTATEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vIEWSTATEGENERATORDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cMSCurrentUrlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eVENTVALIDATIONDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn applicationIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button deleteForms;
     }
 }
 
