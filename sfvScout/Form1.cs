@@ -23,8 +23,14 @@ namespace widkeyPaperDiaper
     public partial class Form1 : Form
     {
         Client tempClient = null;
-        public static bool debug = true;
+        public static bool debug = false;
+        public static bool testButton = false;
         public static bool singleUser = true;
+        public static int retry = 3;
+        public static int timeoutTime = 3000;
+
+
+
         string[] singleUserDetails = {
                 "hansha", "Dd123456", "E1612545", "D", "budong",
                 "m", "136-8597_7921@qq.com", "chengdu", "daqianmen", "1990", "9", "9",
@@ -38,13 +44,10 @@ namespace widkeyPaperDiaper
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"};
 
 
-        public static int retry = 30;
 
         public static bool gForceToStop = false;
         public static bool gLoginOkFlag = false;
         static DateTime expireDate = new DateTime(2025, 12, 13);
-        static string rgx;
-        static Match myMatch;
         static string gHost = "www.immigration.govt.nz";
         public County selecteCounty = null;
         public int selectedShop = -1;
@@ -224,12 +227,15 @@ namespace widkeyPaperDiaper
 
 
             label6.Text = "expire date: " + expireDate.ToString("yyyy-MM-dd");
+
+            deleteForms.Visible = true;
+
             if (debug)
             {
                 //button1.Visible = true;
                 //testLog.Visible = true;
                 //this.ClientSize = new System.Drawing.Size(1150, 960);
-                deleteForms.Visible = true;
+                
             }
             else
             {
@@ -248,9 +254,8 @@ namespace widkeyPaperDiaper
                     }
                 }
             }
-            if (singleUser)
-            {
-                tempClient = new Client(singleUserDetails[0], singleUserDetails[1], singleUserDetails[2], singleUserDetails[3], singleUserDetails[4], singleUserDetails[5], singleUserDetails[6], singleUserDetails[7], singleUserDetails[8],
+
+            tempClient = new Client(singleUserDetails[0], singleUserDetails[1], singleUserDetails[2], singleUserDetails[3], singleUserDetails[4], singleUserDetails[5], singleUserDetails[6], singleUserDetails[7], singleUserDetails[8],
                                             singleUserDetails[9], singleUserDetails[10], singleUserDetails[11],
                                             singleUserDetails[12], singleUserDetails[13], singleUserDetails[14],
                                             singleUserDetails[15], singleUserDetails[16], singleUserDetails[17],
@@ -261,6 +266,9 @@ namespace widkeyPaperDiaper
                                             singleUserDetails[28],
                                             singleUserDetails[29], singleUserDetails[30], singleUserDetails[31], singleUserDetails[32], singleUserDetails[33], singleUserDetails[34]
                                     );
+            if (singleUser)
+            {
+                loginB.Visible = true;
                 ClientList = new List<Client>();
                 ClientList.Add(tempClient);
                 var source = new BindingSource();
@@ -471,6 +479,11 @@ namespace widkeyPaperDiaper
             //req.UserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.3; .NET4.0C; .NET4.0E";
             //req.Headers["Accept-Encoding"] = "gzip, deflate";
             //req.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+
+
+            req.Timeout = timeoutTime;
+
             req.Host = gHost;
 
             req.UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0";
@@ -1048,11 +1061,25 @@ namespace widkeyPaperDiaper
             return resp;
         }
 
-
-        private void loginB_Click(object sender, EventArgs e)
+        public void loginF()
         {
             Login login = new Login(this, tempClient); // temp
             login.loginT();
+        }
+
+        private void loginB_Click(object sender, EventArgs e)
+        {
+            Thread t = new Thread(loginF);
+            t.Start();
+        }
+
+        public void testButonClickF()
+        {
+            Login login = new Login(this, tempClient); //temp
+            login.loginT();
+
+            Apply apply = new Apply(this, tempClient);
+            apply.startProbe();
         }
 
         public void auto()
@@ -1075,11 +1102,29 @@ namespace widkeyPaperDiaper
 
             if(singleUser){
 
-                Login login = new Login(this, tempClient); //temp
-                login.loginT();
+                delegate2 tttt8987 = new delegate2(
+                    delegate() { 
+                        if (cardType.SelectedIndex == -1 || cardExpiryYear.SelectedIndex == -1 || cardExpiryMonth.SelectedIndex == -1 || creaditCardNo.Text == "" || cardHolder.Text == "" || cardVerificationCode.Text == "")
+                        {
+                            this.setLogtRed("please type in valid credit card imformation");
+                            return;
+                        }
 
-                Apply apply = new Apply(this, tempClient);
-                apply.startProbe();
+                        tempClient.CardNumber = creaditCardNo.Text;
+                        tempClient.CardHolder = cardHolder.Text;
+                        tempClient.CardVerificationCode = cardVerificationCode.Text;
+                        tempClient.CardExpiryYear = cardExpiryYear.SelectedItem.ToString();
+                        tempClient.CardExpiryMonth = cardExpiryMonth.SelectedItem.ToString();
+                        tempClient.CardType = (cardType.SelectedItem.ToString() == "visa" ? "visa" : "masterCard");
+
+                        Login login = new Login(this, tempClient); //temp
+                        login.loginT();
+
+                        Apply apply = new Apply(this, tempClient);
+                        apply.startProbe();
+                    }
+                );
+                creaditCardNo.Invoke(tttt8987);
             }
             else
             {
@@ -1106,6 +1151,9 @@ namespace widkeyPaperDiaper
 
         private void autoB_Click(object sender, EventArgs e)
         {
+            gForceToStop = false;
+            testButton = false;
+            button4.Visible = false;
             Thread t = new Thread(auto);
             t.Start();
         }
@@ -1785,9 +1833,19 @@ namespace widkeyPaperDiaper
 
         private void deleteForms_Click(object sender, EventArgs e)
         {
+            gForceToStop = false;
             Thread t = new Thread(deleteFormsF);
             t.Start();
             
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            gForceToStop = false;
+            testButton = true;
+            autoB.Visible = false;
+            Thread t = new Thread(testButonClickF);
+            t.Start();
         }
 
 

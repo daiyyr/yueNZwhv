@@ -74,23 +74,43 @@ namespace widkeyPaperDiaper
             HttpWebResponse resp = null;
 
             obtainLoginPage:
-            resp = Form1.weLoveYueer(
-              form1,
-              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
-              "POST",
-              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
-              false,
-              
-              //"&TS0120d49b_cr=08eba48ebbab28003238e681cda9bcdb55fb8668c04df479fb10d8abfc03767f1e29dd"
-              //+ "c98c63655c45544f7c3017e8a208a31e8d5e894800b1f1ba4a307fa5e66367f309e83050399eeb03126a5ccd8d6d47cb838f19f033c01b6797071278b6a0f3675c971bb86c9a33cf630623fb90ced6a4a3b20b3e59b1ed1519a48b7fff"
-              //+
-              //"TS0120d49b_id=3&TS0120d49b_76=0&TS0120d49b_86=0&TS0120d49b_md=1&TS0120d49b_rf=0&TS0120d49b_ct=0&TS0120d49b_pd=0",
 
-              "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
-              //this code comes from yuejie@20160320
+            if (Client.cookieContainer == null || Client.cookieContainer.Count == 0)
+            {
 
-             ref Client.cookieContainer
-              );
+                resp = Form1.weLoveYueer(
+                form1,
+                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "POST",
+                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                false,
+
+                //"&TS0120d49b_cr=08eba48ebbab28003238e681cda9bcdb55fb8668c04df479fb10d8abfc03767f1e29dd"
+                    //+ "c98c63655c45544f7c3017e8a208a31e8d5e894800b1f1ba4a307fa5e66367f309e83050399eeb03126a5ccd8d6d47cb838f19f033c01b6797071278b6a0f3675c971bb86c9a33cf630623fb90ced6a4a3b20b3e59b1ed1519a48b7fff"
+                    //+
+                    //"TS0120d49b_id=3&TS0120d49b_76=0&TS0120d49b_86=0&TS0120d49b_md=1&TS0120d49b_rf=0&TS0120d49b_ct=0&TS0120d49b_pd=0",
+
+                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                    //this code comes from yuejie@20160320
+
+                ref Client.cookieContainer
+                );
+            }
+            else
+            {
+                resp = Form1.weLoveYueer(
+                form1,
+                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "GET",
+                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                false,
+                "",
+
+                ref Client.cookieContainer
+                );
+
+            }
+            
 
             if (resp == null)
             {

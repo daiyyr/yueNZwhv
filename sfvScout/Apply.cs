@@ -196,6 +196,7 @@ namespace widkeyPaperDiaper
 
         public int createNewFormPage()
         {
+            createForm:
             form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": createNewForm..");
             foreach (Cookie ck in client.cookieContainer)
             {
@@ -211,7 +212,7 @@ namespace widkeyPaperDiaper
             {
                 respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
+              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
               "GET",
               "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
@@ -224,7 +225,7 @@ namespace widkeyPaperDiaper
             {
                 respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
+              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
               "POST",
               "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
@@ -241,7 +242,11 @@ namespace widkeyPaperDiaper
              ref client.cookieContainer,
               true);
             }
-            
+
+            if (respHtml == "")
+            {
+                goto createForm;
+            }
 
 
             if (!respHtml.Contains("ctl00_ContentPlaceHolder1_applyNowButton"))
@@ -301,9 +306,9 @@ namespace widkeyPaperDiaper
             clickCreateNow:
             resp= Form1.weLoveYueer(
                 form1,
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
+                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
                 "POST",
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug ? "82" : "46"), //82 for Germany, 46 for China
+                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
                 false,
                 "__EVENTVALIDATION=" + client.__EVENTVALIDATION +
                 "&__VIEWSTATE=" + client.__VIEWSTATE +
@@ -411,7 +416,6 @@ namespace widkeyPaperDiaper
                     form1.setLogT("clickCreateNow failed!");
                     return -1;
                 }
-
             }
 
             //如果有已完成的页面, 则可以跳页, 图标: ../Images/Tabcontrol/icon_tick.gif    待完善 daiyyr
@@ -421,6 +425,7 @@ namespace widkeyPaperDiaper
         }
         public int deleteForms()
         {
+            deleteForms:
             form1.setLogT("delete form begins, detect application ID..");
             string respHtml = Form1.weLoveYue(
               form1,
@@ -431,6 +436,11 @@ namespace widkeyPaperDiaper
               "",
              ref client.cookieContainer,
               true);
+
+            if (respHtml == "")
+            {
+                goto deleteForms;
+            }
 
             if (respHtml.Contains("ctl00_ContentPlaceHolder1_applicationList_applicationsDataGrid_ctl02_deleteHyperlink"))
             {
@@ -608,10 +618,10 @@ namespace widkeyPaperDiaper
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MaxDate=" + now +
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MinDate=" + minDate +
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState=" + client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState +
-                "&ctl00%24ContentPlaceHolder1%24personDetails%24CountryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
+                "&ctl00%24ContentPlaceHolder1%24personDetails%24CountryDropDownList=" + (Form1.debug || Form1.testButton ? "82" : "46") + //82 for Germany, 46 for China
                 "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24address1TextBox=" + client.Street +
                 "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24cityTextBox=" + client.City +
-                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24countryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
+                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24countryDropDownList=" + (Form1.debug || Form1.testButton ? "82" : "46") + //82 for Germany, 46 for China
                 "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24contactDetails%24emailAddressTextBox=" + client.Email.Replace("@","%40") +
                 "&ctl00%24ContentPlaceHolder1%24hasAgent%24representedByAgentDropdownlist=No"+
                 "&ctl00%24ContentPlaceHolder1%24communicationMethod%24communicationMethodDropDownList=1"+
@@ -694,7 +704,7 @@ namespace widkeyPaperDiaper
                 "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_MaxDate=" + maxDate +
                 "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_MinDate" + now +
                 "&ctl00_ContentPlaceHolder1_identification_otherExpiryDateDatePicker_ControlState=%2FwEXBQUMU2VsZWN0ZWREYXRlBgAAAAAAAAAABQxQcmV2aW91c0RhdGUGAAAAAAAAAAAFB01heERhdGUGAHjRulpd74gFEFNlbGVjdGVkRGF0ZVRleHQFBTAtMC0wBQdNaW5EYXRlBgA47vAuVtOI" +
-                "&ctl00%24ContentPlaceHolder1%24identification%24passportCountryDropDownList=" + (Form1.debug ? "82" : "46") + //82 for Germany, 46 for China
+                "&ctl00%24ContentPlaceHolder1%24identification%24passportCountryDropDownList=" + (Form1.debug || Form1.testButton ? "82" : "46") + //82 for Germany, 46 for China
                 "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=19" +
                 "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=3" +
                 "&__VIEWSTATE=" + client.__VIEWSTATE +
