@@ -619,7 +619,7 @@ namespace widkeyPaperDiaper
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_MinDate=" + minDate +
                 "&ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState=" + client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState +
                 "&ctl00%24ContentPlaceHolder1%24personDetails%24CountryDropDownList=" + (Form1.debug || Form1.testButton ? "82" : "46") + //82 for Germany, 46 for China
-                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24address1TextBox=" + client.Street +
+                "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24address1TextBox=" + Form1.ToUrlEncode(client.Street) +
                 "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24cityTextBox=" + client.City +
                 "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24address%24countryDropDownList=" + (Form1.debug || Form1.testButton ? "82" : "46") + //82 for Germany, 46 for China
                 "&ctl00%24ContentPlaceHolder1%24addressContactDetails%24contactDetails%24emailAddressTextBox=" + client.Email.Replace("@","%40") +

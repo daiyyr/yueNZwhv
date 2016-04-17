@@ -136,10 +136,10 @@
             // 
             // loginB
             // 
-            this.loginB.Location = new System.Drawing.Point(531, 69);
+            this.loginB.Location = new System.Drawing.Point(531, 72);
             this.loginB.Margin = new System.Windows.Forms.Padding(4);
             this.loginB.Name = "loginB";
-            this.loginB.Size = new System.Drawing.Size(120, 40);
+            this.loginB.Size = new System.Drawing.Size(120, 37);
             this.loginB.TabIndex = 1;
             this.loginB.Text = "重新登录";
             this.loginB.UseVisualStyleBackColor = true;
@@ -148,10 +148,10 @@
             // 
             // autoB
             // 
-            this.autoB.Location = new System.Drawing.Point(531, 20);
+            this.autoB.Location = new System.Drawing.Point(531, 23);
             this.autoB.Margin = new System.Windows.Forms.Padding(4);
             this.autoB.Name = "autoB";
-            this.autoB.Size = new System.Drawing.Size(120, 44);
+            this.autoB.Size = new System.Drawing.Size(120, 43);
             this.autoB.TabIndex = 4;
             this.autoB.Text = "自动模式";
             this.autoB.UseVisualStyleBackColor = true;
@@ -865,7 +865,7 @@
             // 
             // deleteForms
             // 
-            this.deleteForms.Location = new System.Drawing.Point(915, 22);
+            this.deleteForms.Location = new System.Drawing.Point(915, 23);
             this.deleteForms.Name = "deleteForms";
             this.deleteForms.Size = new System.Drawing.Size(120, 43);
             this.deleteForms.TabIndex = 36;

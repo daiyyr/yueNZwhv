@@ -8,7 +8,6 @@ namespace widkeyPaperDiaper
 {
     public class Client
     {
-        public string nextStep { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string FamilyName { get; set; }
@@ -53,6 +52,8 @@ namespace widkeyPaperDiaper
         public string ApplicationId { get; set; }
         public string ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState { get; set; }
         public CookieCollection cookieContainer = null;
+        public string nextStep { get; set; }
+
 
         public Client(string userName, string password, string passportNo, string familyName, string givenName, string gender, 
             string email, string city, string street, string year, string month, string day, 

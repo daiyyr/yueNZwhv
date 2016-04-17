@@ -27,21 +27,52 @@ namespace widkeyPaperDiaper
         public static bool testButton = false;
         public static bool singleUser = true;
         public static int retry = 3;
-        public static int timeoutTime = 3000;
+        public static int timeoutTime = 10000;
 
 
 
         string[] singleUserDetails = {
-                "hansha", "Dd123456", "E1612545", "D", "budong",
-                "m", "136-8597_7921@qq.com", "chengdu", "daqianmen", "1990", "9", "9",
-                "2020", "5", "16",
-                "2001", "7", "9",
-                "2022", "7", "9",
-                "2017", "4", "3",
+/*
+                "dbtchob", "Tr123456", "E71770244", "HUANG", "YUN",
+                "F", "dbtchob@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
+                "1985", "8", "18", //生日
+                "2026", "3", "24", //护照失效
+                "2013", "9", "29", //身份证发放
+                "2033", "9", "29", //身份证失效
+                "2017", "8", "1",  //计划入境日期
                 "No",
-                "2015", "6", "5",
-                "galevey",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"};
+                "", "", "",
+                "HUANG",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                                     
+                "WSTCYMHD", "Zyj1004", "E12833426", "HUANG", "LING",
+                "F", "WSTCYMHD0@163.COM", "SHANGHAI", "ZI TENG YI CUN 5 HAO 201",
+                "1985", "8", "18",//生日
+                "2023", "1", "29", //护照失效
+                "2012", "10", "12", //身份证发放
+                "2032", "10", "12", //身份证失效
+                "2017", "3", "1",  //计划入境日期
+                "No",
+                "", "", "",
+                "HUANG",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                 */
+                    
+
+                "nubuta1", "Ab888888", "E10119531", "HUANG", "LEI",
+                "F", "547522355@qq.com", "SHANGHAI", "RM101 NO.6 LANE88 SONGLIN RD SHANGHAI CHINA",
+                "1990", "6", "18",//生日
+                "2022", "11", "14", //护照失效
+                "2013", "5", "7", //身份证发放
+                "", "5", "7", //身份证失效
+                "2017", "3", "1",  //计划入境日期
+                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
+                "", "", "",
+                "HUANG",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                                     
+                                     
+                                     };
 
 
 
