@@ -54,6 +54,8 @@ namespace widkeyPaperDiaper
         public CookieCollection cookieContainer = null;
         public string nextStep { get; set; }
 
+        public Form1 form1;
+
 
         public Client(string userName, string password, string passportNo, string familyName, string givenName, string gender, 
             string email, string city, string street, string year, string month, string day, 
@@ -105,5 +107,17 @@ namespace widkeyPaperDiaper
             CardExpiryYear = cardExpiryYear;// 信用卡失效年, 四位
             CardHolder = cardHolder;// 卡片上的持卡人姓名, 必须为英文
         }
+
+
+        public void loginAndApply()
+        {
+            Login login = new Login(form1, this);
+            if (login.loginT() == 1)
+            {
+                Apply apply = new Apply(form1, this);
+                apply.startProbe();
+            }
+        }
+
     }
 }

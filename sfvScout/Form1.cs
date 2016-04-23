@@ -22,17 +22,35 @@ namespace widkeyPaperDiaper
 
     public partial class Form1 : Form
     {
-        Client tempClient = null;
+        public static bool singleUser = false;
         public static bool debug = false;
         public static bool testButton = false;
-        public static bool singleUser = true;
         public static int retry = 3;
         public static int timeoutTime = 10000;
+        static DateTime expireDate = new DateTime(2017, 4, 1);
 
 
 
         string[] singleUserDetails = {
-/*
+
+
+
+                /* 
+                "hansha", "Dd123456", "E71342435", "HUANG", "YUN",
+                "F", "111111111@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
+                "1985", "8", "18", //生日
+                "2026", "3", "24", //护照失效
+                "2013", "9", "29", //身份证发放
+                "2033", "9", "29", //身份证失效
+                "2017", "8", "1",  //计划入境日期
+                "No",
+                "", "", "",
+                "HUANG",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+
+               
+ 
+  
                 "dbtchob", "Tr123456", "E71770244", "HUANG", "YUN",
                 "F", "dbtchob@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
                 "1985", "8", "18", //生日
@@ -44,6 +62,8 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                1
+
                                      
                 "WSTCYMHD", "Zyj1004", "E12833426", "HUANG", "LING",
                 "F", "WSTCYMHD0@163.COM", "SHANGHAI", "ZI TENG YI CUN 5 HAO 201",
@@ -56,8 +76,13 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-                 */
+ * 
+ *              2
+ *              
+                 
                     
+
+
 
                 "nubuta1", "Ab888888", "E10119531", "HUANG", "LEI",
                 "F", "547522355@qq.com", "SHANGHAI", "RM101 NO.6 LANE88 SONGLIN RD SHANGHAI CHINA",
@@ -71,14 +96,66 @@ namespace widkeyPaperDiaper
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
                                      
-                                     
+                 3, incompleted
+ 
+ * 
+ * 
+ * 
+                "cycywen", "wenxihot123", "E08486126", "GUO", "SHUXUAN",
+                "F", "854879610@qq.com", "QUANZHOU", "TAISHANGTOUZIQU",
+                "1991", "6", "11",//生日
+                "2024", "4", "14", //护照失效
+                "2009", "8", "10", //身份证发放
+                "2019", "8", "10", //身份证失效
+                "2016", "8", "1",  //计划入境日期
+                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
+                "", "", "",
+                "GUO",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+ 
+                4
+
+* 
+ * 
+ * 
+ * */
+                "shirley_xu0207", "GOSHforever!1", "G36349085", "XU", "LEI",
+                "F", "ggouairain@hotmail.com", "SHANGHAI", "NO.92,SOUTH LONGSHUI ROAD,XUHUI DISTRICT",
+                "1990", "2", "7",//生日
+                "2024", "7", "6", //护照失效
+                "2016", "2", "20", //身份证发放
+                "2036", "2", "20", //身份证失效
+                "2017", "5", "1",  //计划入境日期
+                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
+                "", "", "",
+                "GUO",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                      };
 
 
 
+        Client tempClient = null;
         public static bool gForceToStop = false;
         public static bool gLoginOkFlag = false;
-        static DateTime expireDate = new DateTime(2025, 12, 13);
         static string gHost = "www.immigration.govt.nz";
         public County selecteCounty = null;
         public int selectedShop = -1;
@@ -258,6 +335,19 @@ namespace widkeyPaperDiaper
 
 
             label6.Text = "expire date: " + expireDate.ToString("yyyy-MM-dd");
+            panel1.Controls.Add(label15);
+            panel1.Controls.Add(label16);
+            panel1.Controls.Add(label17);
+            panel1.Controls.Add(label18);
+            panel1.Controls.Add(label19);
+            panel1.Controls.Add(cardTypeLabel);
+            panel1.Controls.Add(creaditCardNo);
+            panel1.Controls.Add(cardType);
+            panel1.Controls.Add(cardHolder);
+            panel1.Controls.Add(cardExpiryMonth);
+            panel1.Controls.Add(cardExpiryYear);
+            panel1.Controls.Add(cardVerificationCode);
+
 
             deleteForms.Visible = true;
 
@@ -310,7 +400,14 @@ namespace widkeyPaperDiaper
             {
                 button3.Visible = true;
                 deleteApp.Visible = true;
-                //显示结果框
+
+                //需显示结果框
+
+
+                panel1.Visible = false;
+                appointmentGrid.Height = 350;
+
+
             }
         }
         
@@ -1107,10 +1204,12 @@ namespace widkeyPaperDiaper
         public void testButonClickF()
         {
             Login login = new Login(this, tempClient); //temp
-            login.loginT();
+            if (login.loginT() == 1) {
+                Apply apply = new Apply(this, tempClient);
+                apply.startProbe();
+            }
 
-            Apply apply = new Apply(this, tempClient);
-            apply.startProbe();
+            
         }
 
         public void auto()
@@ -1148,11 +1247,13 @@ namespace widkeyPaperDiaper
                         tempClient.CardExpiryMonth = cardExpiryMonth.SelectedItem.ToString();
                         tempClient.CardType = (cardType.SelectedItem.ToString() == "visa" ? "visa" : "masterCard");
 
-                        Login login = new Login(this, tempClient); //temp
-                        login.loginT();
+                        Login login = new Login(this, tempClient);
+                        if (login.loginT() == 1)
+                        {
+                            Apply apply = new Apply(this, tempClient);
+                            apply.startProbe();
+                        }
 
-                        Apply apply = new Apply(this, tempClient);
-                        apply.startProbe();
                     }
                 );
                 creaditCardNo.Invoke(tttt8987);
@@ -1160,25 +1261,23 @@ namespace widkeyPaperDiaper
             else
             {
 
+                Thread[] threads = new Thread[ClientList.Count];
 
                 if (ClientList == null || ClientList.Count < 1)
                 {
-                    this.setLogT("please import valid appointment details!");
+                    this.setLogT("please import client list");
                     return;
                 }
-                if (Maillist == null || Maillist.Count < 1)
+                for (int i = 0; i < ClientList.Count; i++)
                 {
-                    this.setLogT("please import valid email details!");
-                    return;
-                }
-                for (int i = 0; i < ClientList.Count && i < Maillist.Count; i++)
-                {
-                    Apply paper = new Apply(this, ClientList[i]);
-                    Thread t = new Thread(paper.startProbe);
+                    ClientList[i].form1 = this;
+                    Thread t = new Thread(ClientList[i].loginAndApply);
                     t.Start();
                 }
+
             }
         }
+
 
         private void autoB_Click(object sender, EventArgs e)
         {
@@ -1406,7 +1505,7 @@ namespace widkeyPaperDiaper
                                 {
                                     Regex regex = new Regex(@"( ){2,}");
                                     string[] s = regex.Replace(line.Trim(), " ").Split(' ');
-                                    if (s.Length != 5)
+                                    if (s.Length != 35)
                                     {
                                         setLogT("ignore invalid line: " + line); //500
                                     }
@@ -1460,7 +1559,7 @@ namespace widkeyPaperDiaper
                             {
                                 Regex regex = new Regex(@"( ){2,}");
                                 string[] s = regex.Replace(line.Trim(), " ").Split(' ');
-                                if (s.Length != 5)
+                                if (s.Length != 35)
                                 {
                                     setLogT("ignore invalid line: " + line); //500
                                 }
@@ -1856,10 +1955,11 @@ namespace widkeyPaperDiaper
         public void deleteFormsF()
         {
             Login login = new Login(this, tempClient); //temp
-            login.loginT();
-
-            Apply apply = new Apply(this, tempClient);
-            apply.deleteForms();
+            if (login.loginT() == 1)
+            {
+                Apply apply = new Apply(this, tempClient);
+                apply.deleteForms();
+            }
         }
 
         private void deleteForms_Click(object sender, EventArgs e)

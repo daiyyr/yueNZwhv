@@ -125,6 +125,7 @@
             this.cardType = new System.Windows.Forms.ComboBox();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -132,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // loginB
@@ -887,7 +889,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(25, 263);
+            this.label15.Location = new System.Drawing.Point(6, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(101, 17);
             this.label15.TabIndex = 38;
@@ -931,7 +933,7 @@
             // 
             // creaditCardNo
             // 
-            this.creaditCardNo.Location = new System.Drawing.Point(157, 263);
+            this.creaditCardNo.Location = new System.Drawing.Point(138, 8);
             this.creaditCardNo.Name = "creaditCardNo";
             this.creaditCardNo.Size = new System.Drawing.Size(253, 22);
             this.creaditCardNo.TabIndex = 43;
@@ -1023,6 +1025,15 @@
             // 
             this.appointmentBindingSource1.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.creaditCardNo);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Location = new System.Drawing.Point(19, 255);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(480, 301);
+            this.panel1.TabIndex = 47;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1033,13 +1044,11 @@
             this.Controls.Add(this.cardExpiryYear);
             this.Controls.Add(this.cardVerificationCode);
             this.Controls.Add(this.cardHolder);
-            this.Controls.Add(this.creaditCardNo);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cardTypeLabel);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.deleteForms);
             this.Controls.Add(this.label14);
@@ -1076,6 +1085,7 @@
             this.Controls.Add(this.logT);
             this.Controls.Add(this.autoB);
             this.Controls.Add(this.loginB);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "NZwhv ";
@@ -1086,6 +1096,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1194,6 +1206,7 @@
         private System.Windows.Forms.ComboBox cardExpiryMonth;
         private System.Windows.Forms.Label cardTypeLabel;
         private System.Windows.Forms.ComboBox cardType;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

@@ -75,7 +75,7 @@ namespace widkeyPaperDiaper
 
             obtainLoginPage:
 
-            if (Client.cookieContainer == null || Client.cookieContainer.Count == 0)
+            if (true) //(Client.cookieContainer == null || Client.cookieContainer.Count == 0)
             {
 
                 resp = Form1.weLoveYueer(
@@ -193,8 +193,8 @@ namespace widkeyPaperDiaper
                     "&__VIEWSTATEGENERATOR=" + Client.__VIEWSTATEGENERATOR +
                     "&HeaderCommunityHomepage%3ASearchControl%3AtxtSearchString="+
                     "&VisaDropDown=%2Fsecure%2FLogin%2BWorking%2BHoliday.htm"+
-                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3AuserNameTextBox="+ Client.UserName +
-                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3ApasswordTextBox="+ Client.Password +
+                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3AuserNameTextBox="+ Form1.ToUrlEncode( Client.UserName ) +
+                    "&OnlineServicesLoginStealth%3AVisaLoginControl%3ApasswordTextBox="+ Form1.ToUrlEncode( Client.Password ) +
                     "&OnlineServicesLoginStealth%3AVisaLoginControl%3AloginImageButton.x=42"+
                     "&OnlineServicesLoginStealth%3AVisaLoginControl%3AloginImageButton.y=10"+
                     "&__VIEWSTATE=" + Client.__VIEWSTATE,
@@ -221,17 +221,17 @@ namespace widkeyPaperDiaper
                 || respHtml.Contains("The email you entered does not belong to any account")
             )
             {
-                form1.setLogT("username error!");
+                form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": username error!");
                 return -1;
             }
-            else if (respHtml.Contains("The password you entered is incorrect"))
+            else if (respHtml.Contains("The password you entered is incorrect") || respHtml.Contains("You have entered an incorrect user name or password"))
             {
-                form1.setLogT("password error!");
+                form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": password error!");
                 return -1;
             }
             else if (respHtml.Contains("Please enable cookies in your browser preferences to continue"))
             {
-                form1.setLogT("cookies error!");
+                form1.setLogT(Client.FamilyName + " " + Client.GivenName + " " + Client.PassportNo + ": cookies error!");
                 return -1;
             }
 
@@ -241,7 +241,7 @@ namespace widkeyPaperDiaper
 
 
 
-        public void loginT()
+        public int loginT()
         {
             /*
             if (!Form1.debug)
@@ -271,16 +271,15 @@ namespace widkeyPaperDiaper
                 }
 
                 int r = obtainLoginPage();
-                if (r == -3)
+                if (r == -3 || r == -2)
                 {
                     continue;
                 }
-                if (r != -2)
-                {
-                    break;
-                }
+               
+                return r;
 
             }
+            
         }
 
 

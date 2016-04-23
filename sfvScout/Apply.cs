@@ -208,6 +208,45 @@ namespace widkeyPaperDiaper
             }
             string respHtml;
 
+            /*
+            //default page
+            if (TS0120d49b_cr == "")
+            {
+                respHtml = Form1.weLoveYue(
+              form1,
+              "http://www.immigration.govt.nz/migrant/default.htm",
+                "GET",
+              "",
+              false,
+              "",
+
+             ref client.cookieContainer,
+              true);
+            }
+            else
+            {
+                respHtml = Form1.weLoveYue(
+              form1,
+              "http://www.immigration.govt.nz/migrant/default.htm",
+              "POST",
+              "",
+              false,
+
+              "&TS0120d49b_cr=" + TS0120d49b_cr +
+                "&TS0120d49b_id=3" +
+                "&TS0120d49b_76=0" +
+                "&TS0120d49b_86=0" +
+                "&TS0120d49b_md=1" +
+                "&TS0120d49b_rf=0" +
+                "&TS0120d49b_ct=0" +
+                "&TS0120d49b_pd=0",
+
+             ref client.cookieContainer,
+              true);
+            }
+            */
+
+            //create form page
             if (TS0120d49b_cr == "")
             {
                 respHtml = Form1.weLoveYue(
