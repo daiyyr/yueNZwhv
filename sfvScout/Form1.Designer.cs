@@ -51,6 +51,36 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.appointmentGrid = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.mailGrid = new System.Windows.Forms.DataGridView();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailForshowBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.deleteForms = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.creaditCardNo = new System.Windows.Forms.TextBox();
+            this.cardHolder = new System.Windows.Forms.TextBox();
+            this.cardVerificationCode = new System.Windows.Forms.TextBox();
+            this.cardExpiryYear = new System.Windows.Forms.ComboBox();
+            this.cardExpiryMonth = new System.Windows.Forms.ComboBox();
+            this.cardTypeLabel = new System.Windows.Forms.Label();
+            this.cardType = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.nextStepDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,46 +124,16 @@
             this.applicationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appointmentBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.mailGrid = new System.Windows.Forms.DataGridView();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailForshowBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.deleteForms = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.creaditCardNo = new System.Windows.Forms.TextBox();
-            this.cardHolder = new System.Windows.Forms.TextBox();
-            this.cardVerificationCode = new System.Windows.Forms.TextBox();
-            this.cardExpiryYear = new System.Windows.Forms.ComboBox();
-            this.cardExpiryMonth = new System.Windows.Forms.ComboBox();
-            this.cardTypeLabel = new System.Windows.Forms.Label();
-            this.cardType = new System.Windows.Forms.ComboBox();
             this.appointmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // loginB
@@ -423,263 +423,6 @@
             this.appointmentGrid.Size = new System.Drawing.Size(1008, 110);
             this.appointmentGrid.TabIndex = 24;
             this.appointmentGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.appointmentGrid_CellContentClick);
-            // 
-            // nextStepDataGridViewTextBoxColumn
-            // 
-            this.nextStepDataGridViewTextBoxColumn.DataPropertyName = "nextStep";
-            this.nextStepDataGridViewTextBoxColumn.HeaderText = "nextStep";
-            this.nextStepDataGridViewTextBoxColumn.Name = "nextStepDataGridViewTextBoxColumn";
-            // 
-            // userNameDataGridViewTextBoxColumn
-            // 
-            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
-            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
-            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
-            // 
-            // passwordDataGridViewTextBoxColumn1
-            // 
-            this.passwordDataGridViewTextBoxColumn1.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn1.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn1.Name = "passwordDataGridViewTextBoxColumn1";
-            // 
-            // familyNameDataGridViewTextBoxColumn
-            // 
-            this.familyNameDataGridViewTextBoxColumn.DataPropertyName = "FamilyName";
-            this.familyNameDataGridViewTextBoxColumn.HeaderText = "FamilyName";
-            this.familyNameDataGridViewTextBoxColumn.Name = "familyNameDataGridViewTextBoxColumn";
-            // 
-            // givenNameDataGridViewTextBoxColumn
-            // 
-            this.givenNameDataGridViewTextBoxColumn.DataPropertyName = "GivenName";
-            this.givenNameDataGridViewTextBoxColumn.HeaderText = "GivenName";
-            this.givenNameDataGridViewTextBoxColumn.Name = "givenNameDataGridViewTextBoxColumn";
-            // 
-            // genderDataGridViewTextBoxColumn
-            // 
-            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
-            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
-            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            // 
-            // passportNoDataGridViewTextBoxColumn
-            // 
-            this.passportNoDataGridViewTextBoxColumn.DataPropertyName = "PassportNo";
-            this.passportNoDataGridViewTextBoxColumn.HeaderText = "PassportNo";
-            this.passportNoDataGridViewTextBoxColumn.Name = "passportNoDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn1
-            // 
-            this.emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn1.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            // 
-            // streetDataGridViewTextBoxColumn
-            // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
-            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
-            // 
-            // bithDateYearDataGridViewTextBoxColumn
-            // 
-            this.bithDateYearDataGridViewTextBoxColumn.DataPropertyName = "BithDateYear";
-            this.bithDateYearDataGridViewTextBoxColumn.HeaderText = "BithDateYear";
-            this.bithDateYearDataGridViewTextBoxColumn.Name = "bithDateYearDataGridViewTextBoxColumn";
-            // 
-            // bithDateMonthDataGridViewTextBoxColumn
-            // 
-            this.bithDateMonthDataGridViewTextBoxColumn.DataPropertyName = "BithDateMonth";
-            this.bithDateMonthDataGridViewTextBoxColumn.HeaderText = "BithDateMonth";
-            this.bithDateMonthDataGridViewTextBoxColumn.Name = "bithDateMonthDataGridViewTextBoxColumn";
-            // 
-            // bithDateDayDataGridViewTextBoxColumn
-            // 
-            this.bithDateDayDataGridViewTextBoxColumn.DataPropertyName = "BithDateDay";
-            this.bithDateDayDataGridViewTextBoxColumn.HeaderText = "BithDateDay";
-            this.bithDateDayDataGridViewTextBoxColumn.Name = "bithDateDayDataGridViewTextBoxColumn";
-            // 
-            // passportExpiryDateYearDataGridViewTextBoxColumn
-            // 
-            this.passportExpiryDateYearDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateYear";
-            this.passportExpiryDateYearDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateYear";
-            this.passportExpiryDateYearDataGridViewTextBoxColumn.Name = "passportExpiryDateYearDataGridViewTextBoxColumn";
-            // 
-            // passportExpiryDateMonthDataGridViewTextBoxColumn
-            // 
-            this.passportExpiryDateMonthDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateMonth";
-            this.passportExpiryDateMonthDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateMonth";
-            this.passportExpiryDateMonthDataGridViewTextBoxColumn.Name = "passportExpiryDateMonthDataGridViewTextBoxColumn";
-            // 
-            // passportExpiryDateDayDataGridViewTextBoxColumn
-            // 
-            this.passportExpiryDateDayDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateDay";
-            this.passportExpiryDateDayDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateDay";
-            this.passportExpiryDateDayDataGridViewTextBoxColumn.Name = "passportExpiryDateDayDataGridViewTextBoxColumn";
-            // 
-            // nationalIdIssueDateYearDataGridViewTextBoxColumn
-            // 
-            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateYear";
-            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateYear";
-            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.Name = "nationalIdIssueDateYearDataGridViewTextBoxColumn";
-            // 
-            // nationalIdIssueDateMonthDataGridViewTextBoxColumn
-            // 
-            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateMonth";
-            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateMonth";
-            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.Name = "nationalIdIssueDateMonthDataGridViewTextBoxColumn";
-            // 
-            // nationalIdIssueDateDayDataGridViewTextBoxColumn
-            // 
-            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateDay";
-            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateDay";
-            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.Name = "nationalIdIssueDateDayDataGridViewTextBoxColumn";
-            // 
-            // nationalIdExpiryDateYearDataGridViewTextBoxColumn
-            // 
-            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateYear";
-            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateYear";
-            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateYearDataGridViewTextBoxColumn";
-            // 
-            // nationalIdExpiryDateMonthDataGridViewTextBoxColumn
-            // 
-            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateMonth";
-            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateMonth";
-            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateMonthDataGridViewTextBoxColumn";
-            // 
-            // nationalIdExpiryDateDayDataGridViewTextBoxColumn
-            // 
-            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateDay";
-            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateDay";
-            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateDayDataGridViewTextBoxColumn";
-            // 
-            // intendedTravelDateYearDataGridViewTextBoxColumn
-            // 
-            this.intendedTravelDateYearDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateYear";
-            this.intendedTravelDateYearDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateYear";
-            this.intendedTravelDateYearDataGridViewTextBoxColumn.Name = "intendedTravelDateYearDataGridViewTextBoxColumn";
-            // 
-            // intendedTravelDateMonthDataGridViewTextBoxColumn
-            // 
-            this.intendedTravelDateMonthDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateMonth";
-            this.intendedTravelDateMonthDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateMonth";
-            this.intendedTravelDateMonthDataGridViewTextBoxColumn.Name = "intendedTravelDateMonthDataGridViewTextBoxColumn";
-            // 
-            // intendedTravelDateDayDataGridViewTextBoxColumn
-            // 
-            this.intendedTravelDateDayDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateDay";
-            this.intendedTravelDateDayDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateDay";
-            this.intendedTravelDateDayDataGridViewTextBoxColumn.Name = "intendedTravelDateDayDataGridViewTextBoxColumn";
-            // 
-            // beenToNzDataGridViewTextBoxColumn
-            // 
-            this.beenToNzDataGridViewTextBoxColumn.DataPropertyName = "BeenToNz";
-            this.beenToNzDataGridViewTextBoxColumn.HeaderText = "BeenToNz";
-            this.beenToNzDataGridViewTextBoxColumn.Name = "beenToNzDataGridViewTextBoxColumn";
-            // 
-            // beenToNzDateYearDataGridViewTextBoxColumn
-            // 
-            this.beenToNzDateYearDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateYear";
-            this.beenToNzDateYearDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateYear";
-            this.beenToNzDateYearDataGridViewTextBoxColumn.Name = "beenToNzDateYearDataGridViewTextBoxColumn";
-            // 
-            // beenToNzDateMonthDataGridViewTextBoxColumn
-            // 
-            this.beenToNzDateMonthDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateMonth";
-            this.beenToNzDateMonthDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateMonth";
-            this.beenToNzDateMonthDataGridViewTextBoxColumn.Name = "beenToNzDateMonthDataGridViewTextBoxColumn";
-            // 
-            // beenToNzDateDayDataGridViewTextBoxColumn
-            // 
-            this.beenToNzDateDayDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateDay";
-            this.beenToNzDateDayDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateDay";
-            this.beenToNzDateDayDataGridViewTextBoxColumn.Name = "beenToNzDateDayDataGridViewTextBoxColumn";
-            // 
-            // payerNameDataGridViewTextBoxColumn
-            // 
-            this.payerNameDataGridViewTextBoxColumn.DataPropertyName = "PayerName";
-            this.payerNameDataGridViewTextBoxColumn.HeaderText = "PayerName";
-            this.payerNameDataGridViewTextBoxColumn.Name = "payerNameDataGridViewTextBoxColumn";
-            // 
-            // cardTypeDataGridViewTextBoxColumn
-            // 
-            this.cardTypeDataGridViewTextBoxColumn.DataPropertyName = "CardType";
-            this.cardTypeDataGridViewTextBoxColumn.HeaderText = "CardType";
-            this.cardTypeDataGridViewTextBoxColumn.Name = "cardTypeDataGridViewTextBoxColumn";
-            // 
-            // cardNumberDataGridViewTextBoxColumn
-            // 
-            this.cardNumberDataGridViewTextBoxColumn.DataPropertyName = "CardNumber";
-            this.cardNumberDataGridViewTextBoxColumn.HeaderText = "CardNumber";
-            this.cardNumberDataGridViewTextBoxColumn.Name = "cardNumberDataGridViewTextBoxColumn";
-            // 
-            // cardVerificationCodeDataGridViewTextBoxColumn
-            // 
-            this.cardVerificationCodeDataGridViewTextBoxColumn.DataPropertyName = "CardVerificationCode";
-            this.cardVerificationCodeDataGridViewTextBoxColumn.HeaderText = "CardVerificationCode";
-            this.cardVerificationCodeDataGridViewTextBoxColumn.Name = "cardVerificationCodeDataGridViewTextBoxColumn";
-            // 
-            // cardExpiryMonthDataGridViewTextBoxColumn
-            // 
-            this.cardExpiryMonthDataGridViewTextBoxColumn.DataPropertyName = "CardExpiryMonth";
-            this.cardExpiryMonthDataGridViewTextBoxColumn.HeaderText = "CardExpiryMonth";
-            this.cardExpiryMonthDataGridViewTextBoxColumn.Name = "cardExpiryMonthDataGridViewTextBoxColumn";
-            // 
-            // cardExpiryYearDataGridViewTextBoxColumn
-            // 
-            this.cardExpiryYearDataGridViewTextBoxColumn.DataPropertyName = "CardExpiryYear";
-            this.cardExpiryYearDataGridViewTextBoxColumn.HeaderText = "CardExpiryYear";
-            this.cardExpiryYearDataGridViewTextBoxColumn.Name = "cardExpiryYearDataGridViewTextBoxColumn";
-            // 
-            // cardHolderDataGridViewTextBoxColumn
-            // 
-            this.cardHolderDataGridViewTextBoxColumn.DataPropertyName = "CardHolder";
-            this.cardHolderDataGridViewTextBoxColumn.HeaderText = "CardHolder";
-            this.cardHolderDataGridViewTextBoxColumn.Name = "cardHolderDataGridViewTextBoxColumn";
-            // 
-            // vIEWSTATEDataGridViewTextBoxColumn
-            // 
-            this.vIEWSTATEDataGridViewTextBoxColumn.DataPropertyName = "__VIEWSTATE";
-            this.vIEWSTATEDataGridViewTextBoxColumn.HeaderText = "__VIEWSTATE";
-            this.vIEWSTATEDataGridViewTextBoxColumn.Name = "vIEWSTATEDataGridViewTextBoxColumn";
-            // 
-            // vIEWSTATEGENERATORDataGridViewTextBoxColumn
-            // 
-            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.DataPropertyName = "__VIEWSTATEGENERATOR";
-            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.HeaderText = "__VIEWSTATEGENERATOR";
-            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.Name = "vIEWSTATEGENERATORDataGridViewTextBoxColumn";
-            // 
-            // cMSCurrentUrlDataGridViewTextBoxColumn
-            // 
-            this.cMSCurrentUrlDataGridViewTextBoxColumn.DataPropertyName = "__CMS_CurrentUrl";
-            this.cMSCurrentUrlDataGridViewTextBoxColumn.HeaderText = "__CMS_CurrentUrl";
-            this.cMSCurrentUrlDataGridViewTextBoxColumn.Name = "cMSCurrentUrlDataGridViewTextBoxColumn";
-            // 
-            // eVENTVALIDATIONDataGridViewTextBoxColumn
-            // 
-            this.eVENTVALIDATIONDataGridViewTextBoxColumn.DataPropertyName = "__EVENTVALIDATION";
-            this.eVENTVALIDATIONDataGridViewTextBoxColumn.HeaderText = "__EVENTVALIDATION";
-            this.eVENTVALIDATIONDataGridViewTextBoxColumn.Name = "eVENTVALIDATIONDataGridViewTextBoxColumn";
-            // 
-            // applicationIdDataGridViewTextBoxColumn
-            // 
-            this.applicationIdDataGridViewTextBoxColumn.DataPropertyName = "ApplicationId";
-            this.applicationIdDataGridViewTextBoxColumn.HeaderText = "ApplicationId";
-            this.applicationIdDataGridViewTextBoxColumn.Name = "applicationIdDataGridViewTextBoxColumn";
-            // 
-            // ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn
-            // 
-            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.DataPropertyName = "ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState";
-            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.HeaderText = "ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState";
-            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.Name = "ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridView" +
-    "TextBoxColumn";
-            // 
-            // appointmentBindingSource2
-            // 
-            this.appointmentBindingSource2.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
             // pictureBox1
             // 
@@ -1017,14 +760,6 @@
             this.cardType.Size = new System.Drawing.Size(121, 24);
             this.cardType.TabIndex = 46;
             // 
-            // appointmentBindingSource
-            // 
-            this.appointmentBindingSource.DataSource = typeof(widkeyPaperDiaper.Client);
-            // 
-            // appointmentBindingSource1
-            // 
-            this.appointmentBindingSource1.DataSource = typeof(widkeyPaperDiaper.Client);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.creaditCardNo);
@@ -1033,6 +768,271 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(480, 301);
             this.panel1.TabIndex = 47;
+            // 
+            // nextStepDataGridViewTextBoxColumn
+            // 
+            this.nextStepDataGridViewTextBoxColumn.DataPropertyName = "nextStep";
+            this.nextStepDataGridViewTextBoxColumn.HeaderText = "nextStep";
+            this.nextStepDataGridViewTextBoxColumn.Name = "nextStepDataGridViewTextBoxColumn";
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            // 
+            // passwordDataGridViewTextBoxColumn1
+            // 
+            this.passwordDataGridViewTextBoxColumn1.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn1.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn1.Name = "passwordDataGridViewTextBoxColumn1";
+            // 
+            // familyNameDataGridViewTextBoxColumn
+            // 
+            this.familyNameDataGridViewTextBoxColumn.DataPropertyName = "FamilyName";
+            this.familyNameDataGridViewTextBoxColumn.HeaderText = "FamilyName";
+            this.familyNameDataGridViewTextBoxColumn.Name = "familyNameDataGridViewTextBoxColumn";
+            // 
+            // givenNameDataGridViewTextBoxColumn
+            // 
+            this.givenNameDataGridViewTextBoxColumn.DataPropertyName = "GivenName";
+            this.givenNameDataGridViewTextBoxColumn.HeaderText = "GivenName";
+            this.givenNameDataGridViewTextBoxColumn.Name = "givenNameDataGridViewTextBoxColumn";
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            // 
+            // passportNoDataGridViewTextBoxColumn
+            // 
+            this.passportNoDataGridViewTextBoxColumn.DataPropertyName = "PassportNo";
+            this.passportNoDataGridViewTextBoxColumn.HeaderText = "PassportNo";
+            this.passportNoDataGridViewTextBoxColumn.Name = "passportNoDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn1
+            // 
+            this.emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn1.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            // 
+            // streetDataGridViewTextBoxColumn
+            // 
+            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
+            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
+            // 
+            // bithDateYearDataGridViewTextBoxColumn
+            // 
+            this.bithDateYearDataGridViewTextBoxColumn.DataPropertyName = "BithDateYear";
+            this.bithDateYearDataGridViewTextBoxColumn.HeaderText = "BithDateYear";
+            this.bithDateYearDataGridViewTextBoxColumn.Name = "bithDateYearDataGridViewTextBoxColumn";
+            // 
+            // bithDateMonthDataGridViewTextBoxColumn
+            // 
+            this.bithDateMonthDataGridViewTextBoxColumn.DataPropertyName = "BithDateMonth";
+            this.bithDateMonthDataGridViewTextBoxColumn.HeaderText = "BithDateMonth";
+            this.bithDateMonthDataGridViewTextBoxColumn.Name = "bithDateMonthDataGridViewTextBoxColumn";
+            // 
+            // bithDateDayDataGridViewTextBoxColumn
+            // 
+            this.bithDateDayDataGridViewTextBoxColumn.DataPropertyName = "BithDateDay";
+            this.bithDateDayDataGridViewTextBoxColumn.HeaderText = "BithDateDay";
+            this.bithDateDayDataGridViewTextBoxColumn.Name = "bithDateDayDataGridViewTextBoxColumn";
+            // 
+            // passportExpiryDateYearDataGridViewTextBoxColumn
+            // 
+            this.passportExpiryDateYearDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateYear";
+            this.passportExpiryDateYearDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateYear";
+            this.passportExpiryDateYearDataGridViewTextBoxColumn.Name = "passportExpiryDateYearDataGridViewTextBoxColumn";
+            // 
+            // passportExpiryDateMonthDataGridViewTextBoxColumn
+            // 
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateMonth";
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateMonth";
+            this.passportExpiryDateMonthDataGridViewTextBoxColumn.Name = "passportExpiryDateMonthDataGridViewTextBoxColumn";
+            // 
+            // passportExpiryDateDayDataGridViewTextBoxColumn
+            // 
+            this.passportExpiryDateDayDataGridViewTextBoxColumn.DataPropertyName = "PassportExpiryDateDay";
+            this.passportExpiryDateDayDataGridViewTextBoxColumn.HeaderText = "PassportExpiryDateDay";
+            this.passportExpiryDateDayDataGridViewTextBoxColumn.Name = "passportExpiryDateDayDataGridViewTextBoxColumn";
+            // 
+            // nationalIdIssueDateYearDataGridViewTextBoxColumn
+            // 
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateYear";
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateYear";
+            this.nationalIdIssueDateYearDataGridViewTextBoxColumn.Name = "nationalIdIssueDateYearDataGridViewTextBoxColumn";
+            // 
+            // nationalIdIssueDateMonthDataGridViewTextBoxColumn
+            // 
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateMonth";
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateMonth";
+            this.nationalIdIssueDateMonthDataGridViewTextBoxColumn.Name = "nationalIdIssueDateMonthDataGridViewTextBoxColumn";
+            // 
+            // nationalIdIssueDateDayDataGridViewTextBoxColumn
+            // 
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.DataPropertyName = "NationalIdIssueDateDay";
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.HeaderText = "NationalIdIssueDateDay";
+            this.nationalIdIssueDateDayDataGridViewTextBoxColumn.Name = "nationalIdIssueDateDayDataGridViewTextBoxColumn";
+            // 
+            // nationalIdExpiryDateYearDataGridViewTextBoxColumn
+            // 
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateYear";
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateYear";
+            this.nationalIdExpiryDateYearDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateYearDataGridViewTextBoxColumn";
+            // 
+            // nationalIdExpiryDateMonthDataGridViewTextBoxColumn
+            // 
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateMonth";
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateMonth";
+            this.nationalIdExpiryDateMonthDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateMonthDataGridViewTextBoxColumn";
+            // 
+            // nationalIdExpiryDateDayDataGridViewTextBoxColumn
+            // 
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.DataPropertyName = "NationalIdExpiryDateDay";
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.HeaderText = "NationalIdExpiryDateDay";
+            this.nationalIdExpiryDateDayDataGridViewTextBoxColumn.Name = "nationalIdExpiryDateDayDataGridViewTextBoxColumn";
+            // 
+            // intendedTravelDateYearDataGridViewTextBoxColumn
+            // 
+            this.intendedTravelDateYearDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateYear";
+            this.intendedTravelDateYearDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateYear";
+            this.intendedTravelDateYearDataGridViewTextBoxColumn.Name = "intendedTravelDateYearDataGridViewTextBoxColumn";
+            // 
+            // intendedTravelDateMonthDataGridViewTextBoxColumn
+            // 
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateMonth";
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateMonth";
+            this.intendedTravelDateMonthDataGridViewTextBoxColumn.Name = "intendedTravelDateMonthDataGridViewTextBoxColumn";
+            // 
+            // intendedTravelDateDayDataGridViewTextBoxColumn
+            // 
+            this.intendedTravelDateDayDataGridViewTextBoxColumn.DataPropertyName = "IntendedTravelDateDay";
+            this.intendedTravelDateDayDataGridViewTextBoxColumn.HeaderText = "IntendedTravelDateDay";
+            this.intendedTravelDateDayDataGridViewTextBoxColumn.Name = "intendedTravelDateDayDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDataGridViewTextBoxColumn.DataPropertyName = "BeenToNz";
+            this.beenToNzDataGridViewTextBoxColumn.HeaderText = "BeenToNz";
+            this.beenToNzDataGridViewTextBoxColumn.Name = "beenToNzDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDateYearDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDateYearDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateYear";
+            this.beenToNzDateYearDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateYear";
+            this.beenToNzDateYearDataGridViewTextBoxColumn.Name = "beenToNzDateYearDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDateMonthDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDateMonthDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateMonth";
+            this.beenToNzDateMonthDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateMonth";
+            this.beenToNzDateMonthDataGridViewTextBoxColumn.Name = "beenToNzDateMonthDataGridViewTextBoxColumn";
+            // 
+            // beenToNzDateDayDataGridViewTextBoxColumn
+            // 
+            this.beenToNzDateDayDataGridViewTextBoxColumn.DataPropertyName = "BeenToNzDateDay";
+            this.beenToNzDateDayDataGridViewTextBoxColumn.HeaderText = "BeenToNzDateDay";
+            this.beenToNzDateDayDataGridViewTextBoxColumn.Name = "beenToNzDateDayDataGridViewTextBoxColumn";
+            // 
+            // payerNameDataGridViewTextBoxColumn
+            // 
+            this.payerNameDataGridViewTextBoxColumn.DataPropertyName = "PayerName";
+            this.payerNameDataGridViewTextBoxColumn.HeaderText = "PayerName";
+            this.payerNameDataGridViewTextBoxColumn.Name = "payerNameDataGridViewTextBoxColumn";
+            // 
+            // cardTypeDataGridViewTextBoxColumn
+            // 
+            this.cardTypeDataGridViewTextBoxColumn.DataPropertyName = "CardType";
+            this.cardTypeDataGridViewTextBoxColumn.HeaderText = "CardType";
+            this.cardTypeDataGridViewTextBoxColumn.Name = "cardTypeDataGridViewTextBoxColumn";
+            // 
+            // cardNumberDataGridViewTextBoxColumn
+            // 
+            this.cardNumberDataGridViewTextBoxColumn.DataPropertyName = "CardNumber";
+            this.cardNumberDataGridViewTextBoxColumn.HeaderText = "CardNumber";
+            this.cardNumberDataGridViewTextBoxColumn.Name = "cardNumberDataGridViewTextBoxColumn";
+            // 
+            // cardVerificationCodeDataGridViewTextBoxColumn
+            // 
+            this.cardVerificationCodeDataGridViewTextBoxColumn.DataPropertyName = "CardVerificationCode";
+            this.cardVerificationCodeDataGridViewTextBoxColumn.HeaderText = "CardVerificationCode";
+            this.cardVerificationCodeDataGridViewTextBoxColumn.Name = "cardVerificationCodeDataGridViewTextBoxColumn";
+            // 
+            // cardExpiryMonthDataGridViewTextBoxColumn
+            // 
+            this.cardExpiryMonthDataGridViewTextBoxColumn.DataPropertyName = "CardExpiryMonth";
+            this.cardExpiryMonthDataGridViewTextBoxColumn.HeaderText = "CardExpiryMonth";
+            this.cardExpiryMonthDataGridViewTextBoxColumn.Name = "cardExpiryMonthDataGridViewTextBoxColumn";
+            // 
+            // cardExpiryYearDataGridViewTextBoxColumn
+            // 
+            this.cardExpiryYearDataGridViewTextBoxColumn.DataPropertyName = "CardExpiryYear";
+            this.cardExpiryYearDataGridViewTextBoxColumn.HeaderText = "CardExpiryYear";
+            this.cardExpiryYearDataGridViewTextBoxColumn.Name = "cardExpiryYearDataGridViewTextBoxColumn";
+            // 
+            // cardHolderDataGridViewTextBoxColumn
+            // 
+            this.cardHolderDataGridViewTextBoxColumn.DataPropertyName = "CardHolder";
+            this.cardHolderDataGridViewTextBoxColumn.HeaderText = "CardHolder";
+            this.cardHolderDataGridViewTextBoxColumn.Name = "cardHolderDataGridViewTextBoxColumn";
+            // 
+            // vIEWSTATEDataGridViewTextBoxColumn
+            // 
+            this.vIEWSTATEDataGridViewTextBoxColumn.DataPropertyName = "__VIEWSTATE";
+            this.vIEWSTATEDataGridViewTextBoxColumn.HeaderText = "__VIEWSTATE";
+            this.vIEWSTATEDataGridViewTextBoxColumn.Name = "vIEWSTATEDataGridViewTextBoxColumn";
+            // 
+            // vIEWSTATEGENERATORDataGridViewTextBoxColumn
+            // 
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.DataPropertyName = "__VIEWSTATEGENERATOR";
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.HeaderText = "__VIEWSTATEGENERATOR";
+            this.vIEWSTATEGENERATORDataGridViewTextBoxColumn.Name = "vIEWSTATEGENERATORDataGridViewTextBoxColumn";
+            // 
+            // cMSCurrentUrlDataGridViewTextBoxColumn
+            // 
+            this.cMSCurrentUrlDataGridViewTextBoxColumn.DataPropertyName = "__CMS_CurrentUrl";
+            this.cMSCurrentUrlDataGridViewTextBoxColumn.HeaderText = "__CMS_CurrentUrl";
+            this.cMSCurrentUrlDataGridViewTextBoxColumn.Name = "cMSCurrentUrlDataGridViewTextBoxColumn";
+            // 
+            // eVENTVALIDATIONDataGridViewTextBoxColumn
+            // 
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn.DataPropertyName = "__EVENTVALIDATION";
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn.HeaderText = "__EVENTVALIDATION";
+            this.eVENTVALIDATIONDataGridViewTextBoxColumn.Name = "eVENTVALIDATIONDataGridViewTextBoxColumn";
+            // 
+            // applicationIdDataGridViewTextBoxColumn
+            // 
+            this.applicationIdDataGridViewTextBoxColumn.DataPropertyName = "ApplicationId";
+            this.applicationIdDataGridViewTextBoxColumn.HeaderText = "ApplicationId";
+            this.applicationIdDataGridViewTextBoxColumn.Name = "applicationIdDataGridViewTextBoxColumn";
+            // 
+            // ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn
+            // 
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.DataPropertyName = "ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState";
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.HeaderText = "ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState";
+            this.ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridViewTextBoxColumn.Name = "ctl00ContentPlaceHolder1personDetailsdateOfBithDatePickerControlStateDataGridView" +
+    "TextBoxColumn";
+            // 
+            // appointmentBindingSource2
+            // 
+            this.appointmentBindingSource2.DataSource = typeof(widkeyPaperDiaper.Client);
+            // 
+            // appointmentBindingSource
+            // 
+            this.appointmentBindingSource.DataSource = typeof(widkeyPaperDiaper.Client);
+            // 
+            // appointmentBindingSource1
+            // 
+            this.appointmentBindingSource1.DataSource = typeof(widkeyPaperDiaper.Client);
             // 
             // Form1
             // 
@@ -1090,14 +1090,14 @@
             this.Name = "Form1";
             this.Text = "NZwhv ";
             ((System.ComponentModel.ISupportInitialize)(this.appointmentGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emailForshowBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appointmentBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

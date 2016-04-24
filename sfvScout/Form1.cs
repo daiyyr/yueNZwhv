@@ -22,11 +22,11 @@ namespace widkeyPaperDiaper
 
     public partial class Form1 : Form
     {
-        public static bool singleUser = false;
+        public static bool singleUser = true;
         public static bool debug = false;
         public static bool testButton = false;
         public static int retry = 3;
-        public static int timeoutTime = 10000;
+        public static int timeoutTime = 4000;
         static DateTime expireDate = new DateTime(2017, 4, 1);
 
 
@@ -62,6 +62,7 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                
                 1
 
                                      
@@ -76,9 +77,9 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
- * 
- *              2
- *              
+ 
+                2
+               
                  
                     
 
@@ -97,10 +98,8 @@ namespace widkeyPaperDiaper
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
                                      
                  3, incompleted
+
  
- * 
- * 
- * 
                 "cycywen", "wenxihot123", "E08486126", "GUO", "SHUXUAN",
                 "F", "854879610@qq.com", "QUANZHOU", "TAISHANGTOUZIQU",
                 "1991", "6", "11",//生日
@@ -112,13 +111,10 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "GUO",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
- 
+
                 4
 
-* 
- * 
- * 
- * */
+ 
                 "shirley_xu0207", "GOSHforever!1", "G36349085", "XU", "LEI",
                 "F", "ggouairain@hotmail.com", "SHANGHAI", "NO.92,SOUTH LONGSHUI ROAD,XUHUI DISTRICT",
                 "1990", "2", "7",//生日
@@ -130,13 +126,26 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "GUO",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+        
+                5
 
 
+                "Joan_c", "Playwithu0523", "E46844981", "CHEN", "MUYUN",
+                "F", "mumu.cmy@qq.com", "SHANGHAI", "Tianmen City Hubei Province NO.3  Lu Yu Road(West)",
+                "1993", "1", "2",//生日
+                "2025", "3", "19", //护照失效
+                "2009", "3", "11", //身份证发放
+                "2019", "3", "11", //身份证失效
+                "2016", "11", "1",  //计划入境日期
+                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
+                "", "", "",
+                "GUO",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
 
-
-
-
-
+                6
+ * 
+ * 
+ * */
 
 
 
@@ -335,18 +344,7 @@ namespace widkeyPaperDiaper
 
 
             label6.Text = "expire date: " + expireDate.ToString("yyyy-MM-dd");
-            panel1.Controls.Add(label15);
-            panel1.Controls.Add(label16);
-            panel1.Controls.Add(label17);
-            panel1.Controls.Add(label18);
-            panel1.Controls.Add(label19);
-            panel1.Controls.Add(cardTypeLabel);
-            panel1.Controls.Add(creaditCardNo);
-            panel1.Controls.Add(cardType);
-            panel1.Controls.Add(cardHolder);
-            panel1.Controls.Add(cardExpiryMonth);
-            panel1.Controls.Add(cardExpiryYear);
-            panel1.Controls.Add(cardVerificationCode);
+            
 
 
             deleteForms.Visible = true;
@@ -403,7 +401,18 @@ namespace widkeyPaperDiaper
 
                 //需显示结果框
 
-
+                panel1.Controls.Add(label15);
+                panel1.Controls.Add(label16);
+                panel1.Controls.Add(label17);
+                panel1.Controls.Add(label18);
+                panel1.Controls.Add(label19);
+                panel1.Controls.Add(cardTypeLabel);
+                panel1.Controls.Add(creaditCardNo);
+                panel1.Controls.Add(cardType);
+                panel1.Controls.Add(cardHolder);
+                panel1.Controls.Add(cardExpiryMonth);
+                panel1.Controls.Add(cardExpiryYear);
+                panel1.Controls.Add(cardVerificationCode);
                 panel1.Visible = false;
                 appointmentGrid.Height = 350;
 

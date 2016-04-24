@@ -5,4 +5,3 @@ D:\source\yueNZwhv\sfvScout\bin\Release\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\obj\x86\Release\widkeyPaperDiaper.Form1.resources
 D:\source\yueNZwhv\sfvScout\obj\x86\Release\widkeyPaperDiaper.Properties.Resources.resources
 D:\source\yueNZwhv\sfvScout\obj\x86\Release\NZwhv.csproj.GenerateResource.Cache
-D:\source\yueNZwhv\sfvScout\obj\x86\Release\NZwhv.csprojResolveAssemblyReference.cache
