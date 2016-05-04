@@ -90,7 +90,7 @@ namespace widkeyPaperDiaper
                 "1990", "6", "18",//生日
                 "2022", "11", "14", //护照失效
                 "2013", "5", "7", //身份证发放
-                "", "5", "7", //身份证失效
+                "2023", "5", "7", //身份证失效
                 "2017", "3", "1",  //计划入境日期
                 "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
                 "", "", "",
@@ -114,11 +114,10 @@ namespace widkeyPaperDiaper
 
                 4
 
- 
                 "shirley_xu0207", "GOSHforever!1", "G36349085", "XU", "LEI",
                 "F", "ggouairain@hotmail.com", "SHANGHAI", "NO.92,SOUTH LONGSHUI ROAD,XUHUI DISTRICT",
                 "1990", "2", "7",//生日
-                "2024", "7", "6", //护照失效
+                "2019", "7", "6", //护照失效
                 "2016", "2", "20", //身份证发放
                 "2036", "2", "20", //身份证失效
                 "2017", "5", "1",  //计划入境日期
@@ -126,8 +125,8 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "GUO",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-        
-                5
+      
+                5   ggouairain 
 
 
                 "Joan_c", "Playwithu0523", "E46844981", "CHEN", "MUYUN",
@@ -143,17 +142,38 @@ namespace widkeyPaperDiaper
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
 
                 6
- * 
- * 
- * */
+  
+ 
 
 
+                "zxlaw77", "Alember77", "E28111190", "WANG", "LINGXIAO",
+                "M", "zxlaw77@163.com", "Taizhou", "305,5 TaiHeYuan,Hailing District,Taizhou,Jiangsu",
+                "1988", "1", "29",//生日
+                "2024", "8", "11", //护照失效
+                "2007", "11", "20", //身份证发放
+                "2017", "11", "20", //身份证失效
+                "2016", "11", "1",  //计划入境日期
+                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
+                "", "", "",
+                "GUO",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
 
+                 7
+ */
 
+                "QIAYU", "Wqy1106", "E46498777", "WU", "QIAYU",
+                "F", "qiayuwu@hotmail.com", "Nanjing", "1 zhongshanmenwaiweigang,xuanwuqu",
+                "1990", "10", "20",//生日
+                "2025", "3", "19", //护照失效
+                "2011", "3", "6", //身份证发放
+                "2021", "3", "6", //身份证失效
+                "2017", "1", "10",  //计划入境日期
+                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
+                "", "", "",
+                "GUO",
+                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
 
-
-
-
+                //999
 
 
 
@@ -1290,6 +1310,10 @@ namespace widkeyPaperDiaper
 
         private void autoB_Click(object sender, EventArgs e)
         {
+            if (tempClient != null)
+            {
+                tempClient.cookieContainer = null;
+            }
             gForceToStop = false;
             testButton = false;
             button4.Visible = false;
@@ -1973,6 +1997,10 @@ namespace widkeyPaperDiaper
 
         private void deleteForms_Click(object sender, EventArgs e)
         {
+            if (tempClient != null)
+            {
+                tempClient.cookieContainer = null;
+            }
             gForceToStop = false;
             Thread t = new Thread(deleteFormsF);
             t.Start();
@@ -1981,6 +2009,10 @@ namespace widkeyPaperDiaper
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (tempClient != null)
+            {
+                tempClient.cookieContainer = null;
+            }
             gForceToStop = false;
             testButton = true;
             autoB.Visible = false;

@@ -284,7 +284,8 @@ namespace widkeyPaperDiaper
 
             if (respHtml == "")
             {
-                goto createForm;
+                form1.setLogtRed(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": quotas for china do not open yet, retry...");
+                return -5;
             }
 
 
@@ -810,7 +811,11 @@ namespace widkeyPaperDiaper
                 "&ctl00%24ContentPlaceHolder1%24medicalConditions%24disabilityDropDownList=No"+
                 "&ctl00%24ContentPlaceHolder1%24medicalConditions%24hospitalisationDropDownList=No"+
                 "&ctl00%24ContentPlaceHolder1%24medicalConditions%24residentailCareDropDownList=No"+
-                "&ctl00%24ContentPlaceHolder1%24medicalConditions%24pregnancy%24pregnancyStatusDropDownList=No" +
+
+                (
+                    client.Gender == "M" ? "" : "&ctl00%24ContentPlaceHolder1%24medicalConditions%24pregnancy%24pregnancyStatusDropDownList=No" 
+                ) +
+
                 "&ctl00%24ContentPlaceHolder1%24medicalConditions%24tbRiskDropDownList=No"+
                 "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.x=53"+
                 "&ctl00%24ContentPlaceHolder1%24wizardPageFooter%24wizardPageNavigator%24validateButton.y=2" +
@@ -1526,7 +1531,12 @@ namespace widkeyPaperDiaper
                 }
                 if (r1 == -5) //unavailable for china
                 {
-                    goto delay;
+                    Login login = new Login(form1, client);
+                    if (login.loginT() == 1)
+                    {
+                        goto delay;
+                    }
+                    
                 }
 
                 if (r1 > 0)
