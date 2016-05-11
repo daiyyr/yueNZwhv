@@ -72,6 +72,7 @@ namespace widkeyPaperDiaper
 
 
             HttpWebResponse resp = null;
+            Client.cookieContainer = null;
 
             obtainLoginPage:
 

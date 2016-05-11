@@ -28,15 +28,15 @@ namespace widkeyPaperDiaper
         public static int retry = 3;
         public static int timeoutTime = 4000;
         static DateTime expireDate = new DateTime(2017, 4, 1);
-
+        public bool replaceInfo = false;
 
 
         string[] singleUserDetails = {
 
 
-
-                /* 
-                "hansha", "Dd123456", "E71342435", "HUANG", "YUN",
+                      /* 
+          
+                "hansha", "Dd123456", "E71342435", "han", "sha",
                 "F", "111111111@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
                 "1985", "8", "18", //生日
                 "2026", "3", "24", //护照失效
@@ -45,8 +45,8 @@ namespace widkeyPaperDiaper
                 "2017", "8", "1",  //计划入境日期
                 "No",
                 "", "", "",
-                "HUANG",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                "shasha",
+                "visa", "4693960018321975", "111", "04", "2018", "zhanghuimei"
 
                
  
@@ -80,13 +80,13 @@ namespace widkeyPaperDiaper
  
                 2
                
-                 
+                 */
                     
 
 
 
                 "nubuta1", "Ab888888", "E10119531", "HUANG", "LEI",
-                "F", "547522355@qq.com", "SHANGHAI", "RM101 NO.6 LANE88 SONGLIN RD SHANGHAI CHINA",
+                "F", "547522355@qq.com", "SHANGHAI", "RM101 NO.6 LANE88 SONGLIN RD",
                 "1990", "6", "18",//生日
                 "2022", "11", "14", //护照失效
                 "2013", "5", "7", //身份证发放
@@ -96,7 +96,7 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-                                     
+                                     /*
                  3, incompleted
 
  
@@ -159,7 +159,7 @@ namespace widkeyPaperDiaper
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
 
                  7
- */
+
 
                 "QIAYU", "Wqy1106", "E46498777", "WU", "QIAYU",
                 "F", "qiayuwu@hotmail.com", "Nanjing", "1 zhongshanmenwaiweigang,xuanwuqu",
@@ -174,6 +174,21 @@ namespace widkeyPaperDiaper
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
 
                 //999
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -407,7 +422,7 @@ namespace widkeyPaperDiaper
                                     );
             if (singleUser)
             {
-                loginB.Visible = true;
+     //           loginB.Visible = true;
                 ClientList = new List<Client>();
                 ClientList.Add(tempClient);
                 var source = new BindingSource();
@@ -522,7 +537,7 @@ namespace widkeyPaperDiaper
         */
         public int downloadHtml(string prex, string html)
         {
-            string fileName = prex + "." + System.DateTime.Now.ToString("yyyyMMddHHmmss", DateTimeFormatInfo.InvariantInfo) + ".txt";
+            string fileName = prex + "." + System.DateTime.Now.ToString("yyyyMMddHHmmss", DateTimeFormatInfo.InvariantInfo) + ".html";
             writeFile(System.Environment.CurrentDirectory + "\\" + fileName, html);
             return 1;
         }
@@ -1310,6 +1325,8 @@ namespace widkeyPaperDiaper
 
         private void autoB_Click(object sender, EventArgs e)
         {
+            replaceInfo = checkBox1.Checked;
+            checkBox1.Enabled = false;
             if (tempClient != null)
             {
                 tempClient.cookieContainer = null;
@@ -1931,6 +1948,45 @@ namespace widkeyPaperDiaper
             }
         }
 
+        private void timeoutBox_Validating(object sender, CancelEventArgs e)
+        {
+            string str = timeoutBox.Text;
+            if (str.Length > 0)
+            {
+                if (!Regex.Match(str, @"^\d+$").Success)
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("超时时间只能填写数字");
+                    return;
+                }
+            }
+
+            if (timeoutBox.Text.Equals(""))
+            {
+                
+            }
+            else
+            {
+                try
+                {
+                    if (Convert.ToInt32(timeoutBox.Text) > 3000)
+                    {
+                        timeoutTime = Convert.ToInt32(timeoutBox.Text);
+                    }
+                    else
+                    {
+                        //维持程序默认值
+                    }
+                }
+                catch (Exception)
+                {
+                    //维持程序默认值
+                }
+            }
+        }
+
+        
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(comboBox1.SelectedIndex < Countylist.Count)
@@ -2009,6 +2065,8 @@ namespace widkeyPaperDiaper
 
         private void button4_Click(object sender, EventArgs e)
         {
+            replaceInfo = checkBox1.Checked;
+            checkBox1.Enabled = false;
             if (tempClient != null)
             {
                 tempClient.cookieContainer = null;
@@ -2019,6 +2077,7 @@ namespace widkeyPaperDiaper
             Thread t = new Thread(testButonClickF);
             t.Start();
         }
+
 
 
         /*

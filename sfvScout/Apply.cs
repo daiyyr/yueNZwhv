@@ -38,6 +38,7 @@ namespace widkeyPaperDiaper
         string countyForMulti, shopForMulti;
 
 
+
         string minDate = DateTime.Now.ToString("%d", DateTimeFormatInfo.InvariantInfo) + "+" +
                             DateTime.Now.ToString("MMM", DateTimeFormatInfo.InvariantInfo) + "+" +
                             (DateTime.Now.Year - 31).ToString();
@@ -458,9 +459,9 @@ namespace widkeyPaperDiaper
                 }
             }
 
-            //如果有已完成的页面, 则可以跳页, 图标: ../Images/Tabcontrol/icon_tick.gif    待完善 daiyyr
             client.nextStep = "personalDetails";
             personalDetails();
+            
             return 1;
         }
         public int deleteForms()
@@ -615,8 +616,55 @@ namespace widkeyPaperDiaper
                     client.ctl00_ContentPlaceHolder1_personDetails_dateOfBithDatePicker_ControlState = Form1.ToUrlEncode(myMatch.Groups[0].Value);
                 }
 
+                if (!form1.replaceInfo)
+                {
+                    rgx = @"class\=current.+?icon_tick\.gif";
+                    myMatch = (new Regex(rgx)).Match(respHtml);
+                    if (myMatch.Success) //本页图标为绿色
+                    {
+                        rgx = @"class\=""tabcontainer""(\s|\S)+?icon_error\.gif";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (!myMatch.Success) //所有图标都是绿色
+                        {
+                            client.nextStep = "submit";
+                            submit();
+                            return 2;
+                        }
+                        else
+                        {
+                            rgx = @"icon_error.+?\s+?.+?Health";
+                            myMatch = (new Regex(rgx)).Match(respHtml);
+                            if (myMatch.Success) //medical是红色
+                            {
+                                client.nextStep = "medical";
+                                medical();
+                                return 2;
+                            }
+
+                            rgx = @"icon_error.+?\s+?.+?Character";
+                            myMatch = (new Regex(rgx)).Match(respHtml);
+                            if (myMatch.Success) //Character是红色
+                            {
+                                client.nextStep = "character";
+                                character();
+                                return 2;
+                            }
+
+                            rgx = @"icon_error.+?\s+?.+?Working Holiday Specific";
+                            myMatch = (new Regex(rgx)).Match(respHtml);
+                            if (myMatch.Success) //Working Holiday Specific是红色
+                            {
+                                client.nextStep = "workingHolidaySpecific";
+                                workingHolidaySpecific();
+                                return 2;
+                                
+                            }
+                        }
+                    }
+                }
                 client.nextStep = "personalDetails";
                 personalDetails();
+
                 return 2;
             }
 
@@ -641,6 +689,7 @@ namespace widkeyPaperDiaper
         public int personalDetails()
         {
             form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": personal 1...");
+
 
             string respHtml = Form1.weLoveYue(
                 form1,
@@ -712,6 +761,54 @@ namespace widkeyPaperDiaper
                 client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
             }
             //本页无 __EVENTVALIDATION
+
+            if (!form1.replaceInfo)
+            {
+                rgx = @"class\=current.+?icon_tick\.gif";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success) //本页图标为绿色
+                {
+                    rgx = @"class\=""tabcontainer""(\s|\S)+?icon_error\.gif";
+                    myMatch = (new Regex(rgx)).Match(respHtml);
+                    if (!myMatch.Success) //所有图标都是绿色
+                    {
+                        client.nextStep = "submit";
+                        submit();
+                        return 1;
+                    }
+                    else
+                    {
+                        rgx = @"icon_error.+?\s+?.+?Health";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success) //medical是红色
+                        {
+                            client.nextStep = "medical";
+                            medical();
+                            return 1;
+                        }
+
+                        rgx = @"icon_error.+?\s+?.+?Character";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success) //Character是红色
+                        {
+                            client.nextStep = "character";
+                            character();
+                            return 1;
+                        }
+
+                        rgx = @"icon_error.+?\s+?.+?Working Holiday Specific";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success) //Working Holiday Specific是红色
+                        {
+                            client.nextStep = "workingHolidaySpecific";
+                            workingHolidaySpecific();
+                            return 1;
+                        }
+                    }
+                }
+            }
+           
+            
 
 
             respHtml = Form1.weLoveYue(
@@ -798,6 +895,46 @@ namespace widkeyPaperDiaper
                 client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
             }
 
+
+            if (!form1.replaceInfo)
+            {
+                rgx = @"class\=current.+?icon_tick\.gif";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success) //本页图标为绿色
+                {
+                    rgx = @"class\=""tabcontainer""(\s|\S)+?icon_error\.gif";
+                    myMatch = (new Regex(rgx)).Match(respHtml);
+                    if (!myMatch.Success) //所有图标都是绿色
+                    {
+                        client.nextStep = "submit";
+                        submit();
+                        return 1;
+                    }
+                    else
+                    {
+                        rgx = @"icon_error.+?\s+?.+?Character";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success) //Character是红色
+                        {
+                            client.nextStep = "character";
+                            character();
+                            return 1;
+                        }
+
+                        rgx = @"icon_error.+?\s+?.+?Working Holiday Specific";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success) //Working Holiday Specific是红色
+                        {
+                            client.nextStep = "workingHolidaySpecific";
+                            workingHolidaySpecific();
+                            return 1;
+                        }
+                    }
+                }
+            }
+
+
+
             respHtml = Form1.weLoveYue(
                 form1,
                 "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
@@ -867,6 +1004,36 @@ namespace widkeyPaperDiaper
             if (myMatch.Success)
             {
                 client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+
+            if (!form1.replaceInfo)
+            {
+                rgx = @"class\=current.+?icon_tick\.gif";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success) //本页图标为绿色
+                {
+                    
+                    rgx = @"class\=""tabcontainer""(\s|\S)+?icon_error\.gif";
+                    myMatch = (new Regex(rgx)).Match(respHtml);
+                    if (!myMatch.Success) //所有图标都是绿色
+                    {
+                        client.nextStep = "submit";
+                        submit();
+                        return 1;
+                    }
+                    else
+                    {
+                        rgx = @"icon_error.+?\s+?.+?Working Holiday Specific";
+                        myMatch = (new Regex(rgx)).Match(respHtml);
+                        if (myMatch.Success) //Working Holiday Specific是红色
+                        {
+                            client.nextStep = "workingHolidaySpecific";
+                            workingHolidaySpecific();
+                            return 1;
+                        }
+                    }
+                }
             }
 
             respHtml = Form1.weLoveYue(
@@ -944,6 +1111,24 @@ namespace widkeyPaperDiaper
             if (myMatch.Success)
             {
                 client.__VIEWSTATEGENERATOR = Form1.ToUrlEncode(myMatch.Groups[0].Value);
+            }
+
+
+            if (!form1.replaceInfo)
+            {
+                rgx = @"class\=current.+?icon_tick\.gif";
+                myMatch = (new Regex(rgx)).Match(respHtml);
+                if (myMatch.Success) //本页图标为绿色
+                {
+                    rgx = @"class\=""tabcontainer""(\s|\S)+?icon_error\.gif";
+                    myMatch = (new Regex(rgx)).Match(respHtml);
+                    if (!myMatch.Success) //所有图标都是绿色
+                    {
+                        client.nextStep = "submit";
+                        submit();
+                        return 1;
+                    }
+                }
             }
 
             respHtml = Form1.weLoveYue(
@@ -1292,6 +1477,7 @@ namespace widkeyPaperDiaper
                                 {
                                     goto waitForProcess;
                                 }
+                           //     if(false)
                                 if (respHtml.Contains("Your payment was not successful"))
                                 {
                                     string message = "";
@@ -1311,7 +1497,7 @@ namespace widkeyPaperDiaper
                                         resp.Headers["location"],
                                         "GET",
                                         "https://webcomm.paymark.co.nz/hosted/?rm=" + rm,
-                                        false,
+                                        true,
                                         "",
                                         ref client.cookieContainer,
                                         "payments.paystation.co.nz",

@@ -81,6 +81,10 @@
             this.cardTypeLabel = new System.Windows.Forms.Label();
             this.cardType = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.timeoutBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.nextStepDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -138,7 +142,7 @@
             // 
             // loginB
             // 
-            this.loginB.Location = new System.Drawing.Point(531, 72);
+            this.loginB.Location = new System.Drawing.Point(915, 96);
             this.loginB.Margin = new System.Windows.Forms.Padding(4);
             this.loginB.Name = "loginB";
             this.loginB.Size = new System.Drawing.Size(120, 37);
@@ -162,7 +166,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 31);
+            this.label1.Location = new System.Drawing.Point(40, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 17);
@@ -171,7 +175,7 @@
             // 
             // rate
             // 
-            this.rate.Location = new System.Drawing.Point(61, 20);
+            this.rate.Location = new System.Drawing.Point(85, 14);
             this.rate.Margin = new System.Windows.Forms.Padding(4);
             this.rate.Name = "rate";
             this.rate.Size = new System.Drawing.Size(105, 22);
@@ -182,7 +186,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 31);
+            this.label2.Location = new System.Drawing.Point(200, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 17);
@@ -524,7 +528,7 @@
             "愛媛県",
             "福岡県",
             "佐賀県"});
-            this.comboBox1.Location = new System.Drawing.Point(300, 20);
+            this.comboBox1.Location = new System.Drawing.Point(836, 332);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(199, 24);
@@ -535,7 +539,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(300, 61);
+            this.comboBox2.Location = new System.Drawing.Point(836, 373);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(199, 24);
@@ -546,7 +550,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(240, 31);
+            this.label10.Location = new System.Drawing.Point(776, 343);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 17);
@@ -557,7 +561,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(256, 72);
+            this.label11.Location = new System.Drawing.Point(792, 384);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 17);
@@ -568,7 +572,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 72);
+            this.label12.Location = new System.Drawing.Point(552, 384);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 17);
@@ -582,7 +586,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "M",
             "L"});
-            this.comboBox3.Location = new System.Drawing.Point(61, 61);
+            this.comboBox3.Location = new System.Drawing.Point(597, 373);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(148, 24);
@@ -641,7 +645,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(25, 300);
+            this.label16.Location = new System.Drawing.Point(25, 323);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 17);
             this.label16.TabIndex = 39;
@@ -650,7 +654,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(25, 385);
+            this.label17.Location = new System.Drawing.Point(25, 408);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(113, 17);
             this.label17.TabIndex = 40;
@@ -659,7 +663,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(25, 422);
+            this.label18.Location = new System.Drawing.Point(25, 445);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(124, 17);
             this.label18.TabIndex = 41;
@@ -668,7 +672,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(25, 458);
+            this.label19.Location = new System.Drawing.Point(25, 481);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(115, 17);
             this.label19.TabIndex = 42;
@@ -683,14 +687,14 @@
             // 
             // cardHolder
             // 
-            this.cardHolder.Location = new System.Drawing.Point(157, 297);
+            this.cardHolder.Location = new System.Drawing.Point(138, 45);
             this.cardHolder.Name = "cardHolder";
             this.cardHolder.Size = new System.Drawing.Size(253, 22);
             this.cardHolder.TabIndex = 44;
             // 
             // cardVerificationCode
             // 
-            this.cardVerificationCode.Location = new System.Drawing.Point(157, 458);
+            this.cardVerificationCode.Location = new System.Drawing.Point(157, 481);
             this.cardVerificationCode.Name = "cardVerificationCode";
             this.cardVerificationCode.Size = new System.Drawing.Size(100, 22);
             this.cardVerificationCode.TabIndex = 45;
@@ -714,7 +718,7 @@
             "2028",
             "2029",
             "2030"});
-            this.cardExpiryYear.Location = new System.Drawing.Point(157, 382);
+            this.cardExpiryYear.Location = new System.Drawing.Point(157, 405);
             this.cardExpiryYear.Name = "cardExpiryYear";
             this.cardExpiryYear.Size = new System.Drawing.Size(121, 24);
             this.cardExpiryYear.TabIndex = 46;
@@ -735,7 +739,7 @@
             "10",
             "11",
             "12"});
-            this.cardExpiryMonth.Location = new System.Drawing.Point(157, 419);
+            this.cardExpiryMonth.Location = new System.Drawing.Point(157, 442);
             this.cardExpiryMonth.Name = "cardExpiryMonth";
             this.cardExpiryMonth.Size = new System.Drawing.Size(121, 24);
             this.cardExpiryMonth.TabIndex = 46;
@@ -743,7 +747,7 @@
             // cardTypeLabel
             // 
             this.cardTypeLabel.AutoSize = true;
-            this.cardTypeLabel.Location = new System.Drawing.Point(25, 339);
+            this.cardTypeLabel.Location = new System.Drawing.Point(25, 362);
             this.cardTypeLabel.Name = "cardTypeLabel";
             this.cardTypeLabel.Size = new System.Drawing.Size(71, 17);
             this.cardTypeLabel.TabIndex = 40;
@@ -755,7 +759,7 @@
             this.cardType.Items.AddRange(new object[] {
             "visa",
             "mater card"});
-            this.cardType.Location = new System.Drawing.Point(157, 336);
+            this.cardType.Location = new System.Drawing.Point(138, 84);
             this.cardType.Name = "cardType";
             this.cardType.Size = new System.Drawing.Size(121, 24);
             this.cardType.TabIndex = 46;
@@ -764,10 +768,50 @@
             // 
             this.panel1.Controls.Add(this.creaditCardNo);
             this.panel1.Controls.Add(this.label15);
-            this.panel1.Location = new System.Drawing.Point(19, 255);
+            this.panel1.Controls.Add(this.cardHolder);
+            this.panel1.Controls.Add(this.cardType);
+            this.panel1.Location = new System.Drawing.Point(19, 278);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(480, 301);
             this.panel1.TabIndex = 47;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(550, 448);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(396, 55);
+            this.checkBox1.TabIndex = 48;
+            this.checkBox1.Text = "我的移民局网站账号上有去年或者他人的表格，\r\n请帮我用软件中的个人申请信息覆盖原表格中的内容\r\n（如果没有以上情况, 请勿勾选, 勾选后可能影响填表速度）";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(25, 51);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(54, 17);
+            this.label20.TabIndex = 49;
+            this.label20.Text = "timeout";
+            // 
+            // timeoutBox
+            // 
+            this.timeoutBox.Location = new System.Drawing.Point(85, 46);
+            this.timeoutBox.Name = "timeoutBox";
+            this.timeoutBox.Size = new System.Drawing.Size(105, 22);
+            this.timeoutBox.TabIndex = 50;
+            this.timeoutBox.Text = "4000";
+            this.timeoutBox.Validating += new System.ComponentModel.CancelEventHandler(this.timeoutBox_Validating);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(200, 49);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(26, 17);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "ms";
             // 
             // nextStepDataGridViewTextBoxColumn
             // 
@@ -1039,11 +1083,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1532, 665);
+            this.Controls.Add(this.timeoutBox);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cardExpiryMonth);
-            this.Controls.Add(this.cardType);
             this.Controls.Add(this.cardExpiryYear);
             this.Controls.Add(this.cardVerificationCode);
-            this.Controls.Add(this.cardHolder);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cardTypeLabel);
             this.Controls.Add(this.label18);
@@ -1079,6 +1124,7 @@
             this.Controls.Add(this.deleteMail);
             this.Controls.Add(this.addB);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rate);
             this.Controls.Add(this.label1);
@@ -1207,6 +1253,10 @@
         private System.Windows.Forms.Label cardTypeLabel;
         private System.Windows.Forms.ComboBox cardType;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox timeoutBox;
+        private System.Windows.Forms.Label label21;
     }
 }
 
