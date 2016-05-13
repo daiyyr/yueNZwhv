@@ -215,7 +215,7 @@ namespace widkeyPaperDiaper
             {
                 respHtml = Form1.weLoveYue(
               form1,
-              "http://www.immigration.govt.nz/migrant/default.htm",
+              "http://onlineservices.immigration.govt.nz/migrant/default.htm",
                 "GET",
               "",
               false,
@@ -228,7 +228,7 @@ namespace widkeyPaperDiaper
             {
                 respHtml = Form1.weLoveYue(
               form1,
-              "http://www.immigration.govt.nz/migrant/default.htm",
+              "http://onlineservices.immigration.govt.nz/migrant/default.htm",
               "POST",
               "",
               false,
@@ -252,9 +252,9 @@ namespace widkeyPaperDiaper
             {
                 respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
+              "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
               "GET",
-              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
               "",
 
@@ -265,9 +265,9 @@ namespace widkeyPaperDiaper
             {
                 respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
+              "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
               "POST",
-              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
 
               "&TS0120d49b_cr=" + TS0120d49b_cr +
@@ -347,9 +347,9 @@ namespace widkeyPaperDiaper
             clickCreateNow:
             resp= Form1.weLoveYueer(
                 form1,
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
+                "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
                 "POST",
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
+                "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=" + (Form1.debug || Form1.testButton ? "82" : "46"), //82 for Germany, 46 for China
                 false,
                 "__EVENTVALIDATION=" + client.__EVENTVALIDATION +
                 "&__VIEWSTATE=" + client.__VIEWSTATE +
@@ -388,9 +388,9 @@ namespace widkeyPaperDiaper
 
                 respHtml = Form1.weLoveYue(
                               form1,
-                              "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                              "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                               "POST",
-                              "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=82",
+                              "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=82",
                               false,
                               "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                              ref client.cookieContainer,
@@ -470,9 +470,9 @@ namespace widkeyPaperDiaper
             form1.setLogT("delete form begins, detect application ID..");
             string respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+              "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
               "GET",
-              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
               "",
              ref client.cookieContainer,
@@ -498,9 +498,9 @@ namespace widkeyPaperDiaper
                 }
                 respHtml = Form1.weLoveYue(
                           form1,
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
+                          "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
                           "POST",
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+                          "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
                           false,
                           "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                          ref client.cookieContainer,
@@ -529,9 +529,9 @@ namespace widkeyPaperDiaper
 
                 respHtml = Form1.weLoveYue(
                           form1,
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
+                          "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
                           "POST",
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
+                          "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Delete.aspx?ApplicationId=" + client.ApplicationId,
                           false,
                           "__EVENTVALIDATION=" + client.__EVENTVALIDATION +
                             "&__VIEWSTATE=" + client.__VIEWSTATE +
@@ -555,9 +555,9 @@ namespace widkeyPaperDiaper
         {
             string respHtml = Form1.weLoveYue(
               form1,
-              "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+              "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
               "GET",
-              "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+              "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
               false,
               "",
              ref client.cookieContainer,
@@ -580,9 +580,9 @@ namespace widkeyPaperDiaper
 
                respHtml = Form1.weLoveYue(
                           form1,
-                          "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                          "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                           "POST",
-                          "https://www.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
+                          "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/default.aspx",
                           false,
                           "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                          ref client.cookieContainer,
@@ -693,9 +693,9 @@ namespace widkeyPaperDiaper
 
             string respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "ctl00%24ContentPlaceHolder1%24personDetails%24familyNameTextBox="+ client.FamilyName.ToUpper() +
                 "&ctl00%24ContentPlaceHolder1%24personDetails%24givenName1Textbox="+ client.GivenName.ToUpper() +
@@ -740,9 +740,9 @@ namespace widkeyPaperDiaper
             string respHtml;
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                 ref client.cookieContainer,
@@ -813,9 +813,9 @@ namespace widkeyPaperDiaper
 
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "&ctl00%24ContentPlaceHolder1%24identification%24confirmPassportNumberTextBox=" + client.PassportNo +
                 "&ctl00%24ContentPlaceHolder1%24identification%24passportNumberTextBox=" + client.PassportNo +
@@ -868,9 +868,9 @@ namespace widkeyPaperDiaper
             string respHtml;
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                 ref client.cookieContainer,
@@ -937,9 +937,9 @@ namespace widkeyPaperDiaper
 
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "ctl00%24ContentPlaceHolder1%24medicalConditions%24renalDialysisDropDownList=No"+
                 "&ctl00%24ContentPlaceHolder1%24medicalConditions%24tuberculosisDropDownList=No"+
@@ -979,9 +979,9 @@ namespace widkeyPaperDiaper
             string respHtml;
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                 ref client.cookieContainer,
@@ -1038,9 +1038,9 @@ namespace widkeyPaperDiaper
 
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "ctl00%24ContentPlaceHolder1%24character%24imprisonment5YearsDropDownList=No"+
                 "&ctl00%24ContentPlaceHolder1%24character%24imprisonment12MonthsDropDownList=No"+
@@ -1086,9 +1086,9 @@ namespace widkeyPaperDiaper
             string respHtml;
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                 ref client.cookieContainer,
@@ -1133,9 +1133,9 @@ namespace widkeyPaperDiaper
 
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "ctl00%24ContentPlaceHolder1%24offshoreDetails%24commonWHSQuestions%24previousWhsPermitVisaDropDownList=No"+
                 "&ctl00%24ContentPlaceHolder1%24offshoreDetails%24commonWHSQuestions%24sufficientFundsHolidayDropDownList=Yes"+
@@ -1182,9 +1182,9 @@ namespace widkeyPaperDiaper
             string respHtml;
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
+                "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
                 "POST",
-                "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                 false,
                 "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
                 ref client.cookieContainer,
@@ -1211,9 +1211,9 @@ namespace widkeyPaperDiaper
 
             respHtml = Form1.weLoveYue(
                 form1,
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
+                "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
                 "POST",
-                "https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
+                "https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Submit.aspx?ApplicationId=" + client.ApplicationId,
                 false,
                 "ctl00%24ContentPlaceHolder1%24falseStatementCheckBox=on"+
                 "&ctl00%24ContentPlaceHolder1%24notesCheckBox=on"+
@@ -1263,18 +1263,18 @@ namespace widkeyPaperDiaper
             {
                 form1.setLogT(client.FamilyName + " " + client.GivenName + " " + client.PassportNo + ": pay...");
 
-                //get https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=1451998
+                //get https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=1451998
                 //有收到cookie, 也许需要
 
                 string respHtml;
                 respHtml = Form1.weLoveYue(
                     form1,
-                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https://www.immigration.govt.nz/WorkingHoliday/Application/SubmitConfirmation.aspx?ApplicationId=" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    "https://onlineservices.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https://onlineservices.immigration.govt.nz/WorkingHoliday/Application/SubmitConfirmation.aspx?ApplicationId=" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                     "POST",
-                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https://www.immigration.govt.nz/WorkingHoliday/Application/SubmitConfirmation.aspx?ApplicationId=" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    "https://onlineservices.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https://onlineservices.immigration.govt.nz/WorkingHoliday/Application/SubmitConfirmation.aspx?ApplicationId=" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                     false,
                     "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_ct=0&TS8e49d4_pd=0" +
-                    "&TS8e49d4_rf=" + Form1.ToUrlEncode("https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=" + client.ApplicationId),
+                    "&TS8e49d4_rf=" + Form1.ToUrlEncode("https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=" + client.ApplicationId),
                     ref client.cookieContainer,
                     true);
 
@@ -1305,9 +1305,9 @@ namespace widkeyPaperDiaper
                 //至于这个client列表, 对应的是一个本地文件, 主键是clientId, 有一个进程不停地同步服务器上的client和本地client.
                 resp = Form1.weLoveYueer(
                     form1,
-                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    "https://onlineservices.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fonlineservices.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                     "POST",
-                    "https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
+                    "https://onlineservices.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=" + client.ApplicationId + "&IndividualType=Primary&IndividualIndex=1",
                     false,
                     "__EVENTTARGET="+
                     "&__EVENTARGUMENT=" +
@@ -1325,12 +1325,12 @@ namespace widkeyPaperDiaper
                 /*
                 resp = Form1.weLoveYueer(
                     form1,
-                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId="+ client.ApplicationId +"&ProductId=2",
+                    "https://onlineservices.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fonlineservices.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId="+ client.ApplicationId +"&ProductId=2",
                     "POST",
-                    "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                    "https://onlineservices.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fonlineservices.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                     false,
-                    "TS8e49d4_id=3&TS8e49d4_md=2&TS8e49d4_ct=application%2Fx-www-form-urlencoded" +
-                    "&TS8e49d4_rf=" + Form1.ToUrlEncode("https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=" + client.ApplicationId )+
+                    "TS8e49d4_id=3&TS8e49d4_md=2&TS8e49d4_ct=application%2Fx-onlineservices-form-urlencoded" +
+                    "&TS8e49d4_rf=" + Form1.ToUrlEncode("https://onlineservices.immigration.govt.nz/WORKINGHOLIDAY/Application/Pay.aspx?ApplicationId=" + client.ApplicationId )+
                     
                     //值内部的符号经历两次URL转换, 比如, % 转为 %25
                     "&TS8e49d4_pd=" +
@@ -1365,7 +1365,7 @@ namespace widkeyPaperDiaper
                             form1,
                             resp.Headers["location"],
                             "GET",
-                            "https://www.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fwww.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
+                            "https://onlineservices.immigration.govt.nz/PaymentGateway/OnLinePayment.aspx?SourceUrl=https%3a%2f%2fonlineservices.immigration.govt.nz%2fWorkingHoliday%2fApplication%2fSubmitConfirmation.aspx%3fApplicationId%3d" + client.ApplicationId + "&ApplicationId=" + client.ApplicationId + "&ProductId=2",
                             false,
                             "",
                             ref client.cookieContainer,

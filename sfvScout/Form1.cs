@@ -34,8 +34,8 @@ namespace widkeyPaperDiaper
         string[] singleUserDetails = {
 
 
-                      /* 
-          
+                      
+           /* 
                 "hansha", "Dd123456", "E71342435", "han", "sha",
                 "F", "111111111@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
                 "1985", "8", "18", //生日
@@ -48,7 +48,7 @@ namespace widkeyPaperDiaper
                 "shasha",
                 "visa", "4693960018321975", "111", "04", "2018", "zhanghuimei"
 
-               
+              
  
   
                 "dbtchob", "Tr123456", "E71770244", "HUANG", "YUN",
@@ -80,8 +80,7 @@ namespace widkeyPaperDiaper
  
                 2
                
-                 */
-                    
+                    */
 
 
 
@@ -96,8 +95,8 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "HUANG",
                 "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-                                     /*
-                 3, incompleted
+/*    
+                 3
 
  
                 "cycywen", "wenxihot123", "E08486126", "GUO", "SHUXUAN",
@@ -200,7 +199,7 @@ namespace widkeyPaperDiaper
         Client tempClient = null;
         public static bool gForceToStop = false;
         public static bool gLoginOkFlag = false;
-        static string gHost = "www.immigration.govt.nz";
+        static string gHost = "onlineservices.immigration.govt.nz";
         public County selecteCounty = null;
         public int selectedShop = -1;
         public string selectedType = null;

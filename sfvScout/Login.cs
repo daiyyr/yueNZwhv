@@ -61,9 +61,6 @@ namespace widkeyPaperDiaper
               "",
              ref cookieContainer,
               true);
-
-              
-
             //     cookieContainer.Add(new Cookie("TS0120d49b", "0152807fb20d92231761cb749be9bf0c068e6b51b7b7c8b3ca3163b50d0ded4393ddab932f0e53bfd0276edcf78ed51aeba4f9a69be4cf15ca8c961e1184690d83fa9fded1") { Domain = "www.immigration.govt.nz" });
        //   cookieContainer.Add(new Cookie("ASP.NET_SessionId", "vr5pmzbicspjp455xatxmcmk") { Domain = "www.immigration.govt.nz" });
     
@@ -81,9 +78,10 @@ namespace widkeyPaperDiaper
 
                 resp = Form1.weLoveYueer(
                 form1,
-                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+            //    "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
                 "POST",
-                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
                 false,
 
                 //"&TS0120d49b_cr=08eba48ebbab28003238e681cda9bcdb55fb8668c04df479fb10d8abfc03767f1e29dd"
@@ -101,9 +99,9 @@ namespace widkeyPaperDiaper
             {
                 resp = Form1.weLoveYueer(
                 form1,
-                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
                 "GET",
-                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
                 false,
                 "",
 
@@ -185,9 +183,9 @@ namespace widkeyPaperDiaper
             login:
             resp = Form1.weLoveYueer(
                 form1,
-                "https://www.immigration.govt.nz" + Client.__CMS_CurrentUrl,
+                "https://onlineservices.immigration.govt.nz" + Client.__CMS_CurrentUrl,
                 "POST",
-                "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
                 false,
                 "__EVENTTARGET="+
                     "&__EVENTARGUMENT="+
