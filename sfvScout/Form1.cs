@@ -19,25 +19,37 @@ namespace widkeyPaperDiaper
 {
     
 
-
     public partial class Form1 : Form
     {
         public static bool singleUser = true;
+
+        /*
+         * 当该字段为true时, 不验证程序是否过期
+         * 当该字段为true时, 开放测试邮件等冗余功能测试按钮
+         * 当该字段为true时, 即使点击自动模式, 也会使用德国表格和无效信用卡信息
+         */
         public static bool debug = false;
+
+
+
+        /* 点击测试按钮时, 将把改字段置为true
+         * 点击自动模式时, 将把改字段置为false
+         * 当它为true时, 将使用 真实客户资料 + 无效信用卡信息 + 德国表格 进行测试.
+         */
         public static bool testButton = false;
-        public static int retry = 3;
-        public static int timeoutTime = 4000;
+
+        
+        public static int retry = 10;
+        public static int timeoutTime = 60000;
         static DateTime expireDate = new DateTime(2017, 4, 1);
         public bool replaceInfo = false;
 
 
         string[] singleUserDetails = {
 
-
-                      
-           /* 
-                "hansha", "Dd123456", "E71342435", "han", "sha",
-                "F", "111111111@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
+       /*         
+                "eru1989", "Dd123456", "E7222435", "eru1989", "dai",
+                "F", "1646419111@163.com", "eru1989", "ZITENGYICUN5HAO", 
                 "1985", "8", "18", //生日
                 "2026", "3", "24", //护照失效
                 "2013", "9", "29", //身份证发放
@@ -46,149 +58,11 @@ namespace widkeyPaperDiaper
                 "No",
                 "", "", "",
                 "shasha",
-                "visa", "4693960018321975", "111", "04", "2018", "zhanghuimei"
-
-              
- 
-  
-                "dbtchob", "Tr123456", "E71770244", "HUANG", "YUN",
-                "F", "dbtchob@163.com", "SHANGHAI", "ZITENGYICUN5HAO", 
-                "1985", "8", "18", //生日
-                "2026", "3", "24", //护照失效
-                "2013", "9", "29", //身份证发放
-                "2033", "9", "29", //身份证失效
-                "2017", "8", "1",  //计划入境日期
-                "No",
-                "", "", "",
-                "HUANG",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
+                "visa", "4693960018321975", "111", "04", "2018", "eru"
+        */
                 
-                1
-
-                                     
-                "WSTCYMHD", "Zyj1004", "E12833426", "HUANG", "LING",
-                "F", "WSTCYMHD0@163.COM", "SHANGHAI", "ZI TENG YI CUN 5 HAO 201",
-                "1985", "8", "18",//生日
-                "2023", "1", "29", //护照失效
-                "2012", "10", "12", //身份证发放
-                "2032", "10", "12", //身份证失效
-                "2017", "3", "1",  //计划入境日期
-                "No",
-                "", "", "",
-                "HUANG",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
- 
-                2
-               
-                    */
-
-
-
-                "nubuta1", "Ab888888", "E10119531", "HUANG", "LEI",
-                "F", "547522355@qq.com", "SHANGHAI", "RM101 NO.6 LANE88 SONGLIN RD",
-                "1990", "6", "18",//生日
-                "2022", "11", "14", //护照失效
-                "2013", "5", "7", //身份证发放
-                "2023", "5", "7", //身份证失效
-                "2017", "3", "1",  //计划入境日期
-                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
-                "", "", "",
-                "HUANG",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-/*    
-                 3
-
- 
-                "cycywen", "wenxihot123", "E08486126", "GUO", "SHUXUAN",
-                "F", "854879610@qq.com", "QUANZHOU", "TAISHANGTOUZIQU",
-                "1991", "6", "11",//生日
-                "2024", "4", "14", //护照失效
-                "2009", "8", "10", //身份证发放
-                "2019", "8", "10", //身份证失效
-                "2016", "8", "1",  //计划入境日期
-                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
-                "", "", "",
-                "GUO",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-
-                4
-
-                "shirley_xu0207", "GOSHforever!1", "G36349085", "XU", "LEI",
-                "F", "ggouairain@hotmail.com", "SHANGHAI", "NO.92,SOUTH LONGSHUI ROAD,XUHUI DISTRICT",
-                "1990", "2", "7",//生日
-                "2019", "7", "6", //护照失效
-                "2016", "2", "20", //身份证发放
-                "2036", "2", "20", //身份证失效
-                "2017", "5", "1",  //计划入境日期
-                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
-                "", "", "",
-                "GUO",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-      
-                5   ggouairain 
-
-
-                "Joan_c", "Playwithu0523", "E46844981", "CHEN", "MUYUN",
-                "F", "mumu.cmy@qq.com", "SHANGHAI", "Tianmen City Hubei Province NO.3  Lu Yu Road(West)",
-                "1993", "1", "2",//生日
-                "2025", "3", "19", //护照失效
-                "2009", "3", "11", //身份证发放
-                "2019", "3", "11", //身份证失效
-                "2016", "11", "1",  //计划入境日期
-                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
-                "", "", "",
-                "GUO",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-
-                6
-  
- 
-
-
-                "zxlaw77", "Alember77", "E28111190", "WANG", "LINGXIAO",
-                "M", "zxlaw77@163.com", "Taizhou", "305,5 TaiHeYuan,Hailing District,Taizhou,Jiangsu",
-                "1988", "1", "29",//生日
-                "2024", "8", "11", //护照失效
-                "2007", "11", "20", //身份证发放
-                "2017", "11", "20", //身份证失效
-                "2016", "11", "1",  //计划入境日期
-                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
-                "", "", "",
-                "GUO",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-
-                 7
-
-
-                "QIAYU", "Wqy1106", "E46498777", "WU", "QIAYU",
-                "F", "qiayuwu@hotmail.com", "Nanjing", "1 zhongshanmenwaiweigang,xuanwuqu",
-                "1990", "10", "20",//生日
-                "2025", "3", "19", //护照失效
-                "2011", "3", "6", //身份证发放
-                "2021", "3", "6", //身份证失效
-                "2017", "1", "10",  //计划入境日期
-                "No",           //是否到过纽西兰, 填 Yes 或者 No 注意大小写
-                "", "", "",
-                "GUO",
-                "visa", "4514617612049342", "111", "04", "2018", "zhanghuimei"
-
-                //999
-
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                
+                
 
 
 
@@ -228,166 +102,18 @@ namespace widkeyPaperDiaper
         {
             InitializeComponent();
 
-            Countylist.Add(new County(
-            "北海道",
-            new List<string> { "旭川店", "屯田ｲﾄｰﾖｰｶﾄﾞｰ店", "ｱﾘｵ札幌店", "新さっぽろ店" },
-            new List<string> { "37116", "37305", "37185", "37187" })
-            );
-            Countylist.Add(new County(
-            "青森県",
-            new List<string> { "青森ｻﾝﾛｰﾄﾞ店" },
-            new List<string> { "37106" })
-            );
-            Countylist.Add(new County(
-            "宮城県",
-            new List<string> { "仙台泉店", "ﾗﾗｶﾞｰﾃﾞﾝ長町店", "ｱﾘｵ仙台泉店" },
-            new List<string> { "37091", "37175", "37208" })
-            );
-            Countylist.Add(new County(
-            "茨城県",
-            new List<string> { "ニューポートひたちなか店", "丸井水戸店", "つくば店" },
-            new List<string> { "37224", "37195", "37113" })
-            );
-            Countylist.Add(new County(
-            "栃木県",
-            new List<string> { "宇都宮店" },
-            new List<string> { "37075" })
-            );
-            Countylist.Add(new County(
-            "群馬県",
-            new List<string> { "高崎店" },
-            new List<string> { "37031" })
-            );
-            Countylist.Add(new County(
-            "千葉県",
-            new List<string> { "八千代村上店", "幕張ｲﾄｰﾖｰｶﾄﾞｰ店", "ららぽｰと柏の葉店", "ららぽｰとTOKYO-BAY店", "ｱﾘｵ市原店" },
-            new List<string> { "37026", "37319", "37158", "37213", "37212" })
-            );
-            Countylist.Add(new County(
-            "埼玉県",
-            new List<string> { "ｱﾘｵ深谷店", "ｱﾘｵ鷲宮店", "ﾗﾗｶﾞｰﾃﾞﾝ春日部店", "大宮宮原ｲﾄｰﾖｰｶﾄﾞｰ店", "せんげん台店", "ららぽーと富士見店", "上福岡東ｲﾄｰﾖｰｶﾄﾞｰ店", "ｱﾘｵ川口店", "ﾗﾗｶﾞｰﾃﾞﾝ川口店", "草加店", "ららぽｰと新三郷店", "ｱﾘｵ上尾店", "若葉店", "和光ｲﾄｰﾖｰｶﾄﾞｰ店" },
-            new List<string> { "37189", "37205", "37505", "37316", "37176", "37223", "37321", "37200", "37151", "37156", "37174", "37209", "37122", "37314" })
-            );
-            Countylist.Add(new County(
-            "東京都",
-            new List<string> { "小豆沢店", "ｱﾘｵ亀有店", "錦糸町店", "ｱﾘｵ北砂店", "東大和ｲﾄｰﾖｰｶﾄﾞｰ店", "東久留米ｲﾄｰﾖｰｶﾄﾞｰ店", "武蔵小金井ｲﾄｰﾖｰｶﾄﾞｰ店", "拝島ｲﾄｰﾖｰｶﾄﾞｰ店", "ｾﾚｵ八王子店", "ｱﾘｵ西新井店" },
-            new List<string> { "37188", "37130", "37035", "37182", "37323", "37303", "37310", "37313", "37204", "37210" })
-            );
-            Countylist.Add(new County(
-            "神奈川県",
-            new List<string> { "港北東急店", "ららぽｰと横浜店", "ﾗｿﾞｰﾅ川崎店", "川崎ｲﾄｰﾖｰｶﾄﾞｰ店", "ｸﾞﾗﾝﾂﾘｰ武蔵小杉店", "本牧ｲﾄｰﾖｰｶﾄﾞｰ店", "横浜別所ｲﾄｰﾖｰｶﾄﾞｰ店", "東戸塚西武店", "立場ｲﾄｰﾖｰｶﾄﾞｰ店", "ﾃﾗｽﾓｰﾙ湘南店", "ｱﾘｵ橋本店", "古淵ｲﾄｰﾖｰｶﾄﾞｰ店" },
-            new List<string> { "37064", "37139", "37133", "37183", "37219", "37308", "37324", "37178", "37320", "37199", "37186", "37329" })
-            );
-            Countylist.Add(new County(
-            "新潟県",
-            new List<string> { "長岡店" },
-            new List<string> { "37098" })
-            );
-            Countylist.Add(new County(
-            "長野県",
-            new List<string> { "ｱﾘｵ上田店", "ｱﾘｵ松本店" },
-            new List<string> { "37194", "37196" })
-            );
-            Countylist.Add(new County(
-            "山梨県",
-            new List<string> { "甲府昭和ｲﾄｰﾖｰｶﾄﾞｰ店" },
-            new List<string> { "37322" })
-            );
-            Countylist.Add(new County(
-            "石川県",
-            new List<string> { "金沢店" },
-            new List<string> { "37144" })
-            );
-            Countylist.Add(new County(
-            "福井県",
-            new List<string> { "福井店" },
-            new List<string> { "37214" })
-            );
-            Countylist.Add(new County(
-            "静岡県",
-            new List<string> { "浜松宮竹店", "ららぽｰと磐田店", "静岡ｲﾄｰﾖｰｶﾄﾞｰ店" },
-            new List<string> { "37066", "37173", "37328" })
-            );
-            Countylist.Add(new County(
-            "岐阜県",
-            new List<string> { "カラフルタウン岐阜店" },
-            new List<string> { "37307" })
-            );
-            Countylist.Add(new County(
-            "愛知県",
-            new List<string> { "春日井店", "ｱﾋﾟﾀ新守山店", "ｱﾋﾟﾀ東海通店", "ﾘｰﾌｳｫｰｸ稲沢店", "安城ｲﾄｰﾖｰｶﾄﾞｰ店" },
-            new List<string> { "37038", "37207", "37197", "37161", "37327" })
-            );
-            Countylist.Add(new County(
-            "滋賀県",
-            new List<string> { "草津店", "西武大津店" },
-            new List<string> { "37074", "37222" })
-            );
-            Countylist.Add(new County(
-            "兵庫県",
-            new List<string> { "西宮北口店", "甲子園ｲﾄｰﾖｰｶﾄﾞｰ店", "ｶﾅｰﾄ西神戸店", "ﾌﾞﾙﾒｰﾙ舞多聞店", "明石ｲﾄｰﾖｰｶﾄﾞｰ店", "姫路広畑店" },
-            new List<string> { "37063", "37318", "37506", "37211", "37326", "37124" })
-            );
-            Countylist.Add(new County(
-            "大阪府",
-            new List<string> { "西武高槻店", "大阪本町店", "あべのｲﾄｰﾖｰｶﾄﾞｰ店", "津久野ｲﾄｰﾖｰｶﾄﾞｰ店", "ﾎﾟｯﾌﾟﾀｳﾝ住道店", "東大阪ｲﾄｰﾖｰｶﾄﾞｰ店", "ｱﾘｵ八尾店", "ｴｺｰﾙいずみ店", "ららぽーと和泉店" },
-            new List<string> { "37193", "37002", "37317", "37306", "37507", "37315", "37184", "37202", "37221" })
-            );
-            Countylist.Add(new County(
-            "奈良県",
-            new List<string> { "奈良ｲﾄｰﾖｰｶﾄﾞｰ店" },
-            new List<string> { "37309" })
-            );
-            Countylist.Add(new County(
-            "岡山県",
-            new List<string> { "岡山店", "ｱﾘｵ倉敷店" },
-            new List<string> { "37032", "37198" })
-            );
-            Countylist.Add(new County(
-            "和歌山県",
-            new List<string> { "ﾊﾟｰﾑｼﾃｨ和歌山店" },
-            new List<string> { "37220" })
-            );
-            Countylist.Add(new County(
-            "広島県",
-            new List<string> { "福山ｲﾄｰﾖｰｶﾄﾞｰ店", "ゆめタウンみゆき店" },
-            new List<string> { "37325", "37218" })
-            );
-            Countylist.Add(new County(
-            "山口県",
-            new List<string> { "防府店" },
-            new List<string> { "37150" })
-            );
-            Countylist.Add(new County(
-            "愛媛県",
-            new List<string> { "松前店" },
-            new List<string> { "37149" })
-            );
-            Countylist.Add(new County(
-            "福岡県",
-            new List<string> { "飯塚店", "福岡ﾏﾘﾅﾀｳﾝ店" },
-            new List<string> { "37012", "37132" })
-            );
-            Countylist.Add(new County(
-            "佐賀県",
-            new List<string> { "鳥栖店" },
-            new List<string> { "37029" })
-            );
-
-
-
-
+            //窗体名称
             label6.Text = "expire date: " + expireDate.ToString("yyyy-MM-dd");
-            
+            this.Text = (debug == true ? "测试版:" : "")
+                + singleUserDetails[4] + singleUserDetails[3] + "-NZwhv";
 
-
-            deleteForms.Visible = true;
+         //       deleteForms.Visible = true;
 
             if (debug)
             {
-                //button1.Visible = true;
-                //testLog.Visible = true;
-                //this.ClientSize = new System.Drawing.Size(1150, 960);
+               button1.Visible = true; //测试功能按钮
+               // testLog.Visible = true;
+               // this.ClientSize = new System.Drawing.Size(1150, 960);
                 
             }
             else
@@ -419,6 +145,22 @@ namespace widkeyPaperDiaper
                                             singleUserDetails[28],
                                             singleUserDetails[29], singleUserDetails[30], singleUserDetails[31], singleUserDetails[32], singleUserDetails[33], singleUserDetails[34]
                                     );
+
+            //把客户的信用卡信息写到窗口中, 点击run前可修改
+            creaditCardNo.Text = singleUserDetails[30];
+            cardHolder.Text = singleUserDetails[34];
+            cardExpiryMonth.SelectedIndex = Int32.Parse(singleUserDetails[32]) - 1;
+            cardExpiryYear.SelectedIndex = 
+                (
+                    (Int32.Parse(singleUserDetails[33]) - DateTime.Now.Year)
+                    < 0 ? (Int32.Parse(singleUserDetails[33]) - DateTime.Now.Year) + 2000  //客户若把2016写成16
+                    : (Int32.Parse(singleUserDetails[33]) - DateTime.Now.Year)
+                )
+                ;
+            cardType.SelectedIndex = (singleUserDetails[29].ToUpper() == "VISA") ? 0 : 1;
+            cardVerificationCode.Text = singleUserDetails[31];
+
+
             if (singleUser)
             {
      //           loginB.Visible = true;
@@ -432,6 +174,7 @@ namespace widkeyPaperDiaper
             {
                 button3.Visible = true;
                 deleteApp.Visible = true;
+                checkBox1.Visible = false;
 
                 //需显示结果框
 
@@ -1275,31 +1018,12 @@ namespace widkeyPaperDiaper
 
             if(singleUser){
 
-                delegate2 tttt8987 = new delegate2(
-                    delegate() { 
-                        if (cardType.SelectedIndex == -1 || cardExpiryYear.SelectedIndex == -1 || cardExpiryMonth.SelectedIndex == -1 || creaditCardNo.Text == "" || cardHolder.Text == "" || cardVerificationCode.Text == "")
-                        {
-                            this.setLogtRed("please type in valid credit card imformation");
-                            return;
-                        }
-
-                        tempClient.CardNumber = creaditCardNo.Text;
-                        tempClient.CardHolder = cardHolder.Text;
-                        tempClient.CardVerificationCode = cardVerificationCode.Text;
-                        tempClient.CardExpiryYear = cardExpiryYear.SelectedItem.ToString();
-                        tempClient.CardExpiryMonth = cardExpiryMonth.SelectedItem.ToString();
-                        tempClient.CardType = (cardType.SelectedItem.ToString() == "visa" ? "visa" : "masterCard");
-
-                        Login login = new Login(this, tempClient);
-                        if (login.loginT() == 1)
-                        {
-                            Apply apply = new Apply(this, tempClient);
-                            apply.startProbe();
-                        }
-
-                    }
-                );
-                creaditCardNo.Invoke(tttt8987);
+                Login login = new Login(this, tempClient);
+                if (login.loginT() == 1)
+                {
+                    Apply apply = new Apply(this, tempClient);
+                    apply.startProbe();
+                }
             }
             else
             {
@@ -1324,6 +1048,35 @@ namespace widkeyPaperDiaper
 
         private void autoB_Click(object sender, EventArgs e)
         {
+            //测试模式,仍使用德国表格和无效信用卡
+            if (debug == true)
+            {
+                tempClient.CardNumber = "4693960018321975";
+                tempClient.CardHolder = "zhanghuimei";
+                tempClient.CardVerificationCode = "111";
+                tempClient.CardExpiryYear = "2018";
+                tempClient.CardExpiryMonth = "04";
+                tempClient.CardType = "visa";
+            }
+            
+            //用可能被用户修改过的信用卡信息覆盖client实例
+            else if(singleUser){
+                if (cardType.SelectedIndex == -1 || cardExpiryYear.SelectedIndex == -1 || cardExpiryMonth.SelectedIndex == -1 || creaditCardNo.Text == "" || cardHolder.Text == "" || cardVerificationCode.Text == "")
+                {
+                    this.setLogtRed("请输入完整的信用卡信息");
+                    return;
+                }
+                tempClient.CardNumber = creaditCardNo.Text.Replace(" ", "");
+                tempClient.CardHolder = cardHolder.Text;
+                tempClient.CardVerificationCode = cardVerificationCode.Text;
+                tempClient.CardExpiryYear = cardExpiryYear.SelectedItem.ToString();
+                tempClient.CardExpiryMonth = cardExpiryMonth.SelectedItem.ToString();
+                tempClient.CardType = (cardType.SelectedItem.ToString() == "visa" ? "visa" : "masterCard");
+            }
+            panel1.Enabled = false;
+            cardExpiryMonth.Enabled = false;
+            cardExpiryYear.Enabled = false;
+            cardVerificationCode.Enabled = false;
             replaceInfo = checkBox1.Checked;
             checkBox1.Enabled = false;
             if (tempClient != null)
@@ -1360,152 +1113,11 @@ namespace widkeyPaperDiaper
 
         public void addEmails()
         {
-            Maillist = new List<Mail163<Apply>>();
-
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "(*.txt)|*.txt|(*.html)|*.html";
-
-            List<EmailForshow> mailForshow = new List<EmailForshow>();
-
-            if (mailGrid.InvokeRequired)
-            {
-                delegate2 sl = new delegate2(delegate()
-                {
-                    //打开对话框, 判断用户是否正确的选择了文件
-                    if (fileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        //获取用户选择的文件，并判断文件大小不能超过20K，fileInfo.Length是以字节为单位的
-                        FileInfo fileInfo = new FileInfo(fileDialog.FileName);
-                        if (fileInfo.Length > 504800)
-                        {
-                            MessageBox.Show("上传的文件不能大于500K");
-                        }
-                        else
-                        {
-                            //在这里就可以写获取到正确文件后的代码了
-                            string[] lines = File.ReadAllLines(fileDialog.FileName, System.Text.Encoding.GetEncoding("GB18030"));
-                            foreach (string line in lines)
-                            {
-                                if (line.Length == 0)
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    Regex regex = new Regex(@"( ){2,}");
-                                    string[] s = regex.Replace(line.Trim(), " ").Split(' ');
-                                    if (s.Length != 2)
-                                    {
-                                        setLogT("ignore invalid line: " + line);
-                                    }
-                                    else
-                                    {
-                                        Maillist.Add(new Mail163<Apply>(s[0], s[1], this));
-                                        mailForshow.Add(new EmailForshow(s[0], s[1]));
-                                    }
-                                }
-                            }
-                            if (Maillist.Count > 0)
-                            {
-                                var source = new BindingSource();
-                                source.DataSource = mailForshow;
-                                mailGrid.DataSource = source;
-                            }
-                        }
-                    }
-                });
-                mailGrid.Invoke(sl);
-            }
-            else //do not use delegate
-            {
-                if (fileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    FileInfo fileInfo = new FileInfo(fileDialog.FileName);
-                    if (fileInfo.Length > 204800)
-                    {
-                        MessageBox.Show("上传的文件不能大于200K");
-                    }
-                    else
-                    {
-                        string[] lines = File.ReadAllLines(fileDialog.SafeFileName);
-                        foreach (string line in lines)
-                        {
-                            if (line.Length == 0)
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                Regex regex = new Regex(@"( ){2,}");
-                                string[] s = regex.Replace(line.Trim(), " ").Split(' ');
-                                if (s.Length != 2)
-                                {
-                                    setLogT("ignore invalid line: " + line);
-                                }
-                                else
-                                {
-                                    Maillist.Add(new Mail163<Apply>(s[0], s[1], this));
-                                }
-                            }
-                        }
-                        if (Maillist.Count > 0)
-                        {
-                            var source = new BindingSource();
-                            source.DataSource = Maillist;
-                            DataGridViewTextBoxColumn txtCol = new DataGridViewTextBoxColumn();
-                            txtCol.DataPropertyName = txtCol.Name = txtCol.HeaderText = "email";
-                            //daiyyr
-                            mailGrid.Columns.Add(txtCol);
-                            txtCol.DataPropertyName = txtCol.Name = txtCol.HeaderText = "password";
-                            mailGrid.Columns.Add(txtCol);
-                            mailGrid.DataSource = source;
-                        }
-                    }
-                }
-            }
         }
 
         public void deleteEmails()
         {
 
-            /*daiyyr
-            if (mailGrid.InvokeRequired)
-            {
-                delegate2 sl = new delegate2(delegate()
-                {
-                    for (int i = mailGrid.CheckedItems.Count - 1; i >= 0; i--)
-                    {
-                        mailGrid.Items.Remove(mailGrid.CheckedItems[i]);
-                    }
-                });
-                mailGrid.Invoke(sl);
-            }
-            else
-            {
-                for (int i = mailGrid.CheckedItems.Count - 1; i >= 0; i--)
-                {
-                    mailGrid.Items.Remove(mailGrid.CheckedItems[i]);
-                }
-            }
-            */
-
-
-            /*
-             * put the delete result to the file
-            string strCollected = string.Empty;
-            for (int i = 0; i < urlList.Items.Count; i++)
-            {
-                if (strCollected == string.Empty)
-                {
-                    strCollected = urlList.GetItemText(urlList.Items[i]);
-                }
-                else
-                {
-                    strCollected += "\n" + urlList.GetItemText(urlList.Items[i]);
-                }
-            }
-            writeFile(System.Environment.CurrentDirectory + "\\" + "urlList", strCollected);
-             * */
         }
 
         private void addB_Click(object sender, EventArgs e)
@@ -1968,9 +1580,10 @@ namespace widkeyPaperDiaper
             {
                 try
                 {
-                    if (Convert.ToInt32(timeoutBox.Text) > 3000)
+                    if (Convert.ToInt32(timeoutBox.Text) > 100)
                     {
                         timeoutTime = Convert.ToInt32(timeoutBox.Text);
+                        setLogT("set timeout time " + timeoutTime +"ms");
                     }
                     else
                     {
@@ -2021,18 +1634,7 @@ namespace widkeyPaperDiaper
 
         private void showNextAppTime()
         {
-            if (selecteCounty == null || selectedShop == -1 || selectedType == null)
-            {
-                return;
-            }
-            if (selectedShop >= selecteCounty.Shops.Count)
-            {
-                return;
-            }
-            label14.Text = "enquiring the nearest booking...";
-            Apply paper = new Apply(this, null);
-            Thread t = new Thread(paper.showNextAppTime);
-            t.Start();
+            
         }
 
         private void appointmentGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -2064,6 +1666,18 @@ namespace widkeyPaperDiaper
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //使用无效信用卡
+            tempClient.CardNumber = "4693960018321975";
+            tempClient.CardHolder = "zhanghuimei";
+            tempClient.CardVerificationCode = "111";
+            tempClient.CardExpiryYear = "2018";
+            tempClient.CardExpiryMonth = "04";
+            tempClient.CardType = "visa" ;
+            panel1.Enabled = false;
+            cardExpiryMonth.Enabled = false;
+            cardExpiryYear.Enabled = false;
+            cardVerificationCode.Enabled = false;
+
             replaceInfo = checkBox1.Checked;
             checkBox1.Enabled = false;
             if (tempClient != null)
@@ -2073,8 +1687,17 @@ namespace widkeyPaperDiaper
             gForceToStop = false;
             testButton = true;
             autoB.Visible = false;
-            Thread t = new Thread(testButonClickF);
-            t.Start();
+            if (singleUser)
+            {
+                Thread t = new Thread(testButonClickF);
+                t.Start();
+            }
+            else
+            {
+                Thread t = new Thread(auto);
+                t.Start();
+            }
+            
         }
 
 

@@ -207,7 +207,7 @@ namespace widkeyPaperDiaper
 
             if (resp.StatusCode == HttpStatusCode.Found)
             {
-                form1.setLogT("login succeed");
+                form1.setLogtRed("login succeed");
                 Form1.gLoginOkFlag = true;
                 Client.nextStep = "createNewFormPage";
                 return 1;
