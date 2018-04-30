@@ -75,13 +75,47 @@ namespace widkeyPaperDiaper
 
             if (true) //(Client.cookieContainer == null || Client.cookieContainer.Count == 0)
             {
+                resp = Form1.weLoveYueer(
+                form1,
+                "https://onlineservices.immigration.govt.nz/?WHS",
+                "GET",
+                "",
+                false,
+                "",
+                ref Client.cookieContainer
+                );
+                respHtml = Form1.resp2html(resp);
+
+
+                if (Client.cookieContainer == null)
+                {
+                    Client.cookieContainer = new CookieCollection();
+                }
+                Cookie initCookie = new Cookie();
+                initCookie.Domain = "onlineservices.immigration.govt.nz";
+                initCookie.Expired = false;
+                initCookie.Expires = DateTime.Now.AddMinutes(2);
+                initCookie.Path = "/";
+                initCookie.Name = "TSaa03129d_75";
+                initCookie.Value = "TSaa03129d_rc=1&TSaa03129d_id=5&TSaa03129d_cr=08819c2a25ab2800eacd11de26753b563f9e6ff0e7b4ed741557ff284836adf9e2c5a59581edf8a45c5d692d08327d7a:089ca66b58047800584e1fa83189d1046e7903fa98539f813fd72464691dd253e4cfbeae90da59b31ae15e5aeeb1e7472366cfad29d6730c072302631b30f7cff1e7fa9cf2c03b44ac30e2a91a88c262d696615637e3b5d35699c5f460762b21a3078f077eb532c3a6367c27e3f5d3ca9dc12779359cf385e03f6f449281d111&TSaa03129d_ef=&TSaa03129d_pg=0&TSaa03129d_ct=0&TSaa03129d_rf=0";
+                Client.cookieContainer.Add(initCookie);
+
+                initCookie = new Cookie();
+                initCookie.Domain = "onlineservices.immigration.govt.nz";
+                initCookie.Expired = false;
+                initCookie.Expires = DateTime.Now.AddYears(2);
+                initCookie.Path = "/";
+                initCookie.Name = "TSPD_101";
+                initCookie.Value = "08819c2a25ab2800eacd11de26753b563f9e6ff0e7b4ed741557ff284836adf9e2c5a59581edf8a45c5d692d08327d7a:";
+                Client.cookieContainer.Add(initCookie);
+
+
 
                 resp = Form1.weLoveYueer(
                 form1,
-                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
-            //    "https://www.immigration.govt.nz/secure/Login+Working+Holiday.htm",
-                "POST",
-                "https://onlineservices.immigration.govt.nz/secure/Login+Working+Holiday.htm",
+                "https://onlineservices.immigration.govt.nz/?WHS",
+                "GET",
+                "",
                 false,
 
                 //"&TS0120d49b_cr=08eba48ebbab28003238e681cda9bcdb55fb8668c04df479fb10d8abfc03767f1e29dd"
@@ -89,9 +123,9 @@ namespace widkeyPaperDiaper
                     //+
                     //"TS0120d49b_id=3&TS0120d49b_76=0&TS0120d49b_86=0&TS0120d49b_md=1&TS0120d49b_rf=0&TS0120d49b_ct=0&TS0120d49b_pd=0",
 
-                "TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
-                    //this code comes from yuejie@20160320
-
+                //"TS8e49d4_id=3&TS8e49d4_md=1&TS8e49d4_rf=0&TS8e49d4_ct=0&TS8e49d4_pd=0",
+                //this code comes from yuejie@20160320
+                "",
                 ref Client.cookieContainer
                 );
             }
@@ -123,7 +157,11 @@ namespace widkeyPaperDiaper
             }
 
             respHtml = Form1.resp2html(resp);
-
+            if (Form1.debug)
+            {
+                form1.setTestLog(respHtml);
+            }
+            return -9999999;//dyyr
             rgx = @"(?<=name=""__VIEWSTATE"" value="")(\s|\S)+?(?="")";
             myMatch = (new Regex(rgx)).Match(respHtml);
             if (myMatch.Success)

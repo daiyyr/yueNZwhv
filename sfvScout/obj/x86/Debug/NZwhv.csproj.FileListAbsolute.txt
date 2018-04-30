@@ -6,3 +6,11 @@ D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\bin\Debug\widkeyPaperDiaper.pdb
 D:\source\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csprojResolveAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.exe
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.pdb
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csprojResolveAssemblyReference.cache
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Form1.resources
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\obj\x86\Debug\widkeyPaperDiaper.Properties.Resources.resources
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\obj\x86\Debug\NZwhv.csproj.GenerateResource.Cache
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\bin\Debug\widkeyPaperDiaper.exe
+C:\Users\Teemo\Documents\Visual Studio 2010\Projects\yueNZwhv\sfvScout\bin\Debug\widkeyPaperDiaper.pdb

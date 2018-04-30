@@ -13,7 +13,7 @@ using System.Threading;
 using System.Globalization;
 using System.Net.Cache;
 using System.Collections;
-
+using System.Xml;
 
 namespace widkeyPaperDiaper
 {
@@ -27,8 +27,9 @@ namespace widkeyPaperDiaper
          * 当该字段为true时, 不验证程序是否过期
          * 当该字段为true时, 开放测试邮件等冗余功能测试按钮
          * 当该字段为true时, 即使点击自动模式, 也会使用德国表格和无效信用卡信息
+         * if set true, Print page source to testLog
          */
-        public static bool debug = false;
+        public static bool debug = true;
 
 
 
@@ -47,7 +48,7 @@ namespace widkeyPaperDiaper
 
         string[] singleUserDetails = {
 
-       /*         
+               
                 "eru1989", "Dd123456", "E7222435", "eru1989", "dai",
                 "F", "1646419111@163.com", "eru1989", "ZITENGYICUN5HAO", 
                 "1985", "8", "18", //生日
@@ -59,7 +60,7 @@ namespace widkeyPaperDiaper
                 "", "", "",
                 "shasha",
                 "visa", "4693960018321975", "111", "04", "2018", "eru"
-        */
+        
                 
                 
                 
@@ -196,9 +197,9 @@ namespace widkeyPaperDiaper
 
             }
         }
-        
-        
 
+
+        #region Util Functions
         public delegate void setLog(string str1);
         public void setLogT(string s)
         {
@@ -217,58 +218,124 @@ namespace widkeyPaperDiaper
                 logT.AppendText(DateTime.Now.ToString() + " " + s + Environment.NewLine);
             }
         }
-
-        public void setLogtRed(string s)//something wrong, if it's first line, no red
+        public delegate void setLogWithColor(RichTextBox rtb, string str1, Color color1);
+        public void setLogtColorful(RichTextBox r, string s, Color c)
+        {
+            if (r.InvokeRequired)
+            {
+                setLogWithColor sl = new setLogWithColor(delegate (RichTextBox rtb, string text, Color color)
+                {
+                    rtb.AppendText(text + Environment.NewLine);
+                    int i = 0;
+                    if (rtb.Text.Length >= 2)
+                    {
+                        i = rtb.Text.LastIndexOf("\n", rtb.Text.Length - 2);
+                    }
+                    if (i < 0)
+                    {
+                        i = 0;
+                    }
+                    rtb.Select(i, rtb.Text.Length);
+                    rtb.SelectionColor = color;
+                    rtb.Select(i, rtb.Text.Length);
+                    rtb.SelectionFont = new Font(rtb.Font, FontStyle.Bold);
+                });
+                r.Invoke(sl, r, s, c);
+            }
+            else
+            {
+                r.AppendText(s + Environment.NewLine);
+                int i = 0;
+                if (r.Text.Length >= 2)
+                {
+                    i = r.Text.LastIndexOf("\n", r.Text.Length - 2);
+                }
+                if (i < 0)
+                {
+                    i = 0;
+                }
+                r.Select(i, r.Text.Length);
+                r.SelectionColor = c;
+                r.Select(i, r.Text.Length);
+                r.SelectionFont = new Font(r.Font, FontStyle.Bold);
+            }
+        }
+        public void setLogtRed(string s)
         {
             if (logT.InvokeRequired)
             {
-                setLog sl = new setLog(delegate(string text)
+                setLog sl = new setLog(delegate (string text)
                 {
-                    logT.AppendText(DateTime.Now.ToString() + " " + text + Environment.NewLine);
-                    int i = logT.Text.LastIndexOf("\n", logT.Text.Length - 2);
-                    if (i > 1)
+                    logT.AppendText(text + Environment.NewLine);
+                    int i = 0;
+                    if (logT.Text.Length >= 2)
                     {
-                        logT.Select(i, logT.Text.Length);
-                        logT.SelectionColor = Color.Red;
-                        logT.Select(i, logT.Text.Length);
-                        logT.SelectionFont = new Font(logT.Font, FontStyle.Bold);
+                        i = logT.Text.LastIndexOf("\n", logT.Text.Length - 2);
                     }
+                    if (i < 0)
+                    {
+                        i = 0;
+                    }
+                    logT.Select(i, logT.Text.Length);
+                    logT.SelectionColor = Color.Red;
+                    logT.Select(i, logT.Text.Length);
+                    logT.SelectionFont = new Font(logT.Font, FontStyle.Bold);
                 });
                 logT.Invoke(sl, s);
             }
             else
             {
-                logT.AppendText(DateTime.Now.ToString() + " " + s + Environment.NewLine);
-                int i = logT.Text.LastIndexOf("\n", logT.Text.Length - 2);
-                if (i > 1)
+                logT.AppendText(s + Environment.NewLine);
+                int i = 0;
+                if (logT.Text.Length >= 2)
                 {
-                    logT.Select(i, logT.Text.Length);
-                    logT.SelectionColor = Color.Red;
-                    logT.Select(i, logT.Text.Length);
-                    logT.SelectionFont = new Font(logT.Font, FontStyle.Bold);
+                    i = logT.Text.LastIndexOf("\n", logT.Text.Length - 2);
                 }
+                if (i < 0)
+                {
+                    i = 0;
+                }
+                logT.Select(i, logT.Text.Length);
+                logT.SelectionColor = Color.Red;
+                logT.Select(i, logT.Text.Length);
+                logT.SelectionFont = new Font(logT.Font, FontStyle.Bold);
             }
         }
 
+
+
         public delegate void DSetTestLog(HttpWebRequest req, string respHtml);
+        public delegate void DSetTestLog2(string respHtml);
         public void setTestLog(HttpWebRequest req, string respHtml)
         {
             if (testLog.InvokeRequired)
             {
                 DSetTestLog sl = new DSetTestLog(delegate(HttpWebRequest req1, string text)
                 {
-                    testLog.Text = Environment.NewLine + "返回的HTML源码：";
                     testLog.Text += Environment.NewLine + text;
                 });
                 testLog.Invoke(sl, req, respHtml);
             }
             else
             {
-                testLog.Text = Environment.NewLine + "返回的HTML源码：";
                 testLog.Text += Environment.NewLine + respHtml;
             }
         }
-
+        public void setTestLog(string respHtml)
+        {
+            if (testLog.InvokeRequired)
+            {
+                DSetTestLog2 sl = new DSetTestLog2(delegate (string text)
+                {
+                    testLog.Text += Environment.NewLine + text;
+                });
+                testLog.Invoke(sl, respHtml);
+            }
+            else
+            {
+                testLog.Text += Environment.NewLine + respHtml;
+            }
+        }
         /*
         public void alarm()
         {
@@ -384,7 +451,7 @@ namespace widkeyPaperDiaper
 
 
 
-        public static void setRequest(HttpWebRequest req, CookieCollection cookies)
+        public static void setRequest(HttpWebRequest req, CookieCollection cookies, bool xmlRequest = false)
         {
             //req.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
             //req.Accept = "*/*";
@@ -408,12 +475,26 @@ namespace widkeyPaperDiaper
             {
                 req.CookieContainer.Add(cookies);
             }
-            req.ContentType = "application/x-www-form-urlencoded";
+            if (xmlRequest)
+            {
+                req.ContentType = "text/xml; encoding='utf-8'";
+            }
+            else
+            {
+                req.ContentType = "application/x-www-form-urlencoded";
+            }
         }
-
-        public static int writePostData(Form1 form1, HttpWebRequest req, string Encode)
+        
+        public static int writePostData(Form1 form1, HttpWebRequest req, string postData, bool xmlRequest = false)
         {
-            byte[] postBytes = Encoding.UTF8.GetBytes(Encode);
+            byte[] postBytes = Encoding.UTF8.GetBytes(postData);
+     //           (xmlRequest ? Encoding.ASCII.GetBytes(postData) : Encoding.UTF8.GetBytes(postData));
+
+            if (xmlRequest)
+            {
+                req.ContentLength = postBytes.Length;
+            }
+
             //req.ContentLength = postBytes.Length;  // cause InvalidOperationException: 写入开始后不能设置此属性。
             Stream postDataStream = null;
             try
@@ -787,7 +868,7 @@ namespace widkeyPaperDiaper
          * return responsive HTML
          * unregular host
          */
-        public static string weLoveYue(Form1 form1, string url, string method, string referer, bool allowAutoRedirect, string postData, ref CookieCollection cookies, string host, bool responseInUTF8)
+        public static string weLoveYue(Form1 form1, string url, string method, string referer, bool allowAutoRedirect, string postData, ref CookieCollection cookies, string host, bool responseInUTF8, bool xmlRequest = false)
         {
             for (int i = 0; i < retry; i++)
             {
@@ -797,7 +878,7 @@ namespace widkeyPaperDiaper
                 }
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                 HttpWebResponse resp = null;
-                setRequest(req, cookies);
+                setRequest(req, cookies, xmlRequest);
                 req.Method = method;
                 req.Referer = referer;
                 if (allowAutoRedirect)
@@ -807,7 +888,7 @@ namespace widkeyPaperDiaper
                 req.Host = host;
                 if (method.Equals("POST"))
                 {
-                    if (writePostData(form1, req, postData) < 0)
+                    if (writePostData(form1, req, postData, xmlRequest) < 0)
                     {
                         continue;
                     }
@@ -901,6 +982,10 @@ namespace widkeyPaperDiaper
                     {
                         form1.setLogT("本次请求被服务器拒绝，可尝试调高间隔时间"); //500
                     }
+                    if(webEx.Status == WebExceptionStatus.ReceiveFailure)
+                    {
+                        Thread.Sleep(1000);
+                    }
                     continue;
                 }
                 if (resp != null)
@@ -974,7 +1059,8 @@ namespace widkeyPaperDiaper
             }
             return resp;
         }
-
+        #endregion
+        
         public void loginF()
         {
             Login login = new Login(this, tempClient); // temp
@@ -1063,7 +1149,7 @@ namespace widkeyPaperDiaper
             else if(singleUser){
                 if (cardType.SelectedIndex == -1 || cardExpiryYear.SelectedIndex == -1 || cardExpiryMonth.SelectedIndex == -1 || creaditCardNo.Text == "" || cardHolder.Text == "" || cardVerificationCode.Text == "")
                 {
-                    this.setLogtRed("请输入完整的信用卡信息");
+                    setLogtColorful(logT, "请输入完整的信用卡信息", Color.Red);
                     return;
                 }
                 tempClient.CardNumber = creaditCardNo.Text.Replace(" ", "");
@@ -1089,8 +1175,7 @@ namespace widkeyPaperDiaper
             Thread t = new Thread(auto);
             t.Start();
         }
-
-
+        
         private void logT_TextChanged(object sender, EventArgs e)
         {
             logT.SelectionStart = logT.Text.Length;
@@ -1108,7 +1193,6 @@ namespace widkeyPaperDiaper
             }
         }
             
-
         public delegate void delegate2();
 
         public void addEmails()
@@ -1543,7 +1627,7 @@ namespace widkeyPaperDiaper
         private void button2_Click(object sender, EventArgs e)
         {
             gForceToStop = true;
-            setLogtRed("user operation: stop probing");
+            setLogtColorful(logT, "user operation: stop probing", Color.Red);
         }
 
         private void rate_Validating(object sender, CancelEventArgs e)
@@ -1699,8 +1783,145 @@ namespace widkeyPaperDiaper
             }
             
         }
+        string txnref = "5f0c6fc4_1_20170706";
+        string TxnType = "Purchase";
+        //string TxnType = "Void";
 
 
+        //string TxnType = "Refund";
+        private void button5_Click(object sender, EventArgs e)
+        {
+            CookieCollection cookie = new CookieCollection();
+            
+            string xml =
+                 @"<Scr action=""doScrHIT"" user=""MomoTea_dev"" key=""25afcf399bff452ccc1971c151c3ee53a9e581dc5b3b718afe11283451aa9f42"">"
+                + "<Amount>50.21</Amount>"
+                + "<Cur>NZD</Cur>"
+                + "<TxnType>"+ TxnType + "</TxnType>"
+                + "<Station>4071309676</Station>"
+                + "<TxnRef>"+ txnref + "</TxnRef>"
+                + "<DeviceId>4071309676</DeviceId>"
+                + "<PosName>MyPosName</PosName>"
+                + "<PosVersion>MyPosVersion</PosVersion>"
+                + "<VendorId>MyVendorId</VendorId>"
+                + "<MRef>"+ txnref + "</MRef>"
+                + "</Scr>";
+            string respose = weLoveYue(
+                this,
+                "https://uat.paymentexpress.com/pxmi3/pos.aspx",
+                "POST",
+                "https://uat.paymentexpress.com/pxmi3/pos.aspx",
+                true,
+                xml,
+                ref cookie,
+                "uat.paymentexpress.com",
+                true,
+                true
+
+                );
+
+            this.setLogT(PrintXML(respose));
+        }
+
+        private void GetPosStatus_Click(object sender, EventArgs e)
+        {
+            CookieCollection cookie = new CookieCollection();
+
+            XmlDocument xDoc = new XmlDocument();
+            string xml =
+                 @"<Scr action=""doScrHIT"" user=""MomoTea_dev"" key=""25afcf399bff452ccc1971c151c3ee53a9e581dc5b3b718afe11283451aa9f42"">"
+                + "<TxnType>Status</TxnType>"
+                + "<Station>4071309676</Station>"
+                + "<TxnRef>"+ txnref + "</TxnRef>"
+                + "</Scr>";
+            xDoc.Load("C:\\SMS\\test.xml");
+            string respose = weLoveYue(
+                this,
+                "https://uat.paymentexpress.com/pxmi3/pos.aspx",
+                "POST",
+                "https://uat.paymentexpress.com/pxmi3/pos.aspx",
+                true,
+                xml,
+                ref cookie,
+                "uat.paymentexpress.com",
+                true,
+                true
+
+                );
+
+            this.setLogT(PrintXML(respose));
+        }
+        public static String PrintXML(String XML)
+        {
+            String Result = "";
+
+            MemoryStream mStream = new MemoryStream();
+            XmlTextWriter writer = new XmlTextWriter(mStream, Encoding.Unicode);
+            XmlDocument document = new XmlDocument();
+
+            try
+            {
+                // Load the XmlDocument with the XML.
+                document.LoadXml(XML);
+
+                writer.Formatting = Formatting.Indented;
+
+                // Write the XML into a formatting XmlTextWriter
+                document.WriteContentTo(writer);
+                writer.Flush();
+                mStream.Flush();
+
+                // Have to rewind the MemoryStream in order to read
+                // its contents.
+                mStream.Position = 0;
+
+                // Read MemoryStream contents into a StreamReader.
+                StreamReader sReader = new StreamReader(mStream);
+
+                // Extract the text from the StreamReader.
+                String FormattedXML = sReader.ReadToEnd();
+
+                Result = FormattedXML;
+            }
+            catch (XmlException)
+            {
+            }
+
+            mStream.Close();
+            writer.Close();
+
+            return Result;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            CookieCollection cookie = new CookieCollection();
+
+            string xml =
+                 @"<Scr action=""doScrHIT"" user=""MomoTea_dev"" key=""25afcf399bff452ccc1971c151c3ee53a9e581dc5b3b718afe11283451aa9f42"">";
+            xml += "<TxnType>UI</TxnType>"
+                + "<UiType>Bn</UiType>"
+                + "<Name>B2</Name>"
+                + "<Val>NO</Val>"
+                + "<Station>4071309676</Station>"
+                + "<TxnRef>" + txnref + "</TxnRef>"
+                + "</Scr>";
+            string respose = weLoveYue(
+                this,
+                "https://uat.paymentexpress.com/pxmi3/pos.aspx",
+                "POST",
+                "https://uat.paymentexpress.com/pxmi3/pos.aspx",
+                true,
+                xml,
+                ref cookie,
+                "uat.paymentexpress.com",
+                true,
+                true
+
+                );
+
+            this.setLogT(PrintXML(respose));
+        }
 
         /*
          // 只能控制写入尾部的字符 
